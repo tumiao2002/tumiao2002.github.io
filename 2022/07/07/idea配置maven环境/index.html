@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>兔喵博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="idea配置maven环境[TOC] 1.下载maven安装包并解压：&#x3D;&#x3D;下载官网：Maven – Download Apache Maven&#x3D;&#x3D;   2.配置环境变量 3.命令行输入mvn -version ,出现版本信息代表配置成功 4.maven配置阿里源4.1 创建maven自定义本地仓库 4.2 打开maven钟conf目录下的settings.x">
+<meta property="og:type" content="article">
+<meta property="og:title" content="兔喵博客">
+<meta property="og:url" content="http://example.com/2022/07/07/idea%E9%85%8D%E7%BD%AEmaven%E7%8E%AF%E5%A2%83/index.html">
+<meta property="og:site_name" content="兔喵博客">
+<meta property="og:description" content="idea配置maven环境[TOC] 1.下载maven安装包并解压：&#x3D;&#x3D;下载官网：Maven – Download Apache Maven&#x3D;&#x3D;   2.配置环境变量 3.命令行输入mvn -version ,出现版本信息代表配置成功 4.maven配置阿里源4.1 创建maven自定义本地仓库 4.2 打开maven钟conf目录下的settings.x">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/image-20220708114249854.png">
+<meta property="og:image" content="http://example.com/images/image-20220708114317922.png">
+<meta property="og:image" content="http://example.com/images/image-20220708114424202.png">
+<meta property="og:image" content="http://example.com/images/image-20220708114533786.png">
+<meta property="og:image" content="http://example.com/images/image-20220708114713084.png">
+<meta property="og:image" content="http://example.com/images/image-20220708114949429.png">
+<meta property="og:image" content="http://example.com/images/image-20220708115907501.png">
+<meta property="og:image" content="http://example.com/images/image-20220707220954910.png">
+<meta property="og:image" content="http://example.com/images/image-20220708120118906.png">
+<meta property="og:image" content="http://example.com/images/image-20220707221212437.png">
+<meta property="og:image" content="http://example.com/images/image-20220707221226331.png">
+<meta property="og:image" content="http://example.com/images/image-20220707221241484.png">
+<meta property="article:published_time" content="2022-07-07T14:06:36.556Z">
+<meta property="article:modified_time" content="2022-07-08T04:18:57.420Z">
+<meta property="article:author" content="tumiao">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/image-20220708114249854.png">
+  
+    <link rel="alternative" href="/atom.xml" title="兔喵博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate"></a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/Home">博客首页</a></li>
+                        
+                            <li><a href="/works">作品展示</a></li>
+                        
+                            <li><a href="/about">留言打卡</a></li>
+                        
+                            <li><a href="/FrontEndGuide">前端导航</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=PAkNDgsKBQ4MCnxNTRJfU1E" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/luuman" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+                            
+                                <a class="fl weibo" target="_blank" href="#" title="weibo">weibo</a>
+                            
+                                <a class="fl google" target="_blank" href="#" title="google">google</a>
+                            
+                                <a class="fl twitter" target="_blank" href="#" title="twitter">twitter</a>
+                            
+                                <a class="fl linkedin" target="_blank" href="#" title="linkedin">linkedin</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">name</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">纯海迷、爱运动、爱交友、爱旅行、喜欢接触新鲜事物、迎接新的挑战，更爱游离于错综复杂的编码与逻辑中</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me"></a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me"></a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/Home">博客首页</a></li>
+                
+                    <li><a href="/works">作品展示</a></li>
+                
+                    <li><a href="/about">留言打卡</a></li>
+                
+                    <li><a href="/FrontEndGuide">前端导航</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=PAkNDgsKBQ4MCnxNTRJfU1E" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/luuman" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+                    
+                        <a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+                    
+                        <a class="google" target="_blank" href="#" title="google">google</a>
+                    
+                        <a class="twitter" target="_blank" href="#" title="twitter">twitter</a>
+                    
+                        <a class="linkedin" target="_blank" href="#" title="linkedin">linkedin</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-idea配置maven环境" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/07/07/idea%E9%85%8D%E7%BD%AEmaven%E7%8E%AF%E5%A2%83/" class="article-date">
+      <time datetime="2022-07-07T14:06:36.556Z" itemprop="datePublished">2022-07-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="idea配置maven环境"><a href="#idea配置maven环境" class="headerlink" title="idea配置maven环境"></a>idea配置maven环境</h1><p>[TOC]</p>
+<h2 id="1-下载maven安装包并解压："><a href="#1-下载maven安装包并解压：" class="headerlink" title="1.下载maven安装包并解压："></a>1.下载maven安装包并解压：</h2><p>&#x3D;&#x3D;下载官网：<a target="_blank" rel="noopener" href="https://maven.apache.org/download.cgi">Maven – Download Apache Maven</a>&#x3D;&#x3D;</p>
+<p><img src="/../images/image-20220708114249854.png" alt="image-20220708114249854"></p>
+<p><img src="/../images/image-20220708114317922.png" alt="image-20220708114317922"></p>
+<h2 id="2-配置环境变量"><a href="#2-配置环境变量" class="headerlink" title="2.配置环境变量"></a>2.配置环境变量</h2><p><img src="/../images/image-20220708114424202.png" alt="image-20220708114424202"></p>
+<h2 id="3-命令行输入mvn-version-出现版本信息代表配置成功"><a href="#3-命令行输入mvn-version-出现版本信息代表配置成功" class="headerlink" title="3.命令行输入mvn -version ,出现版本信息代表配置成功"></a>3.命令行输入mvn -version ,出现版本信息代表配置成功</h2><p><img src="/../images/image-20220708114533786.png" alt="image-20220708114533786"></p>
+<h2 id="4-maven配置阿里源"><a href="#4-maven配置阿里源" class="headerlink" title="4.maven配置阿里源"></a>4.maven配置阿里源</h2><h3 id="4-1-创建maven自定义本地仓库"><a href="#4-1-创建maven自定义本地仓库" class="headerlink" title="4.1 创建maven自定义本地仓库"></a>4.1 创建maven自定义本地仓库</h3><p><img src="/../images/image-20220708114713084.png" alt="image-20220708114713084"></p>
+<h3 id="4-2-打开maven钟conf目录下的settings-xml文件，开始进行编辑"><a href="#4-2-打开maven钟conf目录下的settings-xml文件，开始进行编辑" class="headerlink" title="4.2 打开maven钟conf目录下的settings.xml文件，开始进行编辑"></a>4.2 打开maven钟conf目录下的settings.xml文件，开始进行编辑</h3><p> 4.2.1 把本地仓库路径添加到如下位置：</p>
+<p><img src="/../images/image-20220708114949429.png" alt="image-20220708114949429"></p>
+<p>4.2.2 在<mirros></mirros>内部注释掉原来代码，添加以下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--配置阿里云--&gt;</span><br><span class="line">    &lt;mirror&gt;      </span><br><span class="line">       &lt;id&gt;nexus-aliyun&lt;/id&gt;    </span><br><span class="line">       &lt;name&gt;nexus-aliyun&lt;/name&gt;  </span><br><span class="line">       &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt;    </span><br><span class="line">         &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;      </span><br><span class="line">    &lt;/mirror&gt;</span><br><span class="line">    &lt;mirror&gt;</span><br><span class="line">        &lt;id&gt;alimaven&lt;/id&gt;</span><br><span class="line">        &lt;name&gt;aliyun maven&lt;/name&gt;</span><br><span class="line">        &lt;url&gt;https://maven.aliyun.com/repository/public&lt;/url&gt;</span><br><span class="line">        &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;</span><br><span class="line">    &lt;/mirror&gt;</span><br><span class="line">    &lt;mirror&gt;</span><br><span class="line">        &lt;id&gt;alimaven-central&lt;/id&gt;</span><br><span class="line">        &lt;name&gt;aliyun maven central&lt;/name&gt;</span><br><span class="line">        &lt;url&gt;https://maven.aliyun.com/repository/central&lt;/url&gt;</span><br><span class="line">        &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;</span><br><span class="line">    &lt;/mirror&gt;</span><br><span class="line">    &lt;mirror&gt;</span><br><span class="line">        &lt;id&gt;alimaven-spring&lt;/id&gt;</span><br><span class="line">        &lt;name&gt;aliyun maven-spring&lt;/name&gt;</span><br><span class="line">        &lt;url&gt;https://maven.aliyun.com/repository/spring&lt;/url&gt;</span><br><span class="line">        &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;</span><br><span class="line">    &lt;/mirror&gt;</span><br><span class="line">    &lt;mirror&gt;</span><br><span class="line">        &lt;id&gt;central&lt;/id&gt;</span><br><span class="line">        &lt;name&gt;Maven Repository Switchboard&lt;/name&gt;</span><br><span class="line">        &lt;url&gt;https://repo1.maven.org/maven2/&lt;/url&gt;</span><br><span class="line">        &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;</span><br><span class="line">    &lt;/mirror&gt;</span><br><span class="line">    &lt;mirror&gt;</span><br><span class="line">        &lt;id&gt;jboss-public-repository-group&lt;/id&gt;</span><br><span class="line">        &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;</span><br><span class="line">        &lt;name&gt;JBoss Public Repository Group&lt;/name&gt;</span><br><span class="line">        &lt;url&gt;http://repository.jboss.org/nexus/content/groups/public&lt;/url&gt;</span><br><span class="line">    &lt;/mirror&gt;</span><br><span class="line">    &lt;mirror&gt;</span><br><span class="line">        &lt;id&gt;spring-snapshots&lt;/id&gt;</span><br><span class="line">        &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;</span><br><span class="line">        &lt;name&gt;Spring Snapshots&lt;/name&gt;</span><br><span class="line">        &lt;url&gt;https://repo.spring.io/snapshot&lt;/url&gt;</span><br><span class="line">    &lt;/mirror&gt;</span><br><span class="line">    &lt;mirror&gt;</span><br><span class="line">        &lt;id&gt;spring-milestones&lt;/id&gt;</span><br><span class="line">        &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;</span><br><span class="line">        &lt;name&gt;Spring Milestones&lt;/name&gt;</span><br><span class="line">        &lt;url&gt;https://repo.spring.io/milestone&lt;/url&gt;</span><br><span class="line">    &lt;/mirror&gt;</span><br><span class="line">    &lt;mirror&gt;</span><br><span class="line">      &lt;id&gt;maven-default-http-blocker&lt;/id&gt;</span><br><span class="line">      &lt;mirrorOf&gt;external:http:*&lt;/mirrorOf&gt;</span><br><span class="line">      &lt;name&gt;Pseudo repository to mirror external repositories initially using HTTP.&lt;/name&gt;</span><br><span class="line">      &lt;url&gt;http://0.0.0.0/&lt;/url&gt;</span><br><span class="line">      &lt;blocked&gt;true&lt;/blocked&gt;</span><br><span class="line">    &lt;/mirror&gt;</span><br></pre></td></tr></table></figure>
+
+<p>4.2.3 命令行输入 mvn help:system ，显示如下代表配置成功：</p>
+<p><img src="/../images/image-20220708115907501.png" alt="image-20220708115907501"></p>
+<h2 id="5-idea配置本地maven"><a href="#5-idea配置本地maven" class="headerlink" title="5.idea配置本地maven"></a>5.idea配置本地maven</h2><h3 id="2-1"><a href="#2-1" class="headerlink" title="2.1"></a>2.1</h3><p><img src="/../images/image-20220707220954910.png" alt="image-20220707220954910"></p>
+<h3 id="2-2-maven-home选择到下载解压的maven文件，settings选择下载的maven中的settings-repository选择下载的repository文件夹"><a href="#2-2-maven-home选择到下载解压的maven文件，settings选择下载的maven中的settings-repository选择下载的repository文件夹" class="headerlink" title="2.2 maven home选择到下载解压的maven文件，settings选择下载的maven中的settings,repository选择下载的repository文件夹"></a>2.2 maven home选择到下载解压的maven文件，settings选择下载的maven中的settings,repository选择下载的repository文件夹</h3><ol>
+<li></li>
+</ol>
+<p><img src="/../images/image-20220708120118906.png" alt="image-20220708120118906"></p>
+<ol start="2">
+<li></li>
+</ol>
+<p>mavan home:</p>
+<p><img src="/../images/image-20220707221212437.png" alt="image-20220707221212437"></p>
+<p>settings:</p>
+<p><img src="/../images/image-20220707221226331.png" alt="image-20220707221226331"></p>
+<p>repository:</p>
+<p><img src="/../images/image-20220707221241484.png" alt="image-20220707221241484"></p>
+<h3 id="2-3-点击确定，就完成啦"><a href="#2-3-点击确定，就完成啦" class="headerlink" title="2.3 点击确定，就完成啦"></a>2.3 点击确定，就完成啦</h3>
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>纯属好玩</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝" /></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信" /></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2022/07/07/idea%E9%85%8D%E7%BD%AEmaven%E7%8E%AF%E5%A2%83/"></a></p>
+        <p><span>文章作者:</span><a href="/" title="访问  的个人博客"></a></p>
+        <p><span>发布时间:</span>2022年07月07日 - 22时06分</p>
+        <p><span>最后更新:</span>2022年07月08日 - 12时18分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2022/07/07/idea%E9%85%8D%E7%BD%AEmaven%E7%8E%AF%E5%A2%83/" title="">http://example.com/2022/07/07/idea%E9%85%8D%E7%BD%AEmaven%E7%8E%AF%E5%A2%83/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://example.com/2022/07/07/idea%E9%85%8D%E7%BD%AEmaven%E7%8E%AF%E5%A2%83/　　作者: " title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2022/07/08/maven%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/07/07/springcloud%E5%AD%A6%E4%B9%A0/Feign/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#idea%E9%85%8D%E7%BD%AEmaven%E7%8E%AF%E5%A2%83"><span class="toc-number">1.</span> <span class="toc-text">idea配置maven环境</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%B8%8B%E8%BD%BDmaven%E5%AE%89%E8%A3%85%E5%8C%85%E5%B9%B6%E8%A7%A3%E5%8E%8B%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">1.下载maven安装包并解压：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">1.2.</span> <span class="toc-text">2.配置环境变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BE%93%E5%85%A5mvn-version-%E5%87%BA%E7%8E%B0%E7%89%88%E6%9C%AC%E4%BF%A1%E6%81%AF%E4%BB%A3%E8%A1%A8%E9%85%8D%E7%BD%AE%E6%88%90%E5%8A%9F"><span class="toc-number">1.3.</span> <span class="toc-text">3.命令行输入mvn -version ,出现版本信息代表配置成功</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-maven%E9%85%8D%E7%BD%AE%E9%98%BF%E9%87%8C%E6%BA%90"><span class="toc-number">1.4.</span> <span class="toc-text">4.maven配置阿里源</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E5%88%9B%E5%BB%BAmaven%E8%87%AA%E5%AE%9A%E4%B9%89%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 创建maven自定义本地仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E6%89%93%E5%BC%80maven%E9%92%9Fconf%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84settings-xml%E6%96%87%E4%BB%B6%EF%BC%8C%E5%BC%80%E5%A7%8B%E8%BF%9B%E8%A1%8C%E7%BC%96%E8%BE%91"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2 打开maven钟conf目录下的settings.xml文件，开始进行编辑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-idea%E9%85%8D%E7%BD%AE%E6%9C%AC%E5%9C%B0maven"><span class="toc-number">1.5.</span> <span class="toc-text">5.idea配置本地maven</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1"><span class="toc-number">1.5.1.</span> <span class="toc-text">2.1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-maven-home%E9%80%89%E6%8B%A9%E5%88%B0%E4%B8%8B%E8%BD%BD%E8%A7%A3%E5%8E%8B%E7%9A%84maven%E6%96%87%E4%BB%B6%EF%BC%8Csettings%E9%80%89%E6%8B%A9%E4%B8%8B%E8%BD%BD%E7%9A%84maven%E4%B8%AD%E7%9A%84settings-repository%E9%80%89%E6%8B%A9%E4%B8%8B%E8%BD%BD%E7%9A%84repository%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">1.5.2.</span> <span class="toc-text">2.2 maven home选择到下载解压的maven文件，settings选择下载的maven中的settings,repository选择下载的repository文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E7%82%B9%E5%87%BB%E7%A1%AE%E5%AE%9A%EF%BC%8C%E5%B0%B1%E5%AE%8C%E6%88%90%E5%95%A6"><span class="toc-number">1.5.3.</span> <span class="toc-text">2.3 点击确定，就完成啦</span></a></li></ol></li></ol></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <div id="gitments"></div>
+<script src="/js/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      owner: 'luuman',
+      repo: 'luuman.github.io',
+      oauth: {
+        client_id: '',
+        client_secret: '',
+      },
+    })
+    gitment.render('gitments')
+</script>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2022/07/08/maven%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" title="上一篇: ">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2022/07/07/springcloud%E5%AD%A6%E4%B9%A0/Feign/" title="下一篇: ">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2022/07/10/test/">test</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/07/10/springcloud%E5%AD%A6%E4%B9%A0/Docker/">springcloud学习/Docker</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/07/10/springcloud%E5%AD%A6%E4%B9%A0/%E7%BB%9F%E4%B8%80%E7%BD%91%E5%85%B3Gateway/">springcloud学习/统一网关Gateway</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/07/08/maven%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">maven遇到的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/07/07/idea%E9%85%8D%E7%BD%AEmaven%E7%8E%AF%E5%A2%83/">idea配置maven环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/07/07/springcloud%E5%AD%A6%E4%B9%A0/Feign/">springcloud学习/Feign</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/07/07/springcloud%E5%AD%A6%E4%B9%A0/Nacos%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/">springcloud学习/Nacos配置管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/07/07/springcloud%E5%AD%A6%E4%B9%A0/Nacos%E4%BA%8EEureka%E6%AF%94%E8%BE%83%E5%88%86%E6%9E%90/">springcloud学习/Nacos于Eureka比较分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/07/04/springcloud%E5%AD%A6%E4%B9%A0/Nacos/">springcloud学习/Nacos</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/07/04/springcloud%E5%AD%A6%E4%B9%A0/Eureka&Ribbon/">springcloud学习/Eureka&Ribbon</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/07/04/blogTips/">blogTips</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/07/04/springcloud%E5%AD%A6%E4%B9%A0/#%E8%AE%A4%E8%AF%86%E5%BE%AE%E6%9C%8D%E5%8A%A1/">springcloud学习/#认识微服务</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/07/03/hello-world/">Hello World</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2022 tumiao
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >海贼到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
