@@ -69,7 +69,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="img/1.1.jpg" class="js-avatar">
+			<img src="/img/1.1.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/"></a></h1>
@@ -103,14 +103,6 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
-		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-		        
 			</div>
 		</nav>
 	</header>		
@@ -127,7 +119,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="img/1.1.jpg" class="js-avatar">
+				<img src="/img/1.1.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author"></h1>
@@ -144,14 +136,6 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
-			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-			        
 				</div>
 			</nav>
 
@@ -237,27 +221,6 @@
 
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -357,6 +320,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E8%B8%A9%E5%9D%91%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">一些踩坑：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-maven%E5%AF%BC%E5%85%A5feign%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BE%9D%E8%B5%96%E5%A4%B1%E8%B4%A5"><span class="toc-number">1.1.</span> <span class="toc-text">1.maven导入feign客户端依赖失败</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-com-netflix-client-ClientException-Load-balancer-does-not-have-available-server-for-client-userservice"><span class="toc-number">1.2.</span> <span class="toc-text">2.com.netflix.client.ClientException: Load balancer does not have available server for client: userservice</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1%E6%A3%80%E6%9F%A5nacos%E6%98%AF%E5%90%A6%E6%88%90%E5%8A%9F%E6%B3%A8%E5%86%8C%EF%BC%8C%E6%A3%80%E6%B5%8B%E5%88%B0userservice%E5%92%8Corderservice%E9%83%BD%E6%9C%AA%E6%88%90%E5%8A%9F%E6%B3%A8%E5%86%8C"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1检查nacos是否成功注册，检测到userservice和orderservice都未成功注册</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#userservice%E6%9C%AA%E6%88%90%E5%8A%9F%E6%B3%A8%E5%86%8C%E7%9A%84%E5%8E%9F%E5%9B%A0%EF%BC%8C%E5%8A%A0%E4%BA%86yaml%E7%9A%84nacos%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%EF%BC%8C%E5%BF%98%E4%BA%86%E5%8A%A0%E5%AF%B9%E5%BA%94%E7%9A%84%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E4%BE%9D%E8%B5%96%EF%BC%9A"><span class="toc-number">1.2.2.</span> <span class="toc-text">userservice未成功注册的原因，加了yaml的nacos配置文件，忘了加对应的配置管理依赖：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#orderservice%E6%9C%AA%E6%88%90%E5%8A%9F%E6%B3%A8%E5%86%8C%E7%9A%84%E5%8E%9F%E5%9B%A0%EF%BC%9A"><span class="toc-number">1.2.3.</span> <span class="toc-text">orderservice未成功注册的原因：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-orderservice%E8%B0%83%E7%94%A8userservice%E7%9A%84%E8%AF%9D%EF%BC%8Cuserservice%E8%A6%81userservice%E6%9C%8D%E5%8A%A1%E5%85%88%E8%BF%90%E8%A1%8C%EF%BC%8C%E5%86%8D%E8%BF%90%E8%A1%8Corderservice-%E4%B8%8D%E7%84%B6%E4%BC%9A%E5%87%BA%E7%8E%B0%E4%B8%80%E6%A0%B7%E7%9A%84%E6%8A%A5%E9%94%99"><span class="toc-number">1.2.4.</span> <span class="toc-text">2.2 orderservice调用userservice的话，userservice要userservice服务先运行，再运行orderservice,不然会出现一样的报错</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Feign"><span class="toc-number">2.</span> <span class="toc-text">Feign</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%9F%BA%E4%BA%8EFerign%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8"><span class="toc-number">2.1.</span> <span class="toc-text">1.基于Ferign远程调用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1%E9%9C%80%E8%A6%81%E4%BD%BF%E7%94%A8Fegin%E8%BF%9B%E8%A1%8C%E8%B0%83%E7%94%A8%E7%9A%84%E5%BE%AE%E7%A8%8B%E5%BA%8F%EF%BC%8Cpom%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96%EF%BC%9A"><span class="toc-number">2.1.1.</span> <span class="toc-text">1.1需要使用Fegin进行调用的微程序，pom引入依赖：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2%E5%9C%A8Application%E6%B7%BB%E5%8A%A0-EnableFeignClients-%E6%B3%A8%E8%A7%A3-x2F-x2F-%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E7%9A%84%E5%BC%80%E5%85%B3%EF%BC%9A%E5%BC%80%E5%90%AF%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D"><span class="toc-number">2.1.2.</span> <span class="toc-text">1.2在Application添加@EnableFeignClients 注解&#x2F;&#x2F;自动装配的开关：开启自动装配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3%E7%BC%96%E5%86%99FeignClient%E6%8E%A5%E5%8F%A3%EF%BC%8C%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="toc-number">2.1.3.</span> <span class="toc-text">1.3编写FeignClient接口，如下：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4%E4%BD%BF%E7%94%A8FeignClient%E7%BC%96%E5%86%99%E7%9A%84%E6%96%B9%E6%B3%95%E4%BB%A3%E6%9B%BFRestTemplate%EF%BC%88%E6%B2%A1%E6%9C%89%E8%BF%99%E4%B8%AA%E6%96%B9%E6%B3%95%E7%9A%84%E5%8F%AF%E7%9B%B4%E6%8E%A5%E5%BF%BD%E7%95%A5%E4%BB%A3%E6%9B%BF%E5%8F%8A%E5%85%B6%E5%90%8E%E7%9A%84%E8%AF%9D%EF%BC%89%EF%BC%8C%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="toc-number">2.1.4.</span> <span class="toc-text">1.4使用FeignClient编写的方法代替RestTemplate（没有这个方法的可直接忽略代替及其后的话），如下：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Feign%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-number">2.2.</span> <span class="toc-text">2.Feign的配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F%E4%B8%80%EF%BC%9A%E7%94%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%9D%A5%E8%87%AA%E5%AE%9A%E4%B9%89Feign%E9%85%8D%E7%BD%AE"><span class="toc-number">2.2.1.</span> <span class="toc-text">方式一：用配置文件来自定义Feign配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F%E4%BA%8C%EF%BC%9A%E7%94%A8Java%E4%BB%A3%E7%A0%81%E6%9D%A5%E5%AE%9E%E7%8E%B0Fegin%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE"><span class="toc-number">2.2.2.</span> <span class="toc-text">方式二：用Java代码来实现Fegin自定义配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%A6%96%E5%85%88%E5%A3%B0%E6%98%8E%E4%B8%80%E4%B8%AABean"><span class="toc-number">2.2.2.1.</span> <span class="toc-text">1.首先声明一个Bean:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%A6%82%E6%9E%9C%E6%98%AF%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%EF%BC%8C%E5%88%99%E6%8A%8A%E5%AE%83%E6%94%BE%E5%88%B0-EnableFeignClients%E8%BF%99%E4%B8%AA%E6%B3%A8%E8%A7%A3%E4%B8%AD%EF%BC%9A"><span class="toc-number">2.2.2.2.</span> <span class="toc-text">2.如果是全局配置，则把它放到@EnableFeignClients这个注解中：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%A6%82%E6%9E%9C%E6%98%AF%E5%B1%80%E9%83%A8%E9%85%8D%E7%BD%AE%EF%BC%8C%E5%88%99%E6%8A%8A%E5%AE%83%E6%94%BE%E5%88%B0-FeignClient%E8%BF%99%E4%B8%AA%E6%B3%A8%E8%A7%A3%E4%B8%AD"><span class="toc-number">2.2.2.3.</span> <span class="toc-text">3.如果是局部配置，则把它放到@FeignClient这个注解中</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Feign%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-number">2.3.</span> <span class="toc-text">3.Feign性能优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8%E8%BF%9E%E6%8E%A5%E6%B1%A0%E4%BB%A3%E6%9B%BF%E9%BB%98%E8%AE%A4URLConnection%EF%BC%9A"><span class="toc-number">2.3.1.</span> <span class="toc-text">1.使用连接池代替默认URLConnection：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1%E5%AF%BC%E5%85%A5%E4%BE%9D%E8%B5%96%EF%BC%9A"><span class="toc-number">2.3.1.1.</span> <span class="toc-text">1.1导入依赖：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">2.3.1.2.</span> <span class="toc-text">1.2 修改配置文件:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9%E6%97%A5%E5%BF%97%E7%BA%A7%E5%88%AB%EF%BC%9A%E6%9C%80%E5%A5%BD%E7%94%A8basic%E6%88%96none-%E8%A7%81-2"><span class="toc-number">2.3.2.</span> <span class="toc-text">2.修改日志级别：最好用basic或none(见##2)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Feign%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="toc-number">2.4.</span> <span class="toc-text">4.Feign的最佳实践</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F%E4%B8%80%EF%BC%88%E7%BB%A7%E6%89%BF%EF%BC%89%EF%BC%9A%E7%BB%99%E6%B6%88%E8%B4%B9%E8%80%85%E7%9A%84FeignClient%E5%92%8C%E6%8F%90%E4%BE%9B%E8%80%85%E7%9A%84controller%E5%AE%9A%E4%B9%89%E7%BB%9F%E4%B8%80%E7%9A%84%E7%88%B6%E6%8E%A5%E5%8F%A3%E4%BD%9C%E4%B8%BA%E6%A0%87%E5%87%86"><span class="toc-number">2.4.1.</span> <span class="toc-text">方式一（继承）：给消费者的FeignClient和提供者的controller定义统一的父接口作为标准</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F%E4%BA%8C%EF%BC%88%E6%8A%BD%E5%8F%96%EF%BC%89%EF%BC%9A%E5%B0%86FeignClient%E6%8A%BD%E5%8F%96%E4%B8%BA%E7%8B%AC%E7%AB%8B%E6%A8%A1%E5%9D%97%EF%BC%8C%E5%B9%B6%E4%B8%94%E6%8A%8A%E6%8E%A5%E5%8F%A3%E6%9C%89%E5%85%B3%E7%9A%84POJO%E3%80%81%E9%BB%98%E8%AE%A4%E7%9A%84Feign%E9%85%8D%E7%BD%AE%E9%83%BD%E6%94%BE%E5%88%B0%E8%BF%99%E4%B8%AA%E6%A8%A1%E5%9D%97%E4%B8%AD%EF%BC%8C%E6%8F%90%E4%BE%9B%E7%BB%99%E6%89%80%E6%9C%89%E6%B6%88%E8%B4%B9%E8%80%85%E4%BD%BF%E7%94%A8"><span class="toc-number">2.4.2.</span> <span class="toc-text">方式二（抽取）：将FeignClient抽取为独立模块，并且把接口有关的POJO、默认的Feign配置都放到这个模块中，提供给所有消费者使用</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -508,34 +484,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
     
     	<section class="tools-section tools-section-friends" q-show="friends">
-  		
-        <ul class="search-ul">
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接3</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接4</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接5</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接6</a>
-            </li>
-          
-        </ul>
   		
     	</section>
     

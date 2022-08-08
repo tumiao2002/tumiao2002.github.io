@@ -8,25 +8,19 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>兔喵博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Docker1.认识Docker  1.1Docker和虚拟机的差异： Docker是在操作系统上直接运行的 1.2Docker架构    1.3Docker安装（在centos7上安装docker）2.使用Docker">
+  <meta name="description" content="Docker1.认识DockerDocker作用：解决大型项目依赖关系复杂，不同组件依赖的兼容性问题： 1.Docker允许开发中将应用、依赖、函数库、配置一起打包，形成可移植镜像 2.Doker应用运行在容器中使用沙箱机制，相互隔离 解决开发、测试、生产环境有差异的问题 Docker镜像中包含完整运行环境，包括系统函数库，进以来系统的linux内核，因此可以在任意linux操作系统上运行 借用黑">
 <meta property="og:type" content="article">
 <meta property="og:title" content="兔喵博客">
 <meta property="og:url" content="http://example.com/2022/07/10/springcloud%E5%AD%A6%E4%B9%A0/Docker/index.html">
 <meta property="og:site_name" content="兔喵博客">
-<meta property="og:description" content="Docker1.认识Docker  1.1Docker和虚拟机的差异： Docker是在操作系统上直接运行的 1.2Docker架构    1.3Docker安装（在centos7上安装docker）2.使用Docker">
+<meta property="og:description" content="Docker1.认识DockerDocker作用：解决大型项目依赖关系复杂，不同组件依赖的兼容性问题： 1.Docker允许开发中将应用、依赖、函数库、配置一起打包，形成可移植镜像 2.Doker应用运行在容器中使用沙箱机制，相互隔离 解决开发、测试、生产环境有差异的问题 Docker镜像中包含完整运行环境，包括系统函数库，进以来系统的linux内核，因此可以在任意linux操作系统上运行 借用黑">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/images/image-20220710191545602.png">
-<meta property="og:image" content="http://example.com/images/image-20220710191641845.png">
-<meta property="og:image" content="http://example.com/images/image-20220710193031452.png">
-<meta property="og:image" content="http://example.com/images/image-20220710193651225.png">
-<meta property="og:image" content="http://example.com/images/image-20220710210846933.png">
-<meta property="og:image" content="http://example.com/images/image-20220710211052852.png">
-<meta property="og:image" content="http://example.com/images/image-20220710211156519.png">
+<meta property="og:image" content="http://example.com/images/image-20220808152203678.png">
 <meta property="article:published_time" content="2022-07-10T09:15:47.058Z">
-<meta property="article:modified_time" content="2022-07-10T13:55:52.810Z">
+<meta property="article:modified_time" content="2022-08-08T07:23:21.150Z">
 <meta property="article:author" content="tumiao">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/image-20220710191545602.png">
+<meta name="twitter:image" content="http://example.com/images/image-20220808152203678.png">
   
     <link rel="alternative" href="/atom.xml" title="兔喵博客" type="application/atom+xml">
   
@@ -55,7 +49,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="img/1.1.jpg" class="js-avatar">
+			<img src="/img/1.1.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/"></a></h1>
@@ -89,14 +83,6 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
-		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-		        
 			</div>
 		</nav>
 	</header>		
@@ -113,7 +99,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="img/1.1.jpg" class="js-avatar">
+				<img src="/img/1.1.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author"></h1>
@@ -130,14 +116,6 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
-			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-			        
 				</div>
 			</nav>
 
@@ -167,38 +145,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><h2 id="1-认识Docker"><a href="#1-认识Docker" class="headerlink" title="1.认识Docker"></a>1.认识Docker</h2><p><img src="/../../images/image-20220710191545602.png" alt="image-20220710191545602"></p>
-<p><img src="/../../images/image-20220710191641845.png" alt="image-20220710191641845"></p>
-<h3 id="1-1Docker和虚拟机的差异："><a href="#1-1Docker和虚拟机的差异：" class="headerlink" title="1.1Docker和虚拟机的差异："></a>1.1Docker和虚拟机的差异：</h3><p><img src="/../../images/image-20220710193031452.png" alt="image-20220710193031452"></p>
-<p><strong>Docker是在操作系统上直接运行的</strong></p>
-<h3 id="1-2Docker架构"><a href="#1-2Docker架构" class="headerlink" title="1.2Docker架构"></a>1.2Docker架构</h3><p><img src="/../../images/image-20220710193651225.png" alt="image-20220710193651225"></p>
-<p><img src="/../../images/image-20220710210846933.png" alt="image-20220710210846933"></p>
-<p><img src="/../../images/image-20220710211052852.png" alt="image-20220710211052852"></p>
-<p><img src="/../../images/image-20220710211156519.png" alt="image-20220710211156519"></p>
-<h3 id="1-3Docker安装（在centos7上安装docker）"><a href="#1-3Docker安装（在centos7上安装docker）" class="headerlink" title="1.3Docker安装（在centos7上安装docker）"></a>1.3Docker安装（在centos7上安装docker）</h3><h2 id="2-使用Docker"><a href="#2-使用Docker" class="headerlink" title="2.使用Docker"></a>2.使用Docker</h2>
+        <h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><h2 id="1-认识Docker"><a href="#1-认识Docker" class="headerlink" title="1.认识Docker"></a>1.认识Docker</h2><h3 id="Docker作用："><a href="#Docker作用：" class="headerlink" title="Docker作用："></a>Docker作用：</h3><p><strong>解决大型项目依赖关系复杂，不同组件依赖的兼容性问题：</strong></p>
+<p>1.Docker允许开发中将应用、依赖、函数库、配置一起打包，形成可移植镜像</p>
+<p>2.Doker应用运行在容器中使用沙箱机制，相互隔离</p>
+<p><strong>解决开发、测试、生产环境有差异的问题</strong></p>
+<p>Docker镜像中包含完整运行环境，包括系统函数库，进以来系统的linux内核，因此<em><strong>可以在任意linux操作系统上运行</strong></em></p>
+<p>借用黑马视频的截图表示：</p>
+<p><img src="/../../images/image-20220808152203678.png" alt="image-20220808152203678"></p>
+<h2 id="2-Docker与虚拟机"><a href="#2-Docker与虚拟机" class="headerlink" title="2.Docker与虚拟机"></a>2.Docker与虚拟机</h2>
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -268,6 +224,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2022/07/11/Centos%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
   
     <a href="/2022/07/10/springcloud%E5%AD%A6%E4%B9%A0/%E7%BB%9F%E4%B8%80%E7%BD%91%E5%85%B3Gateway/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title"></div>
@@ -289,6 +254,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker"><span class="toc-number">1.</span> <span class="toc-text">Docker</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%AE%A4%E8%AF%86Docker"><span class="toc-number">1.1.</span> <span class="toc-text">1.认识Docker</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker%E4%BD%9C%E7%94%A8%EF%BC%9A"><span class="toc-number">1.1.1.</span> <span class="toc-text">Docker作用：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Docker%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-number">1.2.</span> <span class="toc-text">2.Docker与虚拟机</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -440,34 +418,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
     
     	<section class="tools-section tools-section-friends" q-show="friends">
-  		
-        <ul class="search-ul">
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接3</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接4</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接5</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接6</a>
-            </li>
-          
-        </ul>
   		
     	</section>
     
