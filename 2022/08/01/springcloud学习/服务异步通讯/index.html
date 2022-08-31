@@ -6,21 +6,33 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>兔喵博客</title>
+  <title>服务异步通讯MQ | 兔喵博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Docker1.认识DockerDocker作用：解决大型项目依赖关系复杂，不同组件依赖的兼容性问题： 1.Docker允许开发中将应用、依赖、函数库、配置一起打包，形成可移植镜像 2.Doker应用运行在容器中使用沙箱机制，相互隔离 解决开发、测试、生产环境有差异的问题 Docker镜像中包含完整运行环境，包括系统函数库，进以来系统的linux内核，因此可以在任意linux操作系统上运行 借用黑">
+  <meta name="description" content="1.初识MQ 1.1同步调用：优点：时效性强，可以立即得到结果 缺点：  1.2异步调用  2.RabbitMQ1.RabbitMQ安装将在centos虚拟机中用Docker来进行安装 1.1下载安装方式一：在线拉取 1docker pull rabbitmq:3-management  方式二：从本地加载，本地下载好一个  上传到虚拟机后，使用命令加载镜像即可： 1docker load -i">
 <meta property="og:type" content="article">
-<meta property="og:title" content="兔喵博客">
-<meta property="og:url" content="http://example.com/2022/07/10/springcloud%E5%AD%A6%E4%B9%A0/Docker/index.html">
+<meta property="og:title" content="服务异步通讯MQ">
+<meta property="og:url" content="http://example.com/2022/08/01/springcloud%E5%AD%A6%E4%B9%A0/%E6%9C%8D%E5%8A%A1%E5%BC%82%E6%AD%A5%E9%80%9A%E8%AE%AF/index.html">
 <meta property="og:site_name" content="兔喵博客">
-<meta property="og:description" content="Docker1.认识DockerDocker作用：解决大型项目依赖关系复杂，不同组件依赖的兼容性问题： 1.Docker允许开发中将应用、依赖、函数库、配置一起打包，形成可移植镜像 2.Doker应用运行在容器中使用沙箱机制，相互隔离 解决开发、测试、生产环境有差异的问题 Docker镜像中包含完整运行环境，包括系统函数库，进以来系统的linux内核，因此可以在任意linux操作系统上运行 借用黑">
+<meta property="og:description" content="1.初识MQ 1.1同步调用：优点：时效性强，可以立即得到结果 缺点：  1.2异步调用  2.RabbitMQ1.RabbitMQ安装将在centos虚拟机中用Docker来进行安装 1.1下载安装方式一：在线拉取 1docker pull rabbitmq:3-management  方式二：从本地加载，本地下载好一个  上传到虚拟机后，使用命令加载镜像即可： 1docker load -i">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/images/image-20220808152203678.png">
-<meta property="article:published_time" content="2022-07-10T09:15:47.058Z">
-<meta property="article:modified_time" content="2022-08-08T07:23:21.150Z">
+<meta property="og:image" content="http://example.com/images/image-20220823164925185.png">
+<meta property="og:image" content="http://example.com/images/image-20220823165339327.png">
+<meta property="og:image" content="http://example.com/images/image-20220823170017922.png">
+<meta property="og:image" content="http://example.com/images/image-20220823170518291.png">
+<meta property="og:image" content="http://example.com/images/image-20220823203245888.png">
+<meta property="og:image" content="http://example.com/images/image-20220823203603099.png">
+<meta property="og:image" content="http://example.com/images/image-20220823204429776.png">
+<meta property="og:image" content="http://example.com/images/image-20220823204354923.png">
+<meta property="og:image" content="http://example.com/images/image-20220823204515530.png">
+<meta property="og:image" content="http://example.com/images/image-20220823205203281.png">
+<meta property="og:image" content="http://example.com/images/image-20220823205412371.png">
+<meta property="og:image" content="http://example.com/images/image-20220823205858488.png">
+<meta property="og:image" content="http://example.com/images/image-20220823210019225.png">
+<meta property="article:published_time" content="2022-07-31T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-08-23T13:00:44.104Z">
 <meta property="article:author" content="tumiao">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/image-20220808152203678.png">
+<meta name="twitter:image" content="http://example.com/images/image-20220823164925185.png">
   
     <link rel="alternative" href="/atom.xml" title="兔喵博客" type="application/atom+xml">
   
@@ -140,19 +152,57 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-springcloud学习/Docker" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-springcloud学习/服务异步通讯" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      服务异步通讯MQ
+    </h1>
+  
+
+        
+        <a href="/2022/08/01/springcloud%E5%AD%A6%E4%B9%A0/%E6%9C%8D%E5%8A%A1%E5%BC%82%E6%AD%A5%E9%80%9A%E8%AE%AF/" class="archive-article-date">
+  	<time datetime="2022-07-31T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-01</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><h2 id="1-认识Docker"><a href="#1-认识Docker" class="headerlink" title="1.认识Docker"></a>1.认识Docker</h2><h3 id="Docker作用："><a href="#Docker作用：" class="headerlink" title="Docker作用："></a>Docker作用：</h3><p><strong>解决大型项目依赖关系复杂，不同组件依赖的兼容性问题：</strong></p>
-<p>1.Docker允许开发中将应用、依赖、函数库、配置一起打包，形成可移植镜像</p>
-<p>2.Doker应用运行在容器中使用沙箱机制，相互隔离</p>
-<p><strong>解决开发、测试、生产环境有差异的问题</strong></p>
-<p>Docker镜像中包含完整运行环境，包括系统函数库，进以来系统的linux内核，因此<em><strong>可以在任意linux操作系统上运行</strong></em></p>
-<p>借用黑马视频的截图表示：</p>
-<p><img src="/../../images/image-20220808152203678.png" alt="image-20220808152203678"></p>
-<h2 id="2-Docker与虚拟机"><a href="#2-Docker与虚拟机" class="headerlink" title="2.Docker与虚拟机"></a>2.Docker与虚拟机</h2>
+        <h1 id="1-初识MQ"><a href="#1-初识MQ" class="headerlink" title="1.初识MQ"></a>1.初识MQ</h1><p><img src="/../../images/image-20220823164925185.png" alt="image-20220823164925185"></p>
+<h2 id="1-1同步调用："><a href="#1-1同步调用：" class="headerlink" title="1.1同步调用："></a>1.1同步调用：</h2><p><strong>优点：</strong>时效性强，可以立即得到结果</p>
+<p><strong>缺点：</strong></p>
+<p><img src="/../../images/image-20220823165339327.png" alt="image-20220823165339327"></p>
+<h2 id="1-2异步调用"><a href="#1-2异步调用" class="headerlink" title="1.2异步调用"></a>1.2异步调用</h2><p><img src="/../../images/image-20220823170017922.png" alt="image-20220823170017922"></p>
+<p><img src="/../../images/image-20220823170518291.png" alt="image-20220823170518291"></p>
+<h1 id="2-RabbitMQ"><a href="#2-RabbitMQ" class="headerlink" title="2.RabbitMQ"></a>2.RabbitMQ</h1><h2 id="1-RabbitMQ安装"><a href="#1-RabbitMQ安装" class="headerlink" title="1.RabbitMQ安装"></a>1.RabbitMQ安装</h2><p>将在centos虚拟机中用Docker来进行安装</p>
+<h3 id="1-1下载安装"><a href="#1-1下载安装" class="headerlink" title="1.1下载安装"></a>1.1下载安装</h3><p>方式一：在线拉取</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull rabbitmq:3-management</span><br></pre></td></tr></table></figure>
+
+<p>方式二：从本地加载，本地下载好一个</p>
+<p><img src="/../../images/image-20220823203245888.png" alt="image-20220823203245888"></p>
+<p>上传到虚拟机后，使用命令加载镜像即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker load -i mq.tar</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/../../images/image-20220823203603099.png" alt="image-20220823203603099"></p>
+<h3 id="1-2安装MQ"><a href="#1-2安装MQ" class="headerlink" title="1.2安装MQ"></a>1.2安装MQ</h3><p>执行下面的命令来运行MQ容器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run \</span><br><span class="line"> -e RABBITMQ_DEFAULT_USER=itcast \</span><br><span class="line"> -e RABBITMQ_DEFAULT_PASS=123321 \</span><br><span class="line"> --name mq \</span><br><span class="line"> --hostname mq1 \</span><br><span class="line"> -p 15672:15672 \</span><br><span class="line"> -p 5672:5672 \</span><br><span class="line"> -d \</span><br><span class="line"> rabbitmq:3-management</span><br></pre></td></tr></table></figure>
+
+<p>查看本地镜像看是否成功运行：</p>
+<p><img src="/../../images/image-20220823204429776.png" alt="image-20220823204429776"></p>
+<p>访问查看是否成功：</p>
+<p><img src="/../../images/image-20220823204354923.png" alt="image-20220823204354923"></p>
+<p>这里的账号和密码就是刚刚指定的环境账号和密码</p>
+<p><img src="/../../images/image-20220823204515530.png" alt="image-20220823204515530"></p>
+<h2 id="2-RabbitMQ的结构和其中的几个概念"><a href="#2-RabbitMQ的结构和其中的几个概念" class="headerlink" title="2.RabbitMQ的结构和其中的几个概念"></a>2.RabbitMQ的结构和其中的几个概念</h2><h3 id="2-1结构："><a href="#2-1结构：" class="headerlink" title="2.1结构："></a>2.1结构：<img src="/../../images/image-20220823205203281.png" alt="image-20220823205203281"></h3><h3 id="2-2概念："><a href="#2-2概念：" class="headerlink" title="2.2概念："></a>2.2概念：</h3><p><img src="/../../images/image-20220823205412371.png" alt="image-20220823205412371"></p>
+<h2 id="3-RabbitMQ消息模型"><a href="#3-RabbitMQ消息模型" class="headerlink" title="3.RabbitMQ消息模型"></a>3.RabbitMQ消息模型</h2><p><img src="/../../images/image-20220823205858488.png" alt="image-20220823205858488"></p>
+<p><img src="/../../images/image-20220823210019225.png" alt="image-20220823210019225"></p>
+<h2 id="4-RabbitMQ简单队列模型"><a href="#4-RabbitMQ简单队列模型" class="headerlink" title="4.RabbitMQ简单队列模型"></a>4.RabbitMQ简单队列模型</h2>
       
 
       
@@ -210,7 +260,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/07/10/springcloud%E5%AD%A6%E4%B9%A0/Docker/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/08/01/springcloud%E5%AD%A6%E4%B9%A0/%E6%9C%8D%E5%8A%A1%E5%BC%82%E6%AD%A5%E9%80%9A%E8%AE%AF/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -224,17 +274,17 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/07/11/Centos%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/08/01/springcloud%E5%AD%A6%E4%B9%A0/Docker/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          (no title)
+          Docker
         
       </div>
     </a>
   
   
-    <a href="/2022/07/10/springcloud%E5%AD%A6%E4%B9%A0/%E7%BB%9F%E4%B8%80%E7%BD%91%E5%85%B3Gateway/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2022/07/27/java%E5%90%8E%E7%AB%AF%E6%B3%A8%E8%A7%A3/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title"></div>
       <i class="icon-circle-right"></i>
     </a>

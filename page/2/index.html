@@ -138,6 +138,286 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-java生成不重复的随机字符串" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="java生成全局唯一字符串"><a href="#java生成全局唯一字符串" class="headerlink" title="java生成全局唯一字符串"></a>java生成全局唯一字符串</h1><h2 id="方式一：java通过UUid-生成唯一字符码"><a href="#方式一：java通过UUid-生成唯一字符码" class="headerlink" title="方式一：java通过UUid,生成唯一字符码"></a>方式一：java通过UUid,生成唯一字符码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//用UUid生成不重复的id字符串</span><br><span class="line">public static String getId()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    String a = UUID.randomUUID().toString();</span><br><span class="line">    //public String replaceAll(String regex, String replacement)</span><br><span class="line">    //replaceAll() 方法使用给定的参数 replacement 替换字符串所有匹配给定的正则表达式的子字符串</span><br><span class="line">    String b = a.replaceAll(&quot;-&quot;, &quot;&quot;);    </span><br><span class="line">    return b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="方式二：利用时间戳，生成唯一编码"><a href="#方式二：利用时间戳，生成唯一编码" class="headerlink" title="方式二：利用时间戳，生成唯一编码"></a>方式二：利用时间戳，生成唯一编码</h2>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/07/18/java%E7%94%9F%E6%88%90%E4%B8%8D%E9%87%8D%E5%A4%8D%E7%9A%84%E9%9A%8F%E6%9C%BA%E5%AD%97%E7%AC%A6%E4%B8%B2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-数据库建立过程经验总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="数据库建立过程中经验总结"><a href="#数据库建立过程中经验总结" class="headerlink" title="数据库建立过程中经验总结"></a>数据库建立过程中经验总结</h1><h2 id="1-id-表涉及增删改查的最好用字符串表示，生成唯一id，"><a href="#1-id-表涉及增删改查的最好用字符串表示，生成唯一id，" class="headerlink" title="1.id 表涉及增删改查的最好用字符串表示，生成唯一id，"></a>1.id 表涉及增删改查的最好用字符串表示，生成唯一id，</h2><h2 id="2-码表的建立-合并相同结构的不同表"><a href="#2-码表的建立-合并相同结构的不同表" class="headerlink" title="2.码表的建立(合并相同结构的不同表)"></a>2.码表的建立(合并相同结构的不同表)</h2><h3 id="基础知识："><a href="#基础知识：" class="headerlink" title="基础知识："></a>基础知识：</h3><p>not null , default, comment 的作用?</p>
+<ul>
+<li>&#x3D;&#x3D;not null&#x3D;&#x3D; :插入数据的时候不允许为空(null)空了就报错.</li>
+<li>&#x3D;&#x3D;default&#x3D;&#x3D; :插入时候不给值 默认 是 给的默认值.<br>  age int not null default 0,<br>  不可以插入null , 不给就是默认的 0 .</li>
+<li>&#x3D;&#x3D;comment&#x3D;&#x3D;:作用在于别人 显示创建表的信息的时候,可以看见 整个表的注释信息.<blockquote>
+<p>  <strong>show create table</strong> 表面;查看comment等.<br>  ————————————————<br>  版权声明：本文为CSDN博主「coder_haijun」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>  原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/wanghaijun662832/article/details/109169089">https://blog.csdn.net/wanghaijun662832/article/details/109169089</a></p>
+</blockquote>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/07/16/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BB%BA%E7%AB%8B%E8%BF%87%E7%A8%8B%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-构建项目的错误总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#构建项目错误总结</p>
+<h2 id="1-用maven完成springboot-创建Application出现错误"><a href="#1-用maven完成springboot-创建Application出现错误" class="headerlink" title="1.用maven完成springboot,创建Application出现错误"></a>1.用maven完成springboot,创建Application出现错误</h2><p><img src="/../images/image-20220713142333992.png" alt="image-20220713142333992"></p>
+<p><strong>这里爆红</strong></p>
+<p><strong>原因：是因为自己@SpringBootApplication注解创建启动类，该类必须放在一个默认包下</strong></p>
+<p><strong>解决方法：将启动类放在一个默认包下，最好在所需要启动的类的上一级</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/07/13/%E6%9E%84%E5%BB%BA%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%94%99%E8%AF%AF%E6%80%BB%E7%BB%93/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Centos命令操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Centos命令操作"><a href="#Centos命令操作" class="headerlink" title="Centos命令操作"></a>Centos命令操作</h1><h2 id="1-查看虚拟机的ip地址：ip-addr"><a href="#1-查看虚拟机的ip地址：ip-addr" class="headerlink" title="1.查看虚拟机的ip地址：ip addr"></a>1.查看虚拟机的ip地址：ip addr</h2><p><strong>如下：</strong></p>
+<p><img src="/../images/image-20220711120235607.png" alt="image-20220711120235607"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/07/11/Centos%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-springcloud学习/统一网关Gateway" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="GateWay"><a href="#GateWay" class="headerlink" title="GateWay"></a>GateWay</h1><h2 id="学习过程供踩过的坑："><a href="#学习过程供踩过的坑：" class="headerlink" title="学习过程供踩过的坑："></a>学习过程供踩过的坑：</h2><h3 id="1-出错reactor-core-Exceptions-ErrorCallbackNotImplemented-java-lang-IllegalArgumentException-The-parameter-lb-x2F-x2F-orderservice-format-is-incorrect-scheme-can-not-be-empty"><a href="#1-出错reactor-core-Exceptions-ErrorCallbackNotImplemented-java-lang-IllegalArgumentException-The-parameter-lb-x2F-x2F-orderservice-format-is-incorrect-scheme-can-not-be-empty" class="headerlink" title="1.出错reactor.core.Exceptions$ErrorCallbackNotImplemented: java.lang.IllegalArgumentException: The parameter [lb&#x2F;&#x2F;orderservice] format is incorrect, scheme can not be empty"></a>1.出错reactor.core.Exceptions$ErrorCallbackNotImplemented: java.lang.IllegalArgumentException: The parameter [lb&#x2F;&#x2F;orderservice] format is incorrect, scheme can not be empty</h3><p><img src="/../../images/image-20220710143746835.png" alt="image-20220710143746835"></p>
+<p><strong>lb后面忘了加冒号“:”了哈哈哈哈哈哈</strong></p>
+<h2 id="1-网关作用："><a href="#1-网关作用：" class="headerlink" title="1.网关作用："></a>1.网关作用：</h2><p><img src="/../../images/image-20220710115928562.png" alt="image-20220710115928562"></p>
+<p><img src="/../../images/image-20220710121903581.png" alt="image-20220710121903581"></p>
+<h2 id="2-搭建网关服务"><a href="#2-搭建网关服务" class="headerlink" title="2.搭建网关服务"></a>2.搭建网关服务</h2><h3 id="1-创建项目，引入nacos服务发现和gateWay依赖："><a href="#1-创建项目，引入nacos服务发现和gateWay依赖：" class="headerlink" title="1.创建项目，引入nacos服务发现和gateWay依赖："></a>1.创建项目，引入nacos服务发现和gateWay依赖：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--        引入nacos服务发现依赖--&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;com.alibaba.cloud&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-cloud-starter-alibaba-nacos-discovery&lt;/artifactId&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">&lt;!--        网关依赖--&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-cloud-starter-gateway&lt;/artifactId&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-配置application-yml，包括服务基本信息，nacos地址，路由，例如："><a href="#2-配置application-yml，包括服务基本信息，nacos地址，路由，例如：" class="headerlink" title="2.配置application.yml，包括服务基本信息，nacos地址，路由，例如："></a>2.配置application.yml，包括服务基本信息，nacos地址，路由，例如：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 10010</span><br><span class="line">spring:</span><br><span class="line">  application:</span><br><span class="line">    name: gateway</span><br><span class="line">  cloud:</span><br><span class="line">    nacos:</span><br><span class="line">      server-addr: localhost:8848 # nacos地址</span><br><span class="line">    gateway:</span><br><span class="line">      routes:</span><br><span class="line">        - id: user-sevice #路由标示，必须唯一，也可以理解为id</span><br><span class="line">          uri: lb://userservice #路由的目标地址</span><br><span class="line">          predicates: #路由断言，判断请求是否符合规则</span><br><span class="line">            - Path=/user/** #路径断言，判断路径是否是以/user开头，如果是，则符合</span><br><span class="line">        - id: order-service</span><br><span class="line">          uri: lb://orderservice</span><br><span class="line">          predicates:</span><br><span class="line">            - Path=/order/**</span><br></pre></td></tr></table></figure>
+
+<h3 id="整个服务过程示例："><a href="#整个服务过程示例：" class="headerlink" title="整个服务过程示例："></a>整个服务过程示例：</h3><p><img src="/../../images/image-20220710144259240.png" alt="image-20220710144259240"></p>
+<p><img src="/../../images/image-20220710144423475.png" alt="image-20220710144423475"></p>
+<h2 id="3-路由断言工厂"><a href="#3-路由断言工厂" class="headerlink" title="3.路由断言工厂"></a>3.路由断言工厂</h2><p><img src="/../../images/image-20220710144527335.png" alt="image-20220710144527335"></p>
+<p><img src="/../../images/image-20220710145452325.png" alt="image-20220710145452325"></p>
+<h2 id="4-路由的过滤器配置-GatewayFilter"><a href="#4-路由的过滤器配置-GatewayFilter" class="headerlink" title="4.路由的过滤器配置 GatewayFilter"></a>4.路由的过滤器配置 GatewayFilter</h2><p><strong>Gatewayilter是网关提供的一种过滤器，可以对 路由的请求或响应做加工处理，比如添加请求头</strong></p>
+<p><img src="/../../images/image-20220710145806613.png" alt="image-20220710145806613"></p>
+<p><strong>default-filters:对所有路由都生效，与routes同级</strong></p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p><strong>给userservice服务添加请求头：</strong></p>
+<p><img src="/../../images/image-20220710150657322.png" alt="image-20220710150657322"></p>
+<p><strong>所有服务都生效：注意default-filters与routes同一级</strong></p>
+<p><img src="/../../images/image-20220710151009441.png" alt="image-20220710151009441"></p>
+<h2 id="5-全局过滤器-GlobalFilter"><a href="#5-全局过滤器-GlobalFilter" class="headerlink" title="5.全局过滤器 GlobalFilter"></a>5.全局过滤器 GlobalFilter</h2><p><strong>作用与GatewayFilter的作用一样，区别在于Global的逻辑需要在自己写代码实现，而不是靠spring来实现的</strong></p>
+<h3 id="1-实现GlobalFiler接口"><a href="#1-实现GlobalFiler接口" class="headerlink" title="1.实现GlobalFiler接口"></a>1.实现GlobalFiler接口</h3><h3 id="2-添加-Order注解或实现ordered接口"><a href="#2-添加-Order注解或实现ordered接口" class="headerlink" title="2.添加@Order注解或实现ordered接口"></a>2.添加@Order注解或实现ordered接口</h3><h3 id="3-编写处理逻辑"><a href="#3-编写处理逻辑" class="headerlink" title="3.编写处理逻辑"></a>3.编写处理逻辑</h3><h3 id="示例：定义全局过滤器，拦截并判断用户身份"><a href="#示例：定义全局过滤器，拦截并判断用户身份" class="headerlink" title="示例：定义全局过滤器，拦截并判断用户身份"></a>示例：定义全局过滤器，拦截并判断用户身份</h3><p><img src="/../../images/image-20220710163413075.png" alt="image-20220710163413075"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">@Order(-1)//里面的值决定优先级，越小优先级越高</span><br><span class="line">@Component</span><br><span class="line">public class AuthorrizeFilter implements GlobalFilter &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public Mono&lt;Void&gt; filter(ServerWebExchange exchange, GatewayFilterChain chain) &#123;</span><br><span class="line">         //1.获取请求参数</span><br><span class="line">        ServerHttpRequest request = exchange.getRequest();</span><br><span class="line">        MultiValueMap&lt;String, String&gt; queryParams = request.getQueryParams();</span><br><span class="line">        //2.获取参数中的authorization参数</span><br><span class="line">        String authorization = queryParams.getFirst(&quot;authorization&quot;);</span><br><span class="line">        //3.判断参数值是否等于admin</span><br><span class="line">        if (&quot;admin&quot;.equals(authorization))</span><br><span class="line">        &#123;</span><br><span class="line">            //4.是，放行</span><br><span class="line">            return chain.filter(exchange);</span><br><span class="line">        &#125;</span><br><span class="line">        //5.否，拦截</span><br><span class="line">        //5.1设置状态码</span><br><span class="line">        exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);</span><br><span class="line">        //5.2拦截请求</span><br><span class="line">        return exchange.getResponse().setComplete();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-过滤器的执行顺序"><a href="#4-过滤器的执行顺序" class="headerlink" title="4.过滤器的执行顺序"></a>4.过滤器的执行顺序</h2><p><img src="/../../images/image-20220710170622340.png" alt="image-20220710170622340"></p>
+<p><img src="/../../images/image-20220710170902589.png" alt="image-20220710170902589"></p>
+<p><img src="/../../images/image-20220710170923311.png" alt="image-20220710170923311"></p>
+<h2 id="5-网关的跨域问题处理"><a href="#5-网关的跨域问题处理" class="headerlink" title="5.网关的跨域问题处理"></a>5.网关的跨域问题处理</h2><p><img src="/../../images/image-20220710171309208.png" alt="image-20220710171309208"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/07/10/springcloud%E5%AD%A6%E4%B9%A0/%E7%BB%9F%E4%B8%80%E7%BD%91%E5%85%B3Gateway/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-maven遇到的问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -493,280 +773,9 @@
 
 
   
-    <article id="post-springcloud学习/Nacos" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>[TOC]</p>
-<h1 id="Nacos学习过程中错误总结："><a href="#Nacos学习过程中错误总结：" class="headerlink" title="Nacos学习过程中错误总结："></a>Nacos学习过程中错误总结：</h1><h2 id="1-安装解压nacos后，启动错误"><a href="#1-安装解压nacos后，启动错误" class="headerlink" title="1.安装解压nacos后，启动错误"></a>1.安装解压nacos后，启动错误</h2><p>错误原因：直接运行startup.cmd</p>
-<p>修改：打开cmd,切换到startup.cmd的目录，再执行开始代码（下面是启动单机模式的代码）：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">startup.cmd -m standalone</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-idea部署nacos后，启动出现错误：Caused-by-com-alibaba-nacos-api-exception-NacosException-failed-to-req-API-x2F-nacos-x2F-v1-x2F-ns-x2F-instance-after-all-servers-localhost-8848-tried-java-net-ConnectException-Connection-refused-connect"><a href="#2-idea部署nacos后，启动出现错误：Caused-by-com-alibaba-nacos-api-exception-NacosException-failed-to-req-API-x2F-nacos-x2F-v1-x2F-ns-x2F-instance-after-all-servers-localhost-8848-tried-java-net-ConnectException-Connection-refused-connect" class="headerlink" title="2.idea部署nacos后，启动出现错误：Caused by: com.alibaba.nacos.api.exception.NacosException: failed to req API:&#x2F;nacos&#x2F;v1&#x2F;ns&#x2F;instance after all servers([localhost:8848]) tried: java.net.ConnectException: Connection refused: connect"></a>2.idea部署nacos后，启动出现错误：Caused by: com.alibaba.nacos.api.exception.NacosException: failed to req API:&#x2F;nacos&#x2F;v1&#x2F;ns&#x2F;instance after all servers([localhost:8848]) tried: java.net.ConnectException: Connection refused: connect</h2><p>原来时nacos服务器没有启动，找到文件启动一下就好了</p>
-<h1 id="Nacos注册"><a href="#Nacos注册" class="headerlink" title="Nacos注册"></a>Nacos注册</h1><h2 id="1-在父工程，也就是包含所有服务的大pom-xml中配置nacos服务端依赖：（注意不要忘记版本号）"><a href="#1-在父工程，也就是包含所有服务的大pom-xml中配置nacos服务端依赖：（注意不要忘记版本号）" class="headerlink" title="1.在父工程，也就是包含所有服务的大pom.xml中配置nacos服务端依赖：（注意不要忘记版本号）"></a>1.在父工程，也就是包含所有服务的大pom.xml中配置nacos服务端依赖：（注意不要忘记版本号）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--            nacos管理依赖--&gt;</span><br><span class="line">           &lt;dependency&gt;</span><br><span class="line">               &lt;groupId&gt;com.alibaba.cloud&lt;/groupId&gt;</span><br><span class="line">               &lt;artifactId&gt;spring-cloud-alibaba-dependencies&lt;/artifactId&gt;</span><br><span class="line">               &lt;version&gt;2.2.5.RELEASE&lt;/version&gt;</span><br><span class="line">               &lt;type&gt;pom&lt;/type&gt;</span><br><span class="line">               &lt;scope&gt;import&lt;/scope&gt;</span><br><span class="line">           &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-在子工程配置nacos客户端依赖："><a href="#2-在子工程配置nacos客户端依赖：" class="headerlink" title="2.在子工程配置nacos客户端依赖："></a>2.在子工程配置nacos客户端依赖：</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--        nacos客户端依赖包--&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;com.alibaba.cloud&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-cloud-starter-alibaba-nacos-discovery&lt;/artifactId&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-在子工程配置文件中注释到原来的eureka地址信息，加入nacos地址信息：-nacos是spring下的，这里省略了spring"><a href="#3-在子工程配置文件中注释到原来的eureka地址信息，加入nacos地址信息：-nacos是spring下的，这里省略了spring" class="headerlink" title="3.在子工程配置文件中注释到原来的eureka地址信息，加入nacos地址信息：(nacos是spring下的，这里省略了spring:)"></a>3.在子工程配置文件中注释到原来的eureka地址信息，加入nacos地址信息：(nacos是spring下的，这里省略了spring:)</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cloud:</span><br><span class="line">  nacos:</span><br><span class="line">    server-addr: localhost:8848 #nacos服务器地址</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-注意先开启nacos服务，示例结果："><a href="#4-注意先开启nacos服务，示例结果：" class="headerlink" title="4.注意先开启nacos服务，示例结果："></a>4.注意先开启nacos服务，示例结果：</h2><p><img src="/../../images/image-20220707120214095.png" alt="image-20220707120214095"></p>
-<h1 id="Nacos分级存储模型"><a href="#Nacos分级存储模型" class="headerlink" title="Nacos分级存储模型"></a>Nacos分级存储模型</h1><p><img src="/../../images/image-20220707143835782.png" alt="image-20220707143835782"></p>
-<h1 id="Nacos如恶化设置实例的集群属性"><a href="#Nacos如恶化设置实例的集群属性" class="headerlink" title="Nacos如恶化设置实例的集群属性"></a>Nacos如恶化设置实例的集群属性</h1><h2 id="1-yml配置文件添加属性：（名称随意，按自己的名称修改）"><a href="#1-yml配置文件添加属性：（名称随意，按自己的名称修改）" class="headerlink" title="1.yml配置文件添加属性：（名称随意，按自己的名称修改）"></a>1.yml配置文件添加属性：（名称随意，按自己的名称修改）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">discovery:</span><br><span class="line">  cluster-name: SH #集群名称</span><br></pre></td></tr></table></figure>
-
-<p>示例：</p>
-<p><img src="/../../images/image-20220707144426154.png" alt="image-20220707144426154"></p>
-<h2 id="2-然后启动运行就行了，结果如下："><a href="#2-然后启动运行就行了，结果如下：" class="headerlink" title="2.然后启动运行就行了，结果如下："></a>2.然后启动运行就行了，结果如下：</h2><p><img src="/../../images/image-20220707144618990.png" alt="image-20220707144618990"></p>
-<h2 id="Nacos根据集群负载均衡-配置优先选择本地集群（同一集群名）"><a href="#Nacos根据集群负载均衡-配置优先选择本地集群（同一集群名）" class="headerlink" title="Nacos根据集群负载均衡(配置优先选择本地集群（同一集群名）)"></a>Nacos根据集群负载均衡(配置优先选择本地集群（同一集群名）)</h2><h2 id="1-yml文件配置："><a href="#1-yml文件配置：" class="headerlink" title="1.yml文件配置："></a>1.yml文件配置：</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">userservice: #要做配置的服务名称</span><br><span class="line">  ribbon:</span><br><span class="line">    NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-示例结果："><a href="#2-示例结果：" class="headerlink" title="2.示例结果："></a>2.示例结果：</h2><p>非本地：未被访问</p>
-<p><img src="/../../images/image-20220707152304154.png" alt="image-20220707152304154"></p>
-<p>本地：被访问了</p>
-<p><img src="/../../images/image-20220707152342244.png" alt="image-20220707152342244"></p>
-<h2 id="3-特点："><a href="#3-特点：" class="headerlink" title="3.特点："></a>3.特点：</h2><p>1.优先访问本地集群</p>
-<p>2.当本地没有可访问的的时候才会进行跨域访问</p>
-<p>3.当可访问的本地有多个的时候，在内部进行随机访问</p>
-<h1 id="Nacos服务实例的权重设置"><a href="#Nacos服务实例的权重设置" class="headerlink" title="Nacos服务实例的权重设置"></a>Nacos服务实例的权重设置</h1><p>1.在Nacos控制台设置权重值，一般是在0-1之间，double雷星</p>
-<p><img src="/../../images/image-20220707153200114.png" alt="image-20220707153200114"></p>
-<p>点击“编辑”，进行权重设置</p>
-<p>2.同集群类的多个实例，权重越高被访问的频率越高，权重为0不会被访问</p>
-<p>3.可以根据这种特点进行平滑升级</p>
-<h1 id="Nacos环境隔离"><a href="#Nacos环境隔离" class="headerlink" title="Nacos环境隔离"></a>Nacos环境隔离</h1><h2 id="1-新建一个命名空间"><a href="#1-新建一个命名空间" class="headerlink" title="1.新建一个命名空间"></a>1.新建一个命名空间</h2><p><img src="/../../images/image-20220707160530451.png" alt="image-20220707160530451"></p>
-<p><img src="/../../images/image-20220707160547827.png" alt="image-20220707160547827"></p>
-<p><img src="/../../images/image-20220707160608181.png" alt="image-20220707160608181"></p>
-<h2 id="2-yml配置空间：namespace-命名空间id"><a href="#2-yml配置空间：namespace-命名空间id" class="headerlink" title="2.yml配置空间：namespace: 命名空间id"></a>2.yml配置空间：namespace: 命名空间id</h2><p><img src="/../../images/image-20220707160719686.png" alt="image-20220707160719686"></p>
-<p><img src="/../../images/image-20220707160737700.png" alt="image-20220707160737700"></p>
-<h2 id="3-总结：要想让服务可以访问，必须要放在相同的环境下"><a href="#3-总结：要想让服务可以访问，必须要放在相同的环境下" class="headerlink" title="3.总结：要想让服务可以访问，必须要放在相同的环境下"></a>3.总结：要想让服务可以访问，必须要放在相同的环境下</h2>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/04/springcloud%E5%AD%A6%E4%B9%A0/Nacos/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-springcloud学习/Eureka&amp;Ribbon" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>[TOC]</p>
-<h1 id="Eureka注册中心"><a href="#Eureka注册中心" class="headerlink" title="Eureka注册中心"></a>Eureka注册中心</h1><h2 id="Eureka的作用"><a href="#Eureka的作用" class="headerlink" title="Eureka的作用"></a>Eureka的作用</h2><p><img src="/../../images/image-20220706112435950.png" alt="image-20220706112435950"></p>
-<p><img src="/../../images/image-20220706112525041.png" alt="image-20220706112525041"></p>
-<h2 id="搭建EurekaServer"><a href="#搭建EurekaServer" class="headerlink" title="搭建EurekaServer"></a>搭建EurekaServer</h2><h3 id="1-搭建注册中心"><a href="#1-搭建注册中心" class="headerlink" title="1.搭建注册中心"></a>1.搭建注册中心</h3><p>1.引入服务端依赖</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--    导入eureka服务端依赖--&gt;</span><br><span class="line">    &lt;dependencies&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-server&lt;/artifactId&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">    &lt;/dependencies&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2.Application加上注解：@EnableEurekaServer&#x2F;&#x2F;eureka开关</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@EnableEurekaServer//eureka开关</span><br><span class="line">@SpringBootApplication</span><br><span class="line">public class EurekaApplication &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        SpringApplication.run(EurekaApplication.class,args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>3.yml配置信息：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 10086 #服务端口</span><br><span class="line"></span><br><span class="line">spring:</span><br><span class="line">  application:</span><br><span class="line">    name: eurekaserver #服务名称</span><br><span class="line">eureka:</span><br><span class="line">  client:</span><br><span class="line">    service-url: #eure ka的地址信息</span><br><span class="line">      defaultZone: http://127.0.0.1:10086/eureka</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-服务注册"><a href="#2-服务注册" class="headerlink" title="2.服务注册"></a>2.服务注册</h3><p>1.引入客户端依赖：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--        导入eureke客户端依赖--&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-client&lt;/artifactId&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2.yml文件配置eureka地址：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  application:</span><br><span class="line">    name: eurekaserver #服务名称</span><br><span class="line">eureka:</span><br><span class="line">  client:</span><br><span class="line">    service-url: #eureka的地址信息</span><br><span class="line">      defaultZone: http://127.0.0.1:10086/eureka</span><br></pre></td></tr></table></figure>
-
-<p>补充：如果想服务配置多个实例：</p>
-<p><img src="/../../images/image-20220706172530194.png" alt="image-20220706172530194"></p>
-<h3 id="3-服务发现"><a href="#3-服务发现" class="headerlink" title="3.服务发现"></a>3.服务发现</h3><p>1.给RestTemplate添加注解：@LoadBalanced</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Bean//创建RestTemplate并注入Spring容器</span><br><span class="line">@LoadBalanced</span><br><span class="line">public RestTemplate restTemplate()</span><br><span class="line">&#123;</span><br><span class="line">    return new RestTemplate();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>2.用服务提供者的服务名称远程调用，例：</p>
-<p><img src="/../../images/image-20220706173158139.png" alt="image-20220706173158139"></p>
-<h1 id="Ribbon负载均衡"><a href="#Ribbon负载均衡" class="headerlink" title="Ribbon负载均衡"></a>Ribbon负载均衡</h1><h2 id="负载均衡流程："><a href="#负载均衡流程：" class="headerlink" title="负载均衡流程："></a>负载均衡流程：</h2><p><img src="/../../images/image-20220706174837139.png" alt="image-20220706174837139"></p>
-<h2 id="修改负载均衡策略："><a href="#修改负载均衡策略：" class="headerlink" title="修改负载均衡策略："></a>修改负载均衡策略：</h2><p><img src="/../../images/image-20220706180851330.png" alt="image-20220706180851330"></p>
-<h3 id="代码方式是针对全局的，配置文件方式是针对某个微服务而言的"><a href="#代码方式是针对全局的，配置文件方式是针对某个微服务而言的" class="headerlink" title="代码方式是针对全局的，配置文件方式是针对某个微服务而言的"></a>代码方式是针对全局的，配置文件方式是针对某个微服务而言的</h3><h2 id="Ribbon负载均衡策略"><a href="#Ribbon负载均衡策略" class="headerlink" title="Ribbon负载均衡策略"></a>Ribbon负载均衡策略</h2><p>Ribbon默认是采用懒加载，即第一次访问时才会去创建LoadBalanceClient,请求时间会很长。而饥饿加载则会再项目启动时创建，降低第一次访问的耗时，通过下面配置开启饥饿加载：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ribbon:</span><br><span class="line">  eager-load:</span><br><span class="line">    enabled: true #开启</span><br><span class="line">    clients: userservice #指定饥饿加载的服务名称</span><br></pre></td></tr></table></figure>
-
-<p>注意clients部分，如果要加载多个服务，则：</p>
-<p><img src="/../../images/image-20220706183350839.png" alt="image-20220706183350839"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/04/springcloud%E5%AD%A6%E4%B9%A0/Eureka&Ribbon/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-blogTips" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="hexo与Typora完美结合：插入图片方便"><a href="#hexo与Typora完美结合：插入图片方便" class="headerlink" title="hexo与Typora完美结合：插入图片方便"></a>hexo与Typora完美结合：插入图片方便</h1><h3 id="1-用-npm-install-hexo-renderer-marked-命令安装插件"><a href="#1-用-npm-install-hexo-renderer-marked-命令安装插件" class="headerlink" title="1.用 npm install hexo-renderer-marked 命令安装插件"></a>1.用 <code>npm install hexo-renderer-marked</code> 命令安装插件</h3><h3 id="2-在config-yml中修改配置如下"><a href="#2-在config-yml中修改配置如下" class="headerlink" title="2.在config.yml中修改配置如下"></a>2.在config.yml中修改配置如下</h3><p><img src="/../images/image-20220704161719373.png" alt="image-20220704161719373"></p>
-<h3 id="3-在config-yml中添加配置如下："><a href="#3-在config-yml中添加配置如下：" class="headerlink" title="3.在config.yml中添加配置如下："></a>3.在config.yml中添加配置如下：</h3><p><img src="/../images/image-20220704161814801.png" alt="image-20220704161814801"></p>
-<h3 id="4-在source文件中创建任意一个文件来存储图片，我这里创建的文件名为images，如下："><a href="#4-在source文件中创建任意一个文件来存储图片，我这里创建的文件名为images，如下：" class="headerlink" title="4.在source文件中创建任意一个文件来存储图片，我这里创建的文件名为images，如下："></a>4.在source文件中创建任意一个文件来存储图片，我这里创建的文件名为images，如下：</h3><p><img src="/../images/image-20220704161950079.png" alt="image-20220704161950079"></p>
-<h3 id="5-打开typora-文件-gt-偏好设置-gt-图像，选择复制到指定路径-gt-点开文件图标，选择刚刚创建的“images”（自己创建的存储图片的文件）文件-gt-勾选如图下的三个勾选-如图下："><a href="#5-打开typora-文件-gt-偏好设置-gt-图像，选择复制到指定路径-gt-点开文件图标，选择刚刚创建的“images”（自己创建的存储图片的文件）文件-gt-勾选如图下的三个勾选-如图下：" class="headerlink" title="5.打开typora:文件-&gt;偏好设置-&gt;图像，选择复制到指定路径-&gt;点开文件图标，选择刚刚创建的“images”（自己创建的存储图片的文件）文件-&gt;勾选如图下的三个勾选,如图下："></a>5.打开typora:文件-&gt;偏好设置-&gt;图像，选择复制到指定路径-&gt;点开文件图标，选择刚刚创建的“images”（自己创建的存储图片的文件）文件-&gt;勾选如图下的三个勾选,如图下：</h3><p><img src="/../images/image-20220704162152739.png" alt="image-20220704162152739"></p>
-<h3 id="6-大功告成！接下来在用typora时，直接复制图片进来进好啦，结果就是下面效果了，会进行自动配置了"><a href="#6-大功告成！接下来在用typora时，直接复制图片进来进好啦，结果就是下面效果了，会进行自动配置了" class="headerlink" title="6.大功告成！接下来在用typora时，直接复制图片进来进好啦，结果就是下面效果了，会进行自动配置了"></a>6.大功告成！接下来在用typora时，直接复制图片进来进好啦，结果就是下面效果了，会进行自动配置了</h3><p><img src="/../images/image-20220704162859328.png" alt="image-20220704162859328"></p>
-<h4 id="参考文章：hexo博客如何插入图片-知乎-zhihu-com"><a href="#参考文章：hexo博客如何插入图片-知乎-zhihu-com" class="headerlink" title="参考文章：hexo博客如何插入图片 - 知乎 (zhihu.com)"></a>参考文章：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/265077468">hexo博客如何插入图片 - 知乎 (zhihu.com)</a></h4>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/04/blogTips/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-springcloud学习/#认识微服务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="认识微服务"><a href="#认识微服务" class="headerlink" title="认识微服务"></a><strong>认识微服务</strong></h1><p>微服务是将业务模块拆分，做到单一职责，不重复开发相同业务，我理解也叫解耦合</p>
-<p>微服务之间的联系，是将业务暴露为接口，供其它微服务使用</p>
-<p>不同微服务都应该有自己独立的数据库</p>
-<h1 id="服务远程调用"><a href="#服务远程调用" class="headerlink" title="服务远程调用"></a>服务远程调用</h1><p>远程调用实现：两个数据库之间的调用，就是一个数据库的应用层，向另一个数据库的应用层发对应的http信息</p>
-<h3 id="1-向spring容器注入restTemplate对象：可以在application中进行注入"><a href="#1-向spring容器注入restTemplate对象：可以在application中进行注入" class="headerlink" title="1.向spring容器注入restTemplate对象：可以在application中进行注入"></a>1.向spring容器注入restTemplate对象：可以在application中进行注入</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Bean//创建RestTemplate并注入Spring容器</span><br><span class="line">public RestTemplate restTemplate()</span><br><span class="line">&#123;</span><br><span class="line">    return new RestTemplate();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-利用resTemplate发送http请求，实现远程调用，然后根据需求返回对应的数据，例如："><a href="#2-利用resTemplate发送http请求，实现远程调用，然后根据需求返回对应的数据，例如：" class="headerlink" title="2.利用resTemplate发送http请求，实现远程调用，然后根据需求返回对应的数据，例如："></a>2.利用resTemplate发送http请求，实现远程调用，然后根据需求返回对应的数据，例如：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">@Service</span><br><span class="line">public class OrderService &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private OrderMapper orderMapper;</span><br><span class="line">    @Autowired</span><br><span class="line">    RestTemplate restTemplate;</span><br><span class="line">    public Order queryOrderById(Long orderId) &#123;</span><br><span class="line">        // 1.查询订单</span><br><span class="line">        Order order = orderMapper.findById(orderId);</span><br><span class="line">        //2.利用RestTemplate发起http请求，查询用户</span><br><span class="line">        //2.1 url路径</span><br><span class="line">        String url = &quot;http://localhost:8081/user/&quot;+order.getUserId();</span><br><span class="line">        //2.2 发送http请求，实现远程调用</span><br><span class="line">        User user = restTemplate.getForObject(url,User.class);//User.class指定返回值类型为User</span><br><span class="line">        //3.封装User到Order</span><br><span class="line">        order.setUser(user);</span><br><span class="line">        // 4.返回</span><br><span class="line">        return order;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/04/springcloud%E5%AD%A6%E4%B9%A0/#%E8%AE%A4%E8%AF%86%E5%BE%AE%E6%9C%8D%E5%8A%A1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
     </nav>
   
 
