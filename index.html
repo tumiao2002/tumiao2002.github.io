@@ -138,631 +138,642 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-力扣刷题总结/三数之和" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-java并发/并发工具" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/30/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/">三数之和</a>
+      <a class="article-title" href="/2022/10/15/java%E5%B9%B6%E5%8F%91/%E5%B9%B6%E5%8F%91%E5%B7%A5%E5%85%B7/">并发工具</a>
     </h1>
   
 
         
-        <a href="/2022/08/30/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/" class="archive-article-date">
-  	<time datetime="2022-08-30T12:25:54.490Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-30</time>
+        <a href="/2022/10/15/java%E5%B9%B6%E5%8F%91/%E5%B9%B6%E5%8F%91%E5%B7%A5%E5%85%B7/" class="archive-article-date">
+  	<time datetime="2022-10-15T13:37:38.528Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-15</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="题目1："><a href="#题目1：" class="headerlink" title="题目1："></a>题目1：</h1><p>​	<strong>给你一个整数数组 nums ，判断是否存在三元组 [nums[i], nums[j], nums[k]] 满足 i !&#x3D; j、i !&#x3D; k 且 j !&#x3D; k ，同时还满足 nums[i] + 	nums[j] + nums[k] &#x3D;&#x3D; 0 。请</strong></p>
-<p>​	<strong>你返回所有和为 0 且不重复的三元组。</strong></p>
-<p><strong>注意：</strong>答案中不可以包含重复的三元组。</p>
-        
-          <a class="article-more-a" href="/2022/08/30/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/08/30/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-力扣刷题总结/多数元素" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/30/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/">多数元素（majority element）</a>
-    </h1>
-  
-
-        
-        <a href="/2022/08/30/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/" class="archive-article-date">
-  	<time datetime="2022-08-30T09:23:01.986Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="题目1："><a href="#题目1：" class="headerlink" title="题目1："></a>题目1：</h1><p>​	<strong>给定一个大小为 n 的数组 nums ，返回其中的多数元素。多数元素是指在数组中出现次数 大于 ⌊ n&#x2F;2 ⌋ 的元素。</strong></p>
-<p><strong>你可以假设数组是非空的，并且给定的数组总是存在多数元素。</strong></p>
-<p>来源：力扣（LeetCode）<br>链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/majority-element">https://leetcode.cn/problems/majority-element</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<p><strong>提示：</strong></p>
-<ul>
-<li><code>n == nums.length</code></li>
-<li><code>1 &lt;= n &lt;= 5 * 104</code></li>
-<li><code>-109 &lt;= nums[i] &lt;= 109</code></li>
-</ul>
-<p><strong>进阶：</strong>尝试设计时间复杂度为 O(n)、空间复杂度为 O(1) 的算法解决此问题。</p>
-        
-          <a class="article-more-a" href="/2022/08/30/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/08/30/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
+        <h1 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h1><p>​     <strong>享元模式的思想。创建一体线程，让这些线程能够得到重复的利用。这样既可以减少内存的占用，也可以减少线程的数量，避免他们进行频繁地上下文切换。</strong></p>
+<h2 id="自定义线程池"><a href="#自定义线程池" class="headerlink" title="自定义线程池"></a>自定义线程池</h2><p><img src="/../../images/image-20221015215952167.png" alt="image-20221015215952167"></p>
+<p><img src="/../../images/image-20221015222746221.png" alt="image-20221015222746221"></p>
+<p><strong>这里用的Reentrantlock，分了房间，因此同一个emptyWaitSet会有多个线程去竞争，所以会出现虚假唤醒，需要进行保护。</strong></p>
+<h2 id="jdk为我们提供的线程池的实现–ThreadPollExecutor"><a href="#jdk为我们提供的线程池的实现–ThreadPollExecutor" class="headerlink" title="jdk为我们提供的线程池的实现–ThreadPollExecutor"></a>jdk为我们提供的线程池的实现–ThreadPollExecutor</h2><p>​	<img src="/../../images/image-20221016201546424.png" alt="image-20221016201546424"></p>
+<p><strong>ExecutorService: 线程池最基本的接口，里面定义了提交任务，包括关闭线程池这样的方法。</strong></p>
+<p><strong>ScheduledExecutorService: 在基础线程池的功能上又新增了任务调度的功能，可以用来去定时去执行任务</strong></p>
+<p><strong>ThreadPoolExecutor: 最基础实现</strong></p>
+<p><strong>ScheduledThreadPoolExecutor: 带有任务调度功能的线程池实现</strong></p>
+<h3 id="池状态"><a href="#池状态" class="headerlink" title="池状态"></a>池状态</h3><p><img src="/../../images/image-20221016202048070.png" alt="image-20221016202048070"></p>
+<p><strong>将线程池状态和线程数量用一个整数来表示两种信息，是因为:</strong></p>
+<p><img src="/../../images/image-20221016202313295.png" alt="image-20221016202313295"></p>
+<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><p><img src="/../../images/image-20221016202539044.png" alt="image-20221016202539044"></p>
+<p><img src="/../../images/image-20221016202931085.png" alt="image-20221016202931085"></p>
+<p><strong>救急线程：当任务量突发量特别多时，两个阻塞队列都装不下了，这个时候就会创建救急线程来救急。并且救急线程有生存时间，而核心线程没有生存时间，会一直存在。</strong></p>
+<p><strong>当救急线程再不够时，才会执行拒绝策略。</strong></p>
+<p><img src="/../../images/image-20221016203837093.png" alt="image-20221016203837093"></p>
+<p><strong>注意：救急线程的前提是配合有界队列来使用。</strong></p>
+<p><strong>拒绝策略：JDK中的实现有以下四种</strong></p>
+<p><img src="/../../images/image-20221016203705959.png" alt="image-20221016203705959"></p>
+<p><img src="/../../images/image-20221016203817274.png" alt="image-20221016203817274"></p>
+<p><strong>拒绝策略扩展：</strong></p>
+<p><img src="/../../images/image-20221016204002057.png" alt="image-20221016204002057"></p>
+<h2 id="newFixedThreadPool-创建一个固定大小的线程池"><a href="#newFixedThreadPool-创建一个固定大小的线程池" class="headerlink" title="newFixedThreadPool:创建一个固定大小的线程池"></a>newFixedThreadPool:创建一个固定大小的线程池</h2><p><img src="/../../images/image-20221016204356244.png" alt="image-20221016204356244"></p>
+<p>基本使用示例：</p>
+<p><img src="/../../images/image-20221016204633998.png" alt="image-20221016204633998"></p>
+<p><strong>注意：因为创建的都是核心线程，核心线程没有超时，并不会结束，所以我们可以看到示例的java程序并没有结束。它执行了任务还在运行，虽然没有了任务，也不会结束。</strong></p>
+<p><strong>注意：这个线程池中的线程都是非守护线程，也就是不会随装主线程的结束而结束。</strong></p>
+<p>自定义线程名称示例：</p>
+<p><img src="/../../images/image-20221016205238811.png" alt="image-20221016205238811"></p>
+<p><img src="/../../images/image-20221016205310570.png" alt="image-20221016205310570"></p>
+<h2 id="newCachedThreadPool-带缓冲的线程池"><a href="#newCachedThreadPool-带缓冲的线程池" class="headerlink" title="newCachedThreadPool:带缓冲的线程池"></a>newCachedThreadPool:带缓冲的线程池</h2><p><img src="/../../images/image-20221016210357766.png" alt="image-20221016210357766"></p>
+<p>示例：SynchronousQueue</p>
+<p><img src="/../../images/image-20221016210743234.png" alt="image-20221016210743234"></p>
+<p><img src="/../../images/image-20221016210825937.png" alt="image-20221016210825937"></p>
+<p><img src="/../../images/image-20221016210840337.png" alt="image-20221016210840337"></p>
+<p><img src="/../../images/image-20221016210637950.png" alt="image-20221016210637950"></p>
+<h2 id="单线程线程池：newSingleThreadExecutor"><a href="#单线程线程池：newSingleThreadExecutor" class="headerlink" title="单线程线程池：newSingleThreadExecutor"></a>单线程线程池：newSingleThreadExecutor</h2><p><img src="/../../images/image-20221016211014731.png" alt="image-20221016211014731"></p>
+<p>示例：</p>
+<p><img src="/../../images/image-20221016211954184.png" alt="image-20221016211954184"></p>
+<h2 id="提交任务"><a href="#提交任务" class="headerlink" title="提交任务"></a>提交任务</h2><p><img src="/../../images/image-20221016212149107.png" alt="image-20221016212149107"></p>
+<p>**1. 执行任务（提交任务1）: **execute<img src="/../../images/image-20221016213757041.png" alt="image-20221016213757041"></p>
+<p><strong>2. 提交任务2：</strong> submit</p>
+<p><img src="/../../images/image-20221016213814949.png" alt="image-20221016213814949"></p>
+<p>Callable<T>有返回任务，Runnable没有返回任务。</p>
+<p><img src="/../../images/image-20221016213610958.png" alt="image-20221016213610958"></p>
+<p>lamada简化：</p>
+<p><img src="/../../images/image-20221016213700175.png" alt="image-20221016213700175"></p>
+<p><strong>提交任务3，4：</strong></p>
+<p><img src="/../../images/image-20221016213843533.png" alt="image-20221016213843533"></p>
+<p>示例：</p>
+<p><img src="/../../images/image-20221016214520393.png" alt="image-20221016214520393"></p>
+<p><strong>提交任务5，6：</strong></p>
+<p>​	<strong>哪个任务先成功执行完毕，返回此任务执行结果，其它任务取消。</strong></p>
+<p><img src="/../../images/image-20221016214712561.png" alt="image-20221016214712561"></p>
+<p>示例：</p>
+<p><img src="/../../images/image-20221016214920048.png" alt="image-20221016214920048"></p>
+<p>示例：–如果只有一个线程1</p>
+<p><img src="/../../images/image-20221016215219477.png" alt="image-20221016215219477"></p>
+<h2 id="关闭线程池"><a href="#关闭线程池" class="headerlink" title="关闭线程池"></a>关闭线程池</h2><p><img src="/../../images/image-20221016215315865.png" alt="image-20221016215315865"></p>
+<p><strong>并不会打断啊已经在提交的任务和在运行中的任务，也不会影响到队列中已经提交的任务只是不会再接收新任务。</strong></p>
+<p><strong>并且并不会阻塞其它线程的运行，即执行shutdown()的过程中，其它线程仍并行正常运行。</strong></p>
+<p><strong>如果要等待，可以调用以下方法：</strong></p>
+<p><img src="/../../images/image-20221016220401638.png" alt="image-20221016220401638"></p>
+<p>具体实现（原理）：</p>
+<p><img src="/../../images/image-20221016215526559.png" alt="image-20221016215526559"></p>
+<p><img src="/../../images/image-20221016215621591.png" alt="image-20221016215621591"></p>
+<hr>
+<p><strong>不会接收新任务，队列中的任务会被返回，并且正在执行的任务会被打断。</strong></p>
+<p><img src="/../../images/image-20221016220810500.png" alt="image-20221016220810500"></p>
+<p>具体实现（原理）：</p>
+<p><img src="/../../images/image-20221016215714749.png" alt="image-20221016215714749"></p>
+<p><strong>其它方法：</strong></p>
+<p><img src="/../../images/image-20221016215757727.png" alt="image-20221016215757727"></p>
+<h2 id="任务调度线程池"><a href="#任务调度线程池" class="headerlink" title="任务调度线程池"></a>任务调度线程池</h2><p><img src="/../../images/image-20221017200813637.png" alt="image-20221017200813637"></p>
+<h3 id="Timer缺点"><a href="#Timer缺点" class="headerlink" title="Timer缺点"></a>Timer缺点</h3><p><strong>1.一个任务的延时会影响其后面的任务</strong></p>
+<p><strong>2.一个任务出现异常，其后面的任务也不会再运行</strong></p>
+<p>示例：延时</p>
+<p><img src="/../../images/image-20221017201140025.png" alt="image-20221017201140025"></p>
+<p>示例：有个任务出现异常</p>
+<p><img src="/../../images/image-20221017201254442.png" alt="image-20221017201254442"></p>
+<h3 id="使用带有任务调度的线程池–ScheduledThreadPool"><a href="#使用带有任务调度的线程池–ScheduledThreadPool" class="headerlink" title="使用带有任务调度的线程池–ScheduledThreadPool"></a>使用带有任务调度的线程池–ScheduledThreadPool</h3><h4 id="a-延时执行任务"><a href="#a-延时执行任务" class="headerlink" title="a.延时执行任务"></a>a.延时执行任务</h4><p><strong>1. 一个任务的延时，不会影响线程池中的另一个任务</strong></p>
+<p><strong>2. 当线程池大小小于线程数，还是会串行执行</strong></p>
+<p><strong>3. 一个任务出现异常，并不会影响另一个任务的执行</strong></p>
+<p>示例1：</p>
+<p><img src="/../../images/image-20221017201745449.png" alt="image-20221017201745449"></p>
+<p>示例2：</p>
+<p><img src="/../../images/image-20221017201951466.png" alt="image-20221017201951466"></p>
+<p>示例3：</p>
+<p><img src="/../../images/image-20221017203246344.png" alt="image-20221017203246344"></p>
+<h4 id="b-定时执行任务"><a href="#b-定时执行任务" class="headerlink" title="b.定时执行任务"></a>b.定时执行任务</h4><p>示例：</p>
+<p><img src="/../../images/image-20221017203610987.png" alt="image-20221017203610987"></p>
+<p><strong>注意：如果一个任务执行时间较长，那么会影响到定时执行的任务：如果一个任务的执行时间超过了延时时间，那么会等待任务执行完之后进行下一个任务的执行，不会代码重叠，也不会继续延时。相当于是紧挨着执行的。</strong></p>
+<p>示例：</p>
+<p><img src="/../../images/image-20221017203747043.png" alt="image-20221017203747043"></p>
+<p><strong>用scheduledWithFixedDelay,当任务线程结束后会继续延时。</strong></p>
+<p>示例：</p>
+<p><img src="/../../images/image-20221017204054329.png" alt="image-20221017204054329"></p>
+<h3 id="任务调度线程池的应用"><a href="#任务调度线程池的应用" class="headerlink" title="任务调度线程池的应用"></a>任务调度线程池的应用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//任务调度线程池的应用</span><br><span class="line">public class TestSchedule &#123;</span><br><span class="line">    //如何让每周四 18:00:00 定时执行任务</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ScheduledExecutorService pool = Executors.newScheduledThreadPool(1);//得到线程池，这里的线程数我设置为1</span><br><span class="line">        // initDelay 代表当前时间和周四时间的时间差</span><br><span class="line">        // period 一周的间隔时间</span><br><span class="line">        long period = 1000*60*60*24*7;</span><br><span class="line">        LocalDateTime now = LocalDateTime.now();//获取当前时间//LocalDateTime是线程安全的</span><br><span class="line">        //获取周四时间</span><br><span class="line">        //注意该方法找的是本周的周四</span><br><span class="line">        LocalDateTime time = now.withHour(18).withMinute(0).withSecond(0).withNano(0).with(DayOfWeek.THURSDAY);</span><br><span class="line">        //如果当前时间&gt;本周周四，必须找到下周周四</span><br><span class="line">        if (now.compareTo(time)&gt;0)</span><br><span class="line">        &#123;</span><br><span class="line">            time.plusWeeks(1);//加一周</span><br><span class="line">        &#125;</span><br><span class="line">        int initDelay = (int) Duration.between(now,time).toMillis();</span><br><span class="line">        pool.scheduleAtFixedRate(()-&gt;&#123;</span><br><span class="line">            System.out.println(&quot;running&quot;);</span><br><span class="line">        &#125;,initDelay,period, TimeUnit.MILLISECONDS);//做定时</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
 
-  
-    <article id="post-力扣刷题总结/只出现过一次的数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/23/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E5%8F%AA%E5%87%BA%E7%8E%B0%E8%BF%87%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0/">数组-只出现过一次的数</a>
-    </h1>
-  
-
-        
-        <a href="/2022/08/23/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E5%8F%AA%E5%87%BA%E7%8E%B0%E8%BF%87%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2022-08-22T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="1-只出现过一次的数"><a href="#1-只出现过一次的数" class="headerlink" title="1.只出现过一次的数"></a>1.只出现过一次的数</h1><p><strong>问题：</strong></p>
-<p>​		<strong>给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。</strong></p>
-<p><strong>说明：</strong></p>
-<p>​		<strong>你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？</strong></p>
-        
-          <a class="article-more-a" href="/2022/08/23/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E5%8F%AA%E5%87%BA%E7%8E%B0%E8%BF%87%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/08/23/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E5%8F%AA%E5%87%BA%E7%8E%B0%E8%BF%87%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
 
 
 
-
-  
-    <article id="post-Untitled" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/08/20/Untitled/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hexo不断完善" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/08/hexo%E4%B8%8D%E6%96%AD%E5%AE%8C%E5%96%84/">hexo不断完善</a>
-    </h1>
-  
-
-        
-        <a href="/2022/08/08/hexo%E4%B8%8D%E6%96%AD%E5%AE%8C%E5%96%84/" class="archive-article-date">
-  	<time datetime="2022-08-07T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-hexo首页如何只显示文章部分而不是全部"><a href="#1-hexo首页如何只显示文章部分而不是全部" class="headerlink" title="1.hexo首页如何只显示文章部分而不是全部"></a>1.hexo首页如何只显示文章部分而不是全部</h2><h3 id="1-1直接在写博客的md文件中加上-lt-more-gt"><a href="#1-1直接在写博客的md文件中加上-lt-more-gt" class="headerlink" title="1.1直接在写博客的md文件中加上&lt;!--more--&gt;"></a>1.1直接在写博客的md文件中加上<code>&lt;!--more--&gt;</code></h3><p>该标志之后的内容都不会被显示</p>
-        
-          <a class="article-more-a" href="/2022/08/08/hexo%E4%B8%8D%E6%96%AD%E5%AE%8C%E5%96%84/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/08/08/hexo%E4%B8%8D%E6%96%AD%E5%AE%8C%E5%96%84/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-chuanyi项目经验总结/搭建项目过程中经验总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/08/chuanyi%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/">搭建项目过程中经验总结</a>
-    </h1>
-  
-
-        
-        <a href="/2022/08/08/chuanyi%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/" class="archive-article-date">
-  	<time datetime="2022-08-07T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>[TOC]</p>
-        
-          <a class="article-more-a" href="/2022/08/08/chuanyi%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/08/08/chuanyi%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-springcloud学习/Docker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/01/springcloud%E5%AD%A6%E4%B9%A0/Docker/">Docker</a>
-    </h1>
-  
-
-        
-        <a href="/2022/08/01/springcloud%E5%AD%A6%E4%B9%A0/Docker/" class="archive-article-date">
-  	<time datetime="2022-07-31T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><h2 id="1-认识Docker"><a href="#1-认识Docker" class="headerlink" title="1.认识Docker"></a>1.认识Docker</h2><h3 id="Docker作用："><a href="#Docker作用：" class="headerlink" title="Docker作用："></a>Docker作用：</h3><p><strong>解决大型项目依赖关系复杂，不同组件依赖的兼容性问题：</strong></p>
-<p>1.Docker允许开发中将应用、依赖、函数库、配置一起打包，形成可移植镜像</p>
-<p>2.Doker应用运行在容器中使用沙箱机制，相互隔离</p>
-<p><strong>解决开发、测试、生产环境有差异的问题</strong></p>
-<p>Docker镜像中包含完整运行环境，包括系统函数库，进以来系统的linux内核，因此<em><strong>可以在任意linux操作系统上运行</strong></em></p>
-<p>借用黑马视频的截图表示：</p>
-<p><img src="/../../images/image-20220808152203678.png" alt="image-20220808152203678"></p>
-<h2 id="2-Docker与虚拟机"><a href="#2-Docker与虚拟机" class="headerlink" title="2.Docker与虚拟机"></a>2.Docker与虚拟机</h2><p><img src="/../../images/image-20220818204055159.png" alt="image-20220818204055159"></p>
-<p><strong>Docker:是一个系统进程，在操作系统中直接运行如上图所示。所以体积小，启动速度快，性能好</strong></p>
-<p><strong>虚拟机：是在操作系统中的操作系统，如上图。因此体积大，以G为单位，启动速度慢，性能一般</strong></p>
-<h2 id="3-Docker架构"><a href="#3-Docker架构" class="headerlink" title="3.Docker架构"></a>3.Docker架构</h2><p>镜像：	</p>
-<p>​	将应用程序及其依赖、环境、配置打包在一起</p>
-<p>容器：	</p>
-<p>​	镜像运行起来就是容器，一个镜像可以运行多个容器</p>
-<p>Docker结构：</p>
-<p>  服务端：接收命令或远程请求，操作镜像或容器</p>
-<p>  客户端：发送命令或者请求到Docker服务端</p>
-<p>DockerHub:</p>
-<p>​	一个镜像托管的服务器，类似的还有阿里云的镜像服务，统称为DockerRegistry</p>
-<p>示例：   </p>
-<p><img src="/../../images/image-20220818205730400.png" alt="image-20220818205730400"></p>
-<h2 id="4-Docker安装（在Centos下）"><a href="#4-Docker安装（在Centos下）" class="headerlink" title="4.Docker安装（在Centos下）"></a>4.Docker安装（在Centos下）</h2><h3 id="错误："><a href="#错误：" class="headerlink" title="错误："></a>错误：</h3><p>1.虚拟机安装docker出现错误：Another app is currently holding the yum lock; waiting for it to exit…</p>
-<p>解决方法：</p>
-<p>先查看一下是否有yum进程：</p>
-<p><img src="/../../images/image-20220818223702269.png" alt="image-20220818223702269"></p>
-<p>可以看见有yum进程，yum进程被占用了，关闭就好了</p>
-<p>关闭命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -f /var/run/yum.pid</span><br></pre></td></tr></table></figure>
-
-<p>注意：要进入管理员权限，否则命令溢出命令无法执行</p>
-<h3 id="4-1-前提条件："><a href="#4-1-前提条件：" class="headerlink" title="4.1 前提条件："></a>4.1 前提条件：</h3><p>目前，CentOS仅发行版本中的内核支持Docker。<br>Docker运行在CentOS 7上，要求系统为64位、系统内核版本为3.10以上。<br>Docker运行在CentOS-6.5或更高的版本的CentOS上，要求系统为64位、系统内核版本为2.6.32-431或者更高版本.</p>
-<h3 id="4-2先卸载旧版本的docker"><a href="#4-2先卸载旧版本的docker" class="headerlink" title="4.2先卸载旧版本的docker"></a>4.2先卸载旧版本的docker</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum remove docker \</span><br><span class="line">         docker-client \</span><br><span class="line">         docker-client-latest \</span><br><span class="line">         docker-common \</span><br><span class="line">         docker-latest \</span><br><span class="line">         docker-latest-logrotate \</span><br><span class="line">         docker-logrotate \</span><br><span class="line">         docker-engine</span><br></pre></td></tr></table></figure>
-
-<p>如果旧版本的docker没有下载，就会显示如下：</p>
-<p><img src="/../../images/image-20220818223950869.png" alt="image-20220818223950869"></p>
-<h3 id="4-3-安装Docker"><a href="#4-3-安装Docker" class="headerlink" title="4.3 安装Docker"></a>4.3 安装Docker</h3><h4 id="4-3-1-首先虚拟机联网，安装yum工具"><a href="#4-3-1-首先虚拟机联网，安装yum工具" class="headerlink" title="4.3.1 首先虚拟机联网，安装yum工具"></a>4.3.1 首先虚拟机联网，安装yum工具</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y yum-utils \</span><br><span class="line"> device-mapper-persistent-data \</span><br><span class="line"> lvm2</span><br></pre></td></tr></table></figure>
-
-<h4 id="4-3-2-设置仓库"><a href="#4-3-2-设置仓库" class="headerlink" title="4.3.2 设置仓库"></a>4.3.2 设置仓库</h4><p>共有三种：</p>
-<p>1.官方源地址（比较慢）：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo yum-config-manager \</span><br><span class="line">  --add-repo \</span><br><span class="line">  https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
-
-<p>2.国内的一些源地址：（比较快，推荐）</p>
-<p>2.1 阿里云：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo yum-config-manager \</span><br><span class="line">  --add-repo \</span><br><span class="line">  http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
-
-<p>2.2清华大学：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo yum-config-manager \</span><br><span class="line">  --add-repo \</span><br><span class="line">  https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
-
-<h4 id="4-3-3-安装Docker"><a href="#4-3-3-安装Docker" class="headerlink" title="4.3.3 安装Docker"></a>4.3.3 安装Docker</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
-
-<p>提示1：输入y</p>
-<p><img src="/../../images/image-20220819191838992.png" alt="image-20220819191838992"></p>
-<p>提示2：是否接受GPG密匙，输入y</p>
-<p><img src="/../../images/image-20220819191925664.png" alt="image-20220819191925664"></p>
-<h4 id="4-3-4-启动Docker"><a href="#4-3-4-启动Docker" class="headerlink" title="4.3.4 启动Docker"></a>4.3.4 启动Docker</h4><p>注意，Docker医用需要用到各种端口，逐一去修改防火墙设置。十分麻烦，建议启动前直接关闭防火墙</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#关闭</span><br><span class="line"></span><br><span class="line">systemctl stop firewalld</span><br><span class="line"></span><br><span class="line">#禁止开机启动防火墙</span><br><span class="line"></span><br><span class="line">systemctl disable firewalld</span><br><span class="line"></span><br><span class="line">#查看防火墙状态(有active(dead)，表示防火墙关闭)</span><br><span class="line">systemctl status firewalld</span><br><span class="line"></span><br><span class="line">#启动Docker</span><br><span class="line">systemctl start docker</span><br><span class="line"></span><br><span class="line">#查看Docker状态看是否启动成功（有显示active(running),表示启动成功）</span><br><span class="line">systemctl status docker</span><br><span class="line">#或者用docker -v 查看版本，如果能够查看到版本，证明启动成功了</span><br></pre></td></tr></table></figure>
-
-<h3 id="Docker镜像加速"><a href="#Docker镜像加速" class="headerlink" title="Docker镜像加速"></a>Docker镜像加速</h3><p>docker官方镜像仓库网速较差，我们需要设置国内镜像</p>
-<p>Docker 官方和国内很多云服务商都提供了国内加速器服务，例如：</p>
-<ul>
-<li><p>科大镜像：<strong><a target="_blank" rel="noopener" href="https://docker.mirrors.ustc.edu.cn/">https://docker.mirrors.ustc.edu.cn/</a></strong></p>
+<h2 id="正确处理线程池异常"><a href="#正确处理线程池异常" class="headerlink" title="正确处理线程池异常"></a>正确处理线程池异常</h2><p><strong>1. 用try-catch代码块抓取异常，任务自身来处理异常。</strong></p>
+<p><strong>2. 不要用Runnable,而是用Collable来返回异常。示例：</strong></p>
+<p><img src="/../../images/image-20221017204851782.png" alt="image-20221017204851782"></p>
+<h2 id="Tomcat-线程池"><a href="#Tomcat-线程池" class="headerlink" title="Tomcat 线程池"></a>Tomcat 线程池</h2><p>内容：</p>
+<p><img src="/../../images/image-20221017211432916-16660124732981.png" alt="image-20221017211432916"></p>
+<p><img src="/../../images/image-20221017211920491.png" alt="image-20221017211920491"></p>
+<p>​	<strong>而ThreadPoolExecutor是当核心线程满后就去队列，队列塞满就启动救急线程，如果救急线程也满就会去执行拒绝策略，即RejectedExecutionException异常。（总线程数 &#x3D; 核心线程数 + 救急线程数）。因此ThreadPoolExecutor当总线程数满时，就会抛出拒绝策略异常。</strong></p>
+<p><img src="/../../images/image-20221017212648357.png" alt="image-20221017212648357"></p>
+<p><img src="/../../images/image-20221017212812668.png" alt="image-20221017212812668"></p>
+<p>配置:</p>
+<p><img src="/../../images/image-20221017213011104.png" alt="image-20221017213011104"></p>
+<p>excutor：当它设置时，相当于覆盖了之前的Connector配置，用excutor中的。</p>
+<p>tomcat工作：当最大线程还不够时是先创建救急线程，而不是先加入队列，因此尽管默认队列长度无界，仍旧有救急线程。</p>
+<p><img src="/../../images/image-20221017213720109.png" alt="image-20221017213720109"></p>
+<h1 id="设计模式-–-工作线程模式（异步模式之工作线程）"><a href="#设计模式-–-工作线程模式（异步模式之工作线程）" class="headerlink" title="设计模式 – 工作线程模式（异步模式之工作线程）"></a>设计模式 – 工作线程模式（异步模式之工作线程）</h1><h2 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h2><p><img src="/../../images/image-20221017192913161.png" alt="image-20221017192913161"></p>
+<p><strong>同一个类型可以用一个线程池，如果有多个类型，可以有多个线程池。</strong></p>
+<h2 id="饥饿："><a href="#饥饿：" class="headerlink" title="饥饿："></a>饥饿：</h2><p><img src="/../../images/image-20221017193422007.png" alt="image-20221017193422007"></p>
+<p>上面示例是：<strong>线程池中的线程不足导致的饥饿现象。</strong>固定大小的线程池和单线程池都会出现饥饿现象。</p>
+<p><img src="/../../images/image-20221017194504798.png" alt="image-20221017194504798"></p>
+<p>​	<strong>由于线程池中的线程不足导致的程序无法往下进行。</strong></p>
+<p><strong>解决：</strong></p>
+<ol>
+<li><p>增加线程池中的线程（并不是一种根本解决的办法）</p>
 </li>
-<li><p>网易：<strong><a target="_blank" rel="noopener" href="https://hub-mirror.c.163.com/">https://hub-mirror.c.163.com/</a></strong></p>
+<li><p>不同的线程使用不同的线程池</p>
 </li>
-<li><p>阿里云：<strong>https:&#x2F;&#x2F;&lt;你的ID&gt;.mirror.aliyuncs.com</strong></p>
-</li>
-<li><p>七牛云加速器：<strong><a target="_blank" rel="noopener" href="https://reg-mirror.qiniu.com/">https://reg-mirror.qiniu.com</a></strong></p>
-<p>   当配置某一个加速器地址之后，若发现拉取不到镜像，请切换到另一个加速器地址。国内各大云服务商均提供了 Docker 镜像加速服务，建议根据运行 Docker 的云平台选择对应的镜像加速服务。</p>
-</li>
-</ul>
-<p><strong>镜像加速（阿里云）</strong>：</p>
-<p>1.阿里云镜像获取地址：<a target="_blank" rel="noopener" href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors%EF%BC%8C%E7%99%BB%E9%99%86">https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors，登陆</a></p>
+</ol>
+<p><img src="/../../images/image-20221017200121794.png" alt="image-20221017200121794"></p>
+<h2 id="创建多少线程池合适"><a href="#创建多少线程池合适" class="headerlink" title="创建多少线程池合适"></a>创建多少线程池合适</h2><p><img src="/../../images/image-20221017200204711.png" alt="image-20221017200204711"></p>
+<h3 id="1-CPU密集型运算"><a href="#1-CPU密集型运算" class="headerlink" title="1. CPU密集型运算"></a>1. CPU密集型运算</h3><p><img src="/../../images/image-20221017200317963.png" alt="image-20221017200317963"></p>
+<h3 id="2-I-x2F-O密集型运算"><a href="#2-I-x2F-O密集型运算" class="headerlink" title="2. I&#x2F;O密集型运算"></a>2. I&#x2F;O密集型运算</h3><p><img src="/../../images/image-20221017200400712.png" alt="image-20221017200400712"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/10/15/java%E5%B9%B6%E5%8F%91/%E5%B9%B6%E5%8F%91%E5%B7%A5%E5%85%B7/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-final关键字用法总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/14/final%E5%85%B3%E9%94%AE%E5%AD%97%E7%94%A8%E6%B3%95%E6%80%BB%E7%BB%93/">final关键字用法总结</a>
+    </h1>
+  
+
+        
+        <a href="/2022/10/14/final%E5%85%B3%E9%94%AE%E5%AD%97%E7%94%A8%E6%B3%95%E6%80%BB%E7%BB%93/" class="archive-article-date">
+  	<time datetime="2022-10-14T14:14:36.815Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-修饰类"><a href="#1-修饰类" class="headerlink" title="1. 修饰类"></a>1. 修饰类</h1><p>​		<strong>表示该类不可继承。。final类中的成员变量可以根据需要设为final，但是final类中的所有成员方法都会被隐式地指定为final方法。</strong></p>
+<h1 id="2-修饰方法"><a href="#2-修饰方法" class="headerlink" title="2. 修饰方法"></a>2. 修饰方法</h1><p>​		<strong>防止任何继承类修改该方法的含义。明确禁止该方法在子类中被覆盖的情况下才将方法设置为final的</strong></p>
+<p>​      final修饰的方法表示此方法已经是“最后的、最终的”含义，亦即此方法不能被重写（可以重载多个final修饰的方法）。此处需要注意的一点是：因为重写的前提是子类可以从父类中继承此方法，如果父类中final修饰的方法同时访问控制权限为private，将会导致子类中不能直接继承到此方法，因此，此时可以在子类中定义相同的方法名和参数，此时不再产生重写与final的矛盾，而是在子类中重新定义了新的方法。（注：类的private方法会隐式地被指定为final方法）</p>
+<h1 id="3-修饰变量"><a href="#3-修饰变量" class="headerlink" title="3. 修饰变量"></a>3. 修饰变量</h1><p>​		<strong>final成员变量表示常量，只能被赋值一次，赋值后值不再改变。</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/10/14/final%E5%85%B3%E9%94%AE%E5%AD%97%E7%94%A8%E6%B3%95%E6%80%BB%E7%BB%93/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-java并发/不可变" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/14/java%E5%B9%B6%E5%8F%91/%E4%B8%8D%E5%8F%AF%E5%8F%98/">不可变</a>
+    </h1>
+  
+
+        
+        <a href="/2022/10/14/java%E5%B9%B6%E5%8F%91/%E4%B8%8D%E5%8F%AF%E5%8F%98/" class="archive-article-date">
+  	<time datetime="2022-10-14T12:07:34.906Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/../../images/image-20221014200814858.png" alt="image-20221014200814858"></p>
+<h1 id="不可类–使用"><a href="#不可类–使用" class="headerlink" title="不可类–使用"></a>不可类–使用</h1><p><strong>通过不可变类的使用，使对象在线程下安全。如下：日期对象</strong></p>
+<p>会出现线程安全问题：</p>
+<p><img src="/../../images/image-20221014201804386.png" alt="image-20221014201804386"></p>
+<p>解决一：加锁</p>
+<p><img src="/../../images/image-20221014201853852.png" alt="image-20221014201853852"></p>
+<p>解决二：使用不可变对象</p>
+<p><img src="/../../images/image-20221014201958312.png" alt="image-20221014201958312"></p>
+<h1 id="不可变对象–设计"><a href="#不可变对象–设计" class="headerlink" title="不可变对象–设计"></a>不可变对象–设计</h1><p><img src="/../../images/image-20221014202139499.png" alt="image-20221014202139499"></p>
+<p><img src="/../../images/image-20221014202303170.png" alt="image-20221014202303170"></p>
+<p><img src="/../../images/image-20221014202508548.png" alt="image-20221014202508548"></p>
+<p><img src="/../../images/image-20221014202558237.png" alt="image-20221014202558237"></p>
+<p><img src="/../../images/image-20221014211832774.png" alt="image-20221014211832774"></p>
+<h1 id="享元模式"><a href="#享元模式" class="headerlink" title="享元模式"></a>享元模式</h1><p>​    <strong>可以对相同值的对象进行一个共享，来减少内存的使用。</strong></p>
+<p>​	<strong>享元模式（Flyweight Pattern）主要用于减少创建对象的数量，以减少内存占用和提高性能。这种类型的设计模式属于结构型模式，它提供了减少对象数量从而改善应用所需的对象结构的方式。</strong></p>
+<p>​    像字符串这种会频繁创建副本来避免共享的类型，一般都会连接一个设计模式–享元模式。</p>
+<p><img src="/../../images/image-20221014212047702.png" alt="image-20221014212047702"></p>
+<h2 id="体现："><a href="#体现：" class="headerlink" title="体现："></a>体现：</h2><p><img src="/../../images/image-20221014213944810.png" alt="image-20221014213944810"></p>
+<p><img src="/../../images/image-20221014214235724.png" alt="image-20221014214235724"></p>
+<p><img src="/../../images/image-20221014214421534.png" alt="image-20221014214421534"></p>
+<p><strong>这些类都同为不可变类，因此都是线程安全的。</strong></p>
+<p><strong>注意：这些不可变类单个方法是线程安全的，但他们多个方法的组合缺不是线程安全的。</strong></p>
+<h2 id="DIY-–-自定义连接池"><a href="#DIY-–-自定义连接池" class="headerlink" title="DIY – 自定义连接池"></a>DIY – 自定义连接池</h2><p><img src="/../../images/image-20221014215648853.png" alt="image-20221014215648853"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br></pre></td><td class="code"><pre><span class="line">package com.tumiao.jucstudy.day5;</span><br><span class="line"></span><br><span class="line">import lombok.extern.slf4j.Slf4j;</span><br><span class="line"></span><br><span class="line">import java.sql.*;</span><br><span class="line">import java.util.Map;</span><br><span class="line">import java.util.Properties;</span><br><span class="line">import java.util.concurrent.Executor;</span><br><span class="line">import java.util.concurrent.atomic.AtomicIntegerArray;</span><br><span class="line"></span><br><span class="line">@Slf4j(topic = &quot;c.Test1&quot;)</span><br><span class="line">public class Test1 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//自定义连接池创建</span><br><span class="line">class Pool</span><br><span class="line">&#123;</span><br><span class="line">    //1.连接池大小</span><br><span class="line">    private final int poolSize;//加上final，表示一旦设置值就不能改变了。</span><br><span class="line"></span><br><span class="line">    //2.连接对象数组</span><br><span class="line">    private Connection[] connections;</span><br><span class="line"></span><br><span class="line">    //3.连接状态数组0表示空闲，1表示繁忙</span><br><span class="line"></span><br><span class="line">    private AtomicIntegerArray states;</span><br><span class="line"></span><br><span class="line">    //4. 构造方法初始化</span><br><span class="line">    public Pool(int poolSize)</span><br><span class="line">    &#123;</span><br><span class="line">        this.poolSize = poolSize;</span><br><span class="line">        this.connections = new Connection[poolSize];</span><br><span class="line">        this.states = new AtomicIntegerArray(new int[poolSize]);</span><br><span class="line">        for (int i = 0;i&lt;poolSize;i++)//模拟数据库连接对象</span><br><span class="line">        &#123;</span><br><span class="line">            connections[i] = new MockConnection();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //5. 借连接</span><br><span class="line">    public Connection borrow()</span><br><span class="line">    &#123;</span><br><span class="line">        while (true)</span><br><span class="line">        &#123;</span><br><span class="line">            //遍历数组，看是否有共享连接</span><br><span class="line">            for (int i = 0;i&lt;poolSize;i++)</span><br><span class="line">            &#123;</span><br><span class="line">                //获取到空闲连接</span><br><span class="line">                if (states.get(i)==0)</span><br><span class="line">                &#123;</span><br><span class="line">                    states.compareAndSet(i,0,1);///线程安全地改变状态</span><br><span class="line">                    return connections[i];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            //如果没有空闲连接，则当前线程进入等待</span><br><span class="line">            synchronized (this)</span><br><span class="line">            &#123;</span><br><span class="line">                try &#123;</span><br><span class="line">                    this.wait();</span><br><span class="line">                &#125;</span><br><span class="line">                catch (InterruptedException e)</span><br><span class="line">                &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //6. 归还连接</span><br><span class="line">    public void free(Connection connection)</span><br><span class="line">    &#123;</span><br><span class="line">        for (int i = 0;i&lt;poolSize;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if (connections[i]==connection)</span><br><span class="line">            &#123;</span><br><span class="line">                states.set(i,0);//这里不用compareAndSet()是因为，归还一定是当前对象归还，不会有线程安全问题</span><br><span class="line">                synchronized (this)</span><br><span class="line">                &#123;</span><br><span class="line">                    this.notifyAll();</span><br><span class="line">                &#125;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class MockConnection implements Connection</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Statement createStatement() throws SQLException &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public PreparedStatement prepareStatement(String sql) throws SQLException &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public CallableStatement prepareCall(String sql) throws SQLException &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String nativeSQL(String sql) throws SQLException &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void setAutoCommit(boolean autoCommit) throws SQLException &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean getAutoCommit() throws SQLException &#123;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void commit() throws SQLException &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void rollback() throws SQLException &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void close() throws SQLException &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean isClosed() throws SQLException &#123;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public DatabaseMetaData getMetaData() throws SQLException &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void setReadOnly(boolean readOnly) throws SQLException &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean isReadOnly() throws SQLException &#123;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void setCatalog(String catalog) throws SQLException &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String getCatalog() throws SQLException &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void setTransactionIsolation(int level) throws SQLException &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public int getTransactionIsolation() throws SQLException &#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public SQLWarning getWarnings() throws SQLException &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void clearWarnings() throws SQLException &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Statement createStatement(int resultSetType, int resultSetConcurrency) throws SQLException &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public PreparedStatement prepareStatement(String sql, int resultSetType, int resultSetConcurrency) throws SQLException &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public CallableStatement prepareCall(String sql, int resultSetType, int resultSetConcurrency) throws SQLException &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Map&lt;String, Class&lt;?&gt;&gt; getTypeMap() throws SQLException &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void setTypeMap(Map&lt;String, Class&lt;?&gt;&gt; map) throws SQLException &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void setHoldability(int holdability) throws SQLException &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public int getHoldability() throws SQLException &#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Savepoint setSavepoint() throws SQLException &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Savepoint setSavepoint(String name) throws SQLException &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void rollback(Savepoint savepoint) throws SQLException &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void releaseSavepoint(Savepoint savepoint) throws SQLException &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Statement createStatement(int resultSetType, int resultSetConcurrency, int resultSetHoldability) throws SQLException &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public PreparedStatement prepareStatement(String sql, int resultSetType, int resultSetConcurrency, int resultSetHoldability) throws SQLException &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public CallableStatement prepareCall(String sql, int resultSetType, int resultSetConcurrency, int resultSetHoldability) throws SQLException &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public PreparedStatement prepareStatement(String sql, int autoGeneratedKeys) throws SQLException &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public PreparedStatement prepareStatement(String sql, int[] columnIndexes) throws SQLException &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public PreparedStatement prepareStatement(String sql, String[] columnNames) throws SQLException &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Clob createClob() throws SQLException &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Blob createBlob() throws SQLException &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public NClob createNClob() throws SQLException &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public SQLXML createSQLXML() throws SQLException &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean isValid(int timeout) throws SQLException &#123;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void setClientInfo(String name, String value) throws SQLClientInfoException &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void setClientInfo(Properties properties) throws SQLClientInfoException &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String getClientInfo(String name) throws SQLException &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Properties getClientInfo() throws SQLException &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Array createArrayOf(String typeName, Object[] elements) throws SQLException &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Struct createStruct(String typeName, Object[] attributes) throws SQLException &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void setSchema(String schema) throws SQLException &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String getSchema() throws SQLException &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void abort(Executor executor) throws SQLException &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void setNetworkTimeout(Executor executor, int milliseconds) throws SQLException &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public int getNetworkTimeout() throws SQLException &#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public &lt;T&gt; T unwrap(Class&lt;T&gt; iface) throws SQLException &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean isWrapperFor(Class&lt;?&gt; iface) throws SQLException &#123;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="/../../images/image-20221014230310630.png" alt="image-20221014230310630"></p>
+<h1 id="final-原理"><a href="#final-原理" class="headerlink" title="final 原理"></a>final 原理</h1><p><strong>设置final变量的原理：</strong></p>
+<p><img src="/../../images/image-20221014230510630.png" alt="image-20221014230510630"></p>
+<p>​						int a &#x3D; 20,实际上是先获取a&#x3D;0，再进行赋值，如果不加final，则有可能会出现其它线程读到a为0.</p>
+<p><strong>获取final变量的原理：</strong></p>
+<p>​	加上final，则在底层获取final值实际上是赋值到另一个类中，因此不会有共享问题。</p>
+<p><img src="/../../images/image-20221015212848404.png" alt="image-20221015212848404"></p>
+<h1 id="无状态"><a href="#无状态" class="headerlink" title="无状态"></a>无状态</h1><p><img src="/../../images/image-20221015213725482.png" alt="image-20221015213725482"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/10/14/java%E5%B9%B6%E5%8F%91/%E4%B8%8D%E5%8F%AF%E5%8F%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-servlet使用thymeleaf" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/14/servlet%E4%BD%BF%E7%94%A8thymeleaf/">servlet使用thymeleaf</a>
+    </h1>
+  
+
+        
+        <a href="/2022/10/14/servlet%E4%BD%BF%E7%94%A8thymeleaf/" class="archive-article-date">
+  	<time datetime="2022-10-14T11:52:44.434Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="问题：javax-servlet-ServletException-Servlet-execution-threw-an-exception-org-apache-tomcat-websocket-se"><a href="#问题：javax-servlet-ServletException-Servlet-execution-threw-an-exception-org-apache-tomcat-websocket-se" class="headerlink" title="问题：javax.servlet.ServletException: Servlet execution threw an exception 	org.apache.tomcat.websocket.se"></a>问题：javax.servlet.ServletException: Servlet execution threw an exception 	org.apache.tomcat.websocket.se</h1><p><strong>thymeleaf的包导错了，导成spring的了，用于servlet应如下：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.thymeleaf&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;thymeleaf&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.0.12.RELEASE&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/10/14/servlet%E4%BD%BF%E7%94%A8thymeleaf/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-web应用开发-基础/课堂笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="WEB-INF"><a href="#WEB-INF" class="headerlink" title="WEB-INF"></a>WEB-INF</h1><p>​	该文件夹下的资源是安全的，不能通过浏览器直接访问。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/10/13/web%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91-%E5%9F%BA%E7%A1%80/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-java并发/无锁（乐观锁）--并发" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/12/java%E5%B9%B6%E5%8F%91/%E6%97%A0%E9%94%81%EF%BC%88%E4%B9%90%E8%A7%82%E9%94%81%EF%BC%89--%E5%B9%B6%E5%8F%91/">无锁（乐观锁）--并发</a>
+    </h1>
+  
+
+        
+        <a href="/2022/10/12/java%E5%B9%B6%E5%8F%91/%E6%97%A0%E9%94%81%EF%BC%88%E4%B9%90%E8%A7%82%E9%94%81%EF%BC%89--%E5%B9%B6%E5%8F%91/" class="archive-article-date">
+  	<time datetime="2022-10-12T14:27:27.454Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="共享模型之无锁"><a href="#共享模型之无锁" class="headerlink" title="共享模型之无锁"></a>共享模型之无锁</h1><p><img src="/../../images/image-20221012222845641.png" alt="image-20221012222845641"></p>
+<h2 id="1-问题提出："><a href="#1-问题提出：" class="headerlink" title="1. 问题提出："></a>1. 问题提出：</h2><p><img src="/../../images/image-20221012223043137.png" alt="image-20221012223043137"></p>
+<h3 id="无锁实现保护共享资源，实现线程安全"><a href="#无锁实现保护共享资源，实现线程安全" class="headerlink" title="无锁实现保护共享资源，实现线程安全"></a>无锁实现保护共享资源，实现线程安全</h3><p>示例：</p>
+<p><img src="/../../images/image-20221012225456135.png" alt="image-20221012225456135"></p>
+<p><strong>注意：</strong></p>
+<p><strong>1.AtomicInteger是原子包装类，是线程安全的</strong></p>
+<p><strong>2. 真正修改是因为之前创建的pre,next都是的执行块中，并没有在主存当中。所以会有个真正修改，来赋值给主存中的balance</strong></p>
+<h2 id="2-原理"><a href="#2-原理" class="headerlink" title="2. 原理"></a>2. 原理</h2><h3 id="2-1-cas工作方式"><a href="#2-1-cas工作方式" class="headerlink" title="2.1 cas工作方式"></a>2.1 cas工作方式</h3><p>从原理：</p>
+<p><img src="/../../images/image-20221013223125227.png" alt="image-20221013223125227"></p>
+<p><img src="/../../images/image-20221013223342951.png" alt="image-20221013223342951"></p>
+<p><img src="/../../images/image-20221013223509227.png" alt="image-20221013223509227"></p>
+<h3 id="2-2-cas–volatile"><a href="#2-2-cas–volatile" class="headerlink" title="2.2 cas–volatile"></a>2.2 cas–volatile</h3><p><img src="/../../images/image-20221013224152700.png" alt="image-20221013224152700"></p>
+<h3 id="2-3-cas-效率分析–为什么无锁效率高"><a href="#2-3-cas-效率分析–为什么无锁效率高" class="headerlink" title="2.3 cas 效率分析–为什么无锁效率高"></a>2.3 cas 效率分析–为什么无锁效率高</h3><p><img src="/../../images/image-20221013224356476.png" alt="image-20221013224356476"></p>
+<h3 id="2-4-cas特点"><a href="#2-4-cas特点" class="headerlink" title="2.4 cas特点"></a>2.4 cas特点</h3><p><img src="/../../images/image-20221013224950162.png" alt="image-20221013224950162"></p>
+<h2 id="3-实现cas方式的工具类"><a href="#3-实现cas方式的工具类" class="headerlink" title="3. 实现cas方式的工具类"></a>3. 实现cas方式的工具类</h2><h3 id="3-1-原子整数：保护整数类型的数据"><a href="#3-1-原子整数：保护整数类型的数据" class="headerlink" title="3.1 原子整数：保护整数类型的数据"></a>3.1 原子整数：保护整数类型的数据</h3><p><img src="/../../images/image-20221013225612715.png" alt="image-20221013225612715"></p>
+<h4 id="以AtomicInteger为例："><a href="#以AtomicInteger为例：" class="headerlink" title="以AtomicInteger为例："></a><strong>以AtomicInteger为例：</strong></h4><p><strong>getAndAdd(),addAndGet(),incrementAndGet(),getAndIncrement()</strong></p>
+<p><img src="/../../images/image-20221013230114706.png" alt="image-20221013230114706"></p>
+<p><img src="/../../images/image-20221013230253793.png" alt="image-20221013230253793"></p>
+<p><strong>updateAndGet:</strong></p>
+<p><img src="/../../images/image-20221013234016429.png" alt="image-20221013234016429"></p>
+<p>实现原理：</p>
+<p><img src="/../../images/image-20221013234623498.png" alt="image-20221013234623498"></p>
+<h3 id="3-2-原子引用：保护非整数类型的数据"><a href="#3-2-原子引用：保护非整数类型的数据" class="headerlink" title="3.2 原子引用：保护非整数类型的数据"></a>3.2 原子引用：保护非整数类型的数据</h3><p><img src="/../../images/image-20221013234905789.png" alt="image-20221013234905789"></p>
+<p><strong>需要原子类型的是因为我们要保护的数据并不一定都是整数类型的。</strong></p>
+<h4 id="示例：AtomicReference"><a href="#示例：AtomicReference" class="headerlink" title="示例：AtomicReference"></a><strong>示例：AtomicReference</strong></h4><p><img src="/../../images/image-20221014000225698.png" alt="image-20221014000225698"></p>
+<h4 id="ABA问题-–-AtomicStampedReference"><a href="#ABA问题-–-AtomicStampedReference" class="headerlink" title="ABA问题 – AtomicStampedReference"></a>ABA问题 – AtomicStampedReference</h4><p><strong>示例： 多线程下，如下方式，ref并不能感知到其它线程对共享变量的修改。</strong></p>
+<p><img src="/../../images/image-20221014000819920.png" alt="image-20221014000819920"></p>
+<p><img src="/../../images/image-20221014000832608.png" alt="image-20221014000832608"></p>
+<p>运行结果：</p>
+<p><img src="/../../images/image-20221014000846685.png" alt="image-20221014000846685"></p>
+<p><strong>解决：</strong> 用AtomicStampedReference设置一个版本号 ，这样就能通过对比版本号进行监测了，如果版本号不一致代表</p>
+<p><img src="/../../images/image-20221014001114084.png" alt="image-20221014001114084"></p>
+<p><img src="/../../images/image-20221014001756972.png" alt="image-20221014001756972"></p>
+<p><img src="/../../images/image-20221014002043536.png" alt="image-20221014002043536"></p>
+<h4 id="AtomicMarkableReference"><a href="#AtomicMarkableReference" class="headerlink" title="AtomicMarkableReference"></a>AtomicMarkableReference</h4><p><img src="/../../images/image-20221014002125432.png" alt="image-20221014002125432"></p>
+<p>示例：</p>
+<p><img src="/../../images/image-20221014002955453.png" alt="image-20221014002955453"></p>
+<h3 id="3-3-原子数组：保护数组里的元素"><a href="#3-3-原子数组：保护数组里的元素" class="headerlink" title="3.3 原子数组：保护数组里的元素"></a>3.3 原子数组：保护数组里的元素</h3><p><img src="/../../images/image-20221014003200700.png" alt="image-20221014003200700"></p>
+<p>、</p>
+<p><img src="/../../images/image-20221014101856052.png" alt="image-20221014101856052"></p>
+<p><img src="/../../images/image-20221014101921938.png" alt="image-20221014101921938"></p>
+<h3 id="3-4-原子更新器：保护某个对象的属性"><a href="#3-4-原子更新器：保护某个对象的属性" class="headerlink" title="3.4 原子更新器：保护某个对象的属性"></a>3.4 原子更新器：保护某个对象的属性</h3><p><img src="/../../images/image-20221014102126696.png" alt="image-20221014102126696"></p>
+<p>示例：</p>
+<p><img src="/../../images/image-20221014102717944.png" alt="image-20221014102717944"></p>
+<h3 id="3-5-原子累加器-比普通的原子累加性能更高–LongAdder"><a href="#3-5-原子累加器-比普通的原子累加性能更高–LongAdder" class="headerlink" title="3.5 原子累加器:比普通的原子累加性能更高–LongAdder"></a>3.5 原子累加器:比普通的原子累加性能更高–LongAdder</h3><p><img src="/../../images/image-20221014103516787.png" alt="image-20221014103516787"></p>
+<p><img src="/../../images/image-20221014103359128.png" alt="image-20221014103359128"></p>
+<p>因此，核心数越多，性能提升越明显。 </p>
+<h5 id="LongAdder原理（源码）"><a href="#LongAdder原理（源码）" class="headerlink" title="LongAdder原理（源码）:"></a>LongAdder原理（源码）:</h5><p><img src="/../../images/image-20221014103909227.png" alt="image-20221014103909227"></p>
+<p>transient ：保证不会被序列化</p>
+<p>volatile: 保证可见性</p>
+<h6 id="cas锁"><a href="#cas锁" class="headerlink" title="cas锁"></a><strong>cas锁</strong></h6><p><img src="/../../images/image-20221014104634343.png" alt="image-20221014104634343"></p>
+<p><img src="/../../images/image-20221014104654364.png" alt="image-20221014104654364"></p>
+<h6 id="缓存行伪共享"><a href="#缓存行伪共享" class="headerlink" title="缓存行伪共享"></a>缓存行伪共享</h6><p>@sun.misc.Contended就是防止一个缓存行加入多个cell对象。即防止出现伪共享。</p>
+<p><img src="/../../images/image-20221014104920255.png" alt="image-20221014104920255"></p>
+<p><img src="/../../images/image-20221014105032857.png" alt="image-20221014105032857"></p>
+<p><img src="/../../images/image-20221014105108456.png" alt="image-20221014105108456"></p>
+<p><img src="/../../images/image-20221014105202263.png" alt="image-20221014105202263"></p>
+<p><img src="/../../images/image-20221014105358106.png" alt="image-20221014105358106"></p>
+<p><img src="/../../images/image-20221014105655873.png" alt="image-20221014105655873"></p>
+<h6 id="add"><a href="#add" class="headerlink" title="add"></a>add</h6><p><img src="/../../images/image-20221014110411329.png" alt="image-20221014110411329"></p>
+<p><img src="/../../images/image-20221014110711432.png" alt="image-20221014110711432"></p>
+<p><img src="/../../images/image-20221014111219560.png" alt="image-20221014111219560"></p>
+<p><img src="/../../images/image-20221014111545711.png" alt="image-20221014111545711"></p>
+<h6 id="sum"><a href="#sum" class="headerlink" title="sum"></a>sum</h6><p><img src="/../../images/image-20221014111937074.png" alt="image-20221014111937074"></p>
+<h2 id="4-unsafe"><a href="#4-unsafe" class="headerlink" title="4. unsafe"></a>4. unsafe</h2><p><img src="/../../images/image-20221014112119353.png" alt="image-20221014112119353"></p>
+<p><strong>注意：unsafe并不代表线程不安全，它表示：unsafe能够操作底层，并不建议我们直接去操作它，如果误用会导致不安全的发生。</strong></p>
+<h4 id="获取unsafe"><a href="#获取unsafe" class="headerlink" title="获取unsafe"></a>获取unsafe</h4><p><img src="/../../images/image-20221014113729816.png" alt="image-20221014113729816"></p>
+<h4 id="cas相关方法-–-unsafe-cas-操作"><a href="#cas相关方法-–-unsafe-cas-操作" class="headerlink" title="cas相关方法 – unsafe cas 操作"></a>cas相关方法 – unsafe cas 操作</h4><p>域的偏移地址对应域</p>
+<p><img src="/../../images/image-20221014114442085.png" alt="image-20221014114442085"></p>
+<p>注意：如果上面值是Integer型，就得用compareAndSwapInteger()</p>
+<h3 id="用unsafe模拟原子整数"><a href="#用unsafe模拟原子整数" class="headerlink" title="用unsafe模拟原子整数"></a>用unsafe模拟原子整数</h3><p><img src="/../../images/image-20221014120200171.png" alt="image-20221014120200171"></p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p><img src="/../../images/image-20221014120309345.png" alt="image-20221014120309345"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/10/12/java%E5%B9%B6%E5%8F%91/%E6%97%A0%E9%94%81%EF%BC%88%E4%B9%90%E8%A7%82%E9%94%81%EF%BC%89--%E5%B9%B6%E5%8F%91/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-web应用开发-基础/localhost重定向的次数过多" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/12/web%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91-%E5%9F%BA%E7%A1%80/localhost%E9%87%8D%E5%AE%9A%E5%90%91%E7%9A%84%E6%AC%A1%E6%95%B0%E8%BF%87%E5%A4%9A/">localhost重定向的次数过多</a>
+    </h1>
+  
+
+        
+        <a href="/2022/10/12/web%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91-%E5%9F%BA%E7%A1%80/localhost%E9%87%8D%E5%AE%9A%E5%90%91%E7%9A%84%E6%AC%A1%E6%95%B0%E8%BF%87%E5%A4%9A/" class="archive-article-date">
+  	<time datetime="2022-10-11T16:14:12.094Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="localhost重定向的次数过多"><a href="#localhost重定向的次数过多" class="headerlink" title="localhost重定向的次数过多"></a>localhost重定向的次数过多</h1><p>​	今天在做servlet应用时，出现了localhost重定向的次数过多的问题。</p>
+<p><img src="/../../images/image-20221012001616857.png" alt="image-20221012001616857"></p>
+<p>清除cookie后也无法解决。最后检查代码逻辑，发现是过滤器范围太大，当主servlet执行了一次目标servlet后，在过滤器中又执行了一次。造成错误。</p>
 <p>如下：</p>
-<p><img src="/../../images/image-20220819203958827.png" alt="image-20220819203958827"></p>
-<p>2.根据图上操作文档的内容进行操作，镜像加速就配置完成了</p>
-<p><img src="/../../images/image-20220819204302137.png" alt="image-20220819204302137"></p>
-<p><strong>参考文献1：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1LQ4y127n4?p=46&vd_source=476b0deb78bfefe865a71ead616f43da">05-初识Docker-Docker的安装_哔哩哔哩_bilibili</a></strong></p>
-<p><strong>参考文献2:<a target="_blank" rel="noopener" href="https://www.runoob.com/docker/centos-docker-install.html">CentOS Docker 安装 | 菜鸟教程 (runoob.com)</a></strong></p>
-<p><strong>参考文献3：<a target="_blank" rel="noopener" href="https://www.runoob.com/docker/docker-mirror-acceleration.html">Docker 镜像加速 | 菜鸟教程 (runoob.com)</a></strong></p>
-<h2 id="5-Docker基本操作之镜像操作"><a href="#5-Docker基本操作之镜像操作" class="headerlink" title="5.Docker基本操作之镜像操作"></a>5.Docker基本操作之镜像操作</h2><p><img src="/../../images/image-20220819204457611.png" alt="image-20220819204457611"></p>
-<p><img src="/../../images/image-20220819204637878.png" alt="image-20220819204637878"></p>
-<p>主要通过查看docker帮助文档，来查看docker中的所有命令</p>
-<h4 id="5-1使用下面的命令查看docker中的所有命令："><a href="#5-1使用下面的命令查看docker中的所有命令：" class="headerlink" title="5.1使用下面的命令查看docker中的所有命令："></a>5.1使用下面的命令查看docker中的所有命令：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker --help</span><br></pre></td></tr></table></figure>
-
-<h4 id="5-2用下面的命令来查看指定命令的作用"><a href="#5-2用下面的命令来查看指定命令的作用" class="headerlink" title="5.2用下面的命令来查看指定命令的作用"></a>5.2用下面的命令来查看指定命令的作用</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker 命令 --help</span><br></pre></td></tr></table></figure>
-
-<h4 id="5-3-拉取镜像示例"><a href="#5-3-拉取镜像示例" class="headerlink" title="5.3 拉取镜像示例"></a>5.3 拉取镜像示例</h4><p><strong>拉取镜像并查看：</strong></p>
-<p>示例：</p>
-<p>1.首先去镜像仓库拉取nginx镜像，例如Dockerhub</p>
-<p><img src="/../../images/image-20220819205858841.png" alt="image-20220819205858841"></p>
-<p>(图片来自于黑马)</p>
-<p>2.拉取nginx镜像</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull nginx</span><br></pre></td></tr></table></figure>
-
-<p>3.查看本地镜像</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
-
-<p><img src="/../../images/image-20220819210122126.png" alt="image-20220819210122126"></p>
-<p><strong>利用docker save将镜像导出磁盘，然后再通过load加载回来</strong></p>
-<p>示例：</p>
-<p>1.查看帮助文档，找到具体使用方法·：</p>
-<p><img src="/../../images/image-20220819210404369.png" alt="image-20220819210404369"></p>
-<p>2.根据具体是以哦那个方法将镜像到网盘</p>
-<p><img src="/../../images/image-20220819210752668.png" alt="image-20220819210752668"></p>
-<p>ll查看，可以看到本地出现了一个nginx.tar文件，说明导出成功了</p>
-<p><img src="/../../images/image-20220819210854067.png" alt="image-20220819210854067"></p>
-<p>导入：</p>
-<p>​	先把本地镜像删除：</p>
-<p><img src="/../../images/image-20220819211041750.png" alt="image-20220819211041750"></p>
-<p>​	通过docker images查看，发现没有任何镜像了</p>
-<p><img src="/../../images/image-20220819211123848.png" alt="image-20220819211123848"></p>
-<p>​	然后通过load来加载本地文件，如下：</p>
-<p><img src="/../../images/image-20220819211340209.png" alt="image-20220819211340209"></p>
-<p>​	再通过docker images查看镜像，发现导入成功：</p>
-<p><img src="/../../images/image-20220819211457842.png" alt="image-20220819211457842"></p>
-<h2 id="6-Docker基本操作之容器命令"><a href="#6-Docker基本操作之容器命令" class="headerlink" title="6.Docker基本操作之容器命令"></a>6.Docker基本操作之容器命令</h2><p>容器操作常见命令如下：</p>
-<p><img src="/../../images/image-20220819212229532.png" alt="image-20220819212229532"></p>
-<p>操作示例：图片来自黑马</p>
-<p><strong>案例1：</strong></p>
-<p><img src="/../../images/image-20220819214103372.png" alt="image-20220819214103372"></p>
-<p><img src="/../../images/image-20220819214520605.png" alt="image-20220819214520605"></p>
-<p><strong>案例2：</strong></p>
-<p><img src="/../../images/image-20220820142957686.png" alt="image-20220820142957686"></p>
-<p><strong>退出容器：exit</strong></p>
-<p><strong>停止容器：docker stop 容器名称</strong></p>
-<p><strong>开启容器：docker start 容器id</strong></p>
-<p><strong>查看所有容器状态：docker ps -a</strong></p>
-<p><strong>查看运行中的容器状态：docker ps</strong></p>
-<p><strong>删除容器:docker rm 容器名</strong>（默认只能删除非运行中的容器，加上 -f 就是强制删除）</p>
-<p><img src="/../../images/image-20220820143534774.png" alt="image-20220820143534774"></p>
-<h3 id="7-Docker容器基本操作之数据卷"><a href="#7-Docker容器基本操作之数据卷" class="headerlink" title="7.Docker容器基本操作之数据卷"></a>7.Docker容器基本操作之数据卷</h3><p><img src="/../../images/image-20220820151907587.png" alt="image-20220820151907587"></p>
-<p><img src="/../../images/image-20220820152317518.png" alt="image-20220820152317518"></p>
-<p><img src="/../../images/image-20220820152514844.png" alt="image-20220820152514844"></p>
-<p><img src="/../../images/image-20220820152941505.png" alt="image-20220820152941505"></p>
-<p><strong>挂载数据卷：</strong></p>
-<p><img src="/../../images/image-20220820153031352.png" alt="image-20220820153031352"></p>
-<p><img src="/../../images/image-20220820161552299.png" alt="image-20220820161552299"></p>
-<p><strong>注意：也可以通过工具直接进入文件目录查看，进行选择编辑，如下:(用xtfp)</strong></p>
-<p><img src="/../../images/image-20220820161819258.png" alt="image-20220820161819258"></p>
-<p><img src="/../../images/image-20220820161726398.png" alt="image-20220820161726398"></p>
-<p><strong>将宿主机目录直接挂载到容器：</strong></p>
-<p><img src="/../../images/image-20220820164216179.png" alt="image-20220820164216179"></p>
-<p><img src="/../../images/image-20220820165529900.png" alt="image-20220820165529900"></p>
-<p><img src="/../../images/image-20220820165607408.png" alt="image-20220820165607408"></p>
-<h2 id="7-Dockerfile-自定义镜像"><a href="#7-Dockerfile-自定义镜像" class="headerlink" title="7.Dockerfile 自定义镜像"></a>7.Dockerfile 自定义镜像</h2><p><img src="/../../images/image-20220820170108335.png" alt="image-20220820170108335"></p>
-<p><img src="/../../images/image-20220820170254543.png" alt="image-20220820170254543"></p>
-<p>案例1：</p>
-<p><img src="/../../images/image-20220820171151384.png" alt="image-20220820171151384"></p>
-<p>案例1优化：</p>
-<p><img src="/../../images/image-20220820171018129.png" alt="image-20220820171018129"></p>
-<p><strong>总结：</strong></p>
-<p><img src="/../../images/image-20220820171119178.png" alt="image-20220820171119178"></p>
-<h2 id="8-DockerCompose"><a href="#8-DockerCompose" class="headerlink" title="8.DockerCompose"></a>8.DockerCompose</h2><h4 id="DockerCompose定义"><a href="#DockerCompose定义" class="headerlink" title="DockerCompose定义"></a>DockerCompose定义</h4><p><img src="/../../images/image-20220820194336460.png" alt="image-20220820194336460"></p>
-<h4 id="DockerCompose安装"><a href="#DockerCompose安装" class="headerlink" title="DockerCompose安装"></a>DockerCompose安装</h4><h5 id="1-下载"><a href="#1-下载" class="headerlink" title="1.下载"></a>1.下载</h5><p>方式一：（图片来源：黑马）</p>
-<p><img src="/../../images/image-20220820195022808.png" alt="image-20220820195022808"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#安装</span><br><span class="line">curl -L https://github.com/docker/compose/releases/download/1.23.1/docker-compose-`uname -s`-`uname -m` &gt; /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
-
-<p>下载速度慢，并不建议</p>
-<p>方式二：直接下载docker-compose文件，上传到<code>/usr/local/bin/</code>目录</p>
-<p>​	*1.登入官方地址下载指定版本，官方地址为：<a target="_blank" rel="noopener" href="https://github.com/docker/compose/releases">https://github.com/docker/compose/releases</a></p>
-<p><img src="/../../images/image-20220820195603343.png" alt="image-20220820195603343"></p>
-<p><img src="/../../images/image-20220820195726894.png" alt="image-20220820195726894"></p>
-<p>这里下载的版本与老师版本相同为1.29.1	</p>
-<p>*2.上传到服务器目录<code>/usr/local/bin/</code>目录下，直接拖拽进去就好</p>
-<p><img src="/../../images/image-20220820213459838.png" alt="image-20220820213459838"></p>
-<p>在linux里查看，可以看到成功导入了</p>
-<p><img src="/../../images/image-20220820213601585.png" alt="image-20220820213601585"></p>
-<h4 id="2-修改文件权限"><a href="#2-修改文件权限" class="headerlink" title="2.修改文件权限"></a>2.修改文件权限</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 修改权限 +x代表给执行权</span><br><span class="line"></span><br><span class="line">chmod +x /usr/local/bin/docker-compose-Linux-x86_64</span><br></pre></td></tr></table></figure>
-
-
-
-<p><img src="/../../images/image-20220820214331224.png" alt="image-20220820214331224"></p>
-<p>这样docker compose就安装好了</p>
-<h4 id="3-Base自动补全命令"><a href="#3-Base自动补全命令" class="headerlink" title="3.Base自动补全命令"></a>3.Base自动补全命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 补全命令</span><br><span class="line"></span><br><span class="line">curl -L https://raw.githubusercontent.com/docker/compose/1.29.1/contrib/completion/bash/docker-compose &gt; /etc/bash_completion.d/docker-compose</span><br></pre></td></tr></table></figure>
-
-<p>进行输入命令有提示，更方便</p>
-<p>如果出现403错误，无法导入成功</p>
-<p> 需要修改一下host文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;199.232.68.133 raw.githubusercontent.com&quot; &gt;&gt; /etc/hosts</span><br></pre></td></tr></table></figure>
-
-<p>然后再次执行刚才的命令</p>
-<p>如果还下载不了，记得多试几次</p>
-<p><img src="/../../images/image-20220820215837893.png" alt="image-20220820215837893"></p>
-<p>成功！</p>
-<p><strong>示例：</strong></p>
-<p><img src="/../../images/image-20220820221759506.png" alt="image-20220820221759506"></p>
-<h3 id="Docker镜像仓库"><a href="#Docker镜像仓库" class="headerlink" title="Docker镜像仓库"></a>Docker镜像仓库</h3><p><strong>首先配置Docker信任地址</strong></p>
-<p>我们的私服采用的是http协议，默认不被Docker信任，所以需要做一个配置，步骤如下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 打开要修改的文件</span><br><span class="line"></span><br><span class="line">vi /etc/docker/daemon.json</span><br><span class="line"></span><br><span class="line"># 添加内容：</span><br><span class="line"></span><br><span class="line">&quot;insecure-registries&quot;:[&quot;http://192.168.138.100:8080&quot;]</span><br><span class="line"></span><br><span class="line"># 重加载</span><br><span class="line"></span><br><span class="line">systemctl daemon-reload</span><br><span class="line"></span><br><span class="line"># 重启docker</span><br><span class="line"></span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
-
-<p><strong>注意内容添加部分一定要有“，”分割</strong><img src="/../../images/image-20220820224848113.png" alt="image-20220820224848113"></p>
-<p><strong>然后最好先建一个文件再执行，如下：</strong></p>
-<p><img src="/../../images/image-20220820225224433.png" alt="image-20220820225224433"></p>
-<p><strong>再在这个文件创建一个yml文件，用xtfp打开将下面的镜像仓库搭建命令内容复制到里面，如下</strong></p>
-<p><img src="/../../images/image-20220820225642696.png" alt="image-20220820225642696"></p>
-<p><img src="/../../images/image-20220820225818507.png" alt="image-20220820225818507"></p>
-<p><strong>这里复制的是带图形化版本的</strong></p>
-<p><strong>简化版镜像仓库</strong></p>
-<p>​		Docker官方的Docker Registry是一个基础版本的Docker镜像仓库，具备仓库管理的完整功能，但是没有图形化界面。</p>
-<pre><code>     官网地址：https://hub.docker.com/_/registry
-</code></pre>
-<p>Docker官方的Docker Registry是一个基础版本的Docker镜像仓库，具备仓库管理的完整功能，但是没有图形化界面。</p>
-<p>搭建方式比较简单，命令如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">    --restart=always \</span><br><span class="line">    --name registry	\</span><br><span class="line">    -p 5000:5000 \</span><br><span class="line">    -v registry-data:/var/lib/registry \</span><br><span class="line">    registry</span><br></pre></td></tr></table></figure>
-
-<p>命令中挂载了一个数据卷registry-data到容器内的&#x2F;var&#x2F;lib&#x2F;registry 目录，这是私有镜像库存放数据的目录。</p>
-<p>访问<a target="_blank" rel="noopener" href="http://yourip:5000/v2/_catalog">http://YourIp:5000/v2/_catalog</a> 可以查看当前私有镜像服务中包含的镜像</p>
-<p><strong>带有图形化界面的版本（建议使用）</strong></p>
-<p>使用DockerCompose部署带有图象界面的DockerRegistry，命令如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">version: &#x27;3.0&#x27;</span><br><span class="line">services:</span><br><span class="line">  registry:</span><br><span class="line">    image: registry</span><br><span class="line">    volumes:</span><br><span class="line">      - ./registry-data:/var/lib/registry</span><br><span class="line">  ui:</span><br><span class="line">    image: joxit/docker-registry-ui:static</span><br><span class="line">    ports:</span><br><span class="line">      - 8080:80</span><br><span class="line">    environment:</span><br><span class="line">      - REGISTRY_TITLE=自学练习私有仓库</span><br><span class="line">      - REGISTRY_URL=http://registry:5000</span><br><span class="line">    depends_on:</span><br><span class="line">      - registry</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<p><strong>然后上传，注意这里的up要之前的docker要用之前下载的docker compose的文件名</strong></p>
-<p><img src="/../../images/image-20220820230125997.png" alt="image-20220820230125997"></p>
-<p><img src="/../../images/image-20220820230007688.png" alt="image-20220820230007688"></p>
-<p><img src="/../../images/image-20220820230415133.png" alt="image-20220820230415133"></p>
+<p>主线程跳转：</p>
+<p><img src="/../../images/image-20221012001926590.png" alt="image-20221012001926590"></p>
+<p>跳转时遇到拦截器，拦截器中又进行了同样的跳转：</p>
+<p><img src="/../../images/image-20221012002006912.png" alt="image-20221012002006912"></p>
+<p>造成了错误。</p>
+<p><strong>解决：改变拦截范围，让主线程跳转时不会再触发拦截器。（这里的拦截器只需拦截初始界面）</strong></p>
+<p><img src="/../../images/image-20221012002101220.png" alt="image-20221012002101220"></p>
 
       
 
@@ -775,7 +786,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/08/01/springcloud%E5%AD%A6%E4%B9%A0/Docker/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/10/12/web%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91-%E5%9F%BA%E7%A1%80/localhost%E9%87%8D%E5%AE%9A%E5%90%91%E7%9A%84%E6%AC%A1%E6%95%B0%E8%BF%87%E5%A4%9A/">展开全文 >></a>
         </p>
       
 
@@ -805,57 +816,144 @@
 
 
   
-    <article id="post-springcloud学习/服务异步通讯" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-java并发/java内存模型--JMM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/01/springcloud%E5%AD%A6%E4%B9%A0/%E6%9C%8D%E5%8A%A1%E5%BC%82%E6%AD%A5%E9%80%9A%E8%AE%AF/">服务异步通讯MQ</a>
+      <a class="article-title" href="/2022/10/10/java%E5%B9%B6%E5%8F%91/java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B--JMM/">java内存模型--JMM</a>
     </h1>
   
 
         
-        <a href="/2022/08/01/springcloud%E5%AD%A6%E4%B9%A0/%E6%9C%8D%E5%8A%A1%E5%BC%82%E6%AD%A5%E9%80%9A%E8%AE%AF/" class="archive-article-date">
-  	<time datetime="2022-07-31T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-01</time>
+        <a href="/2022/10/10/java%E5%B9%B6%E5%8F%91/java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B--JMM/" class="archive-article-date">
+  	<time datetime="2022-10-10T11:32:50.543Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="1-初识MQ"><a href="#1-初识MQ" class="headerlink" title="1.初识MQ"></a>1.初识MQ</h1><p><img src="/../../images/image-20220823164925185.png" alt="image-20220823164925185"></p>
-<h2 id="1-1同步调用："><a href="#1-1同步调用：" class="headerlink" title="1.1同步调用："></a>1.1同步调用：</h2><p><strong>优点：</strong>时效性强，可以立即得到结果</p>
-<p><strong>缺点：</strong></p>
-<p><img src="/../../images/image-20220823165339327.png" alt="image-20220823165339327"></p>
-<h2 id="1-2异步调用"><a href="#1-2异步调用" class="headerlink" title="1.2异步调用"></a>1.2异步调用</h2><p><img src="/../../images/image-20220823170017922.png" alt="image-20220823170017922"></p>
-<p><img src="/../../images/image-20220823170518291.png" alt="image-20220823170518291"></p>
-<h1 id="2-RabbitMQ"><a href="#2-RabbitMQ" class="headerlink" title="2.RabbitMQ"></a>2.RabbitMQ</h1><h2 id="1-RabbitMQ安装"><a href="#1-RabbitMQ安装" class="headerlink" title="1.RabbitMQ安装"></a>1.RabbitMQ安装</h2><p>将在centos虚拟机中用Docker来进行安装</p>
-<h3 id="1-1下载安装"><a href="#1-1下载安装" class="headerlink" title="1.1下载安装"></a>1.1下载安装</h3><p>方式一：在线拉取</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull rabbitmq:3-management</span><br></pre></td></tr></table></figure>
+        <p><img src="/../../images/image-20221010193404924.png" alt="image-20221010193404924"></p>
+<h1 id="java内存模型"><a href="#java内存模型" class="headerlink" title="java内存模型"></a>java内存模型</h1><p><img src="/../../images/image-20221010193443716.png" alt="image-20221010193443716"></p>
+<p><img src="/../../images/image-20221010193450916.png" alt="image-20221010193450916"></p>
+<h2 id="可见性"><a href="#可见性" class="headerlink" title="可见性"></a>可见性</h2><p>示例：</p>
+<p><img src="/../../images/image-20221010193737326.png" alt="image-20221010193737326"></p>
+<p><strong>运行以上代码后，java程序并不会像我们预想那样停下来。</strong></p>
+<p><strong>原理：</strong></p>
+<p><img src="/../../images/image-20221010200224406.png" alt="image-20221010200224406"></p>
+<p><img src="/../../images/image-20221010200320882.png" alt="image-20221010200320882"></p>
+<p><img src="/../../images/image-20221010200354217.png" alt="image-20221010200354217"></p>
+<p><strong>解决：</strong></p>
+<p><strong>方法1：变量上加上volatitle,保证可见性&#x2F;&#x2F;加上后变脸就不能从缓存中读取，只能从主存中读取，相应的速度也会减慢&#x2F;&#x2F;保证了共享变量在多个线程的可见性</strong></p>
+<p><img src="/../../images/image-20221010200655237.png" alt="image-20221010200655237"></p>
+<p>方法2：锁对象</p>
+<p><img src="/../../images/image-20221010200944226.png" alt="image-20221010200944226"></p>
+<h2 id="可见性和原子性"><a href="#可见性和原子性" class="headerlink" title="可见性和原子性"></a>可见性和原子性</h2><p><img src="/../../images/image-20221010201100268.png" alt="image-20221010201100268"></p>
+<p><img src="/../../images/image-20221010201226548.png" alt="image-20221010201226548"></p>
+<p><img src="/../../images/image-20221010201255908.png" alt="image-20221010201255908"></p>
+<p><img src="/../../images/image-20221010201645501.png" alt="image-20221010201645501"></p>
+<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><h3 id="同步模式之两阶段终止"><a href="#同步模式之两阶段终止" class="headerlink" title="同步模式之两阶段终止"></a>同步模式之两阶段终止</h3><p>示例：用volatitle保证共享变量在多个线程的可见性</p>
+<p><img src="/../../images/image-20221010204826986.png" alt="image-20221010204826986"></p>
+<h3 id="同步模式之犹豫模式"><a href="#同步模式之犹豫模式" class="headerlink" title="同步模式之犹豫模式"></a>同步模式之犹豫模式</h3><p><img src="/../../images/image-20221010205700268.png" alt="image-20221010205700268"></p>
+<p><img src="/../../images/image-20221010205714261.png" alt="image-20221010205714261"></p>
+<p><strong>示例：</strong></p>
+<p><img src="/../../images/image-20221010210257351.png" alt="image-20221010210257351"></p>
+<p><img src="/../../images/image-20221010210322431.png" alt="image-20221010210322431"></p>
+<p><strong>应用：</strong></p>
+<p>1.监控线程</p>
+<ol start="2">
+<li></li>
+</ol>
+<p><img src="/../../images/image-20221010211020406.png" alt="image-20221010211020406"></p>
+<h2 id="有序性-–-指令重排"><a href="#有序性-–-指令重排" class="headerlink" title="有序性 – 指令重排"></a>有序性 – 指令重排</h2><p><img src="/../../images/image-20221010212557590.png" alt="image-20221010212557590"></p>
+<p><img src="/../../images/image-20221010212916053.png" alt="image-20221010212916053"></p>
+<h3 id="指令重排–原理：cpu指令重排优化"><a href="#指令重排–原理：cpu指令重排优化" class="headerlink" title="指令重排–原理：cpu指令重排优化"></a>指令重排–原理：cpu指令重排优化</h3><p><img src="/../../images/image-20221010213432466.png" alt="image-20221010213432466"></p>
+<p><img src="/../../images/image-20221010213509341.png" alt="image-20221010213509341"></p>
+<p><strong>结论：</strong></p>
+<p><img src="/../../images/image-20221010214101734.png" alt="image-20221010214101734"></p>
+<p><img src="/../../images/image-20221010214134873.png" alt="image-20221010214134873"></p>
+<h3 id="指令重排–问题：在单线程下不会有影响，在多线程下可能会出现问题"><a href="#指令重排–问题：在单线程下不会有影响，在多线程下可能会出现问题" class="headerlink" title="指令重排–问题：在单线程下不会有影响，在多线程下可能会出现问题"></a>指令重排–问题：在单线程下不会有影响，在多线程下可能会出现问题</h3><p>示例：</p>
+<p><img src="/../../images/image-20221010214722177.png" alt="image-20221010214722177"></p>
+<p><img src="/../../images/image-20221010214741927.png" alt="image-20221010214741927"></p>
+<p>直接拷贝面的指令到我们的项目中，打开一个terminal窗口然后粘贴运行。</p>
+<p><img src="/../../images/image-20221010215103866.png" alt="image-20221010215103866"></p>
+<p>之后：</p>
+<p><img src="/../../images/image-20221010214759908.png" alt="image-20221010214759908"></p>
+<p>将java类打包后进行运行：</p>
+<p><img src="/../../images/image-20221010215421719.png" alt="image-20221010215421719"></p>
+<p><img src="/../../images/image-20221010215441793.png" alt="image-20221010215441793"></p>
+<p>结果：</p>
+<p><img src="/../../images/image-20221010215629202.png" alt="image-20221010215629202"></p>
+<p><strong>有346664864次出现了4，有17913929出现了1，但是有1568次出现了0.说明多线程情况下，java的指令重排（基于cpu的指令重排）会给结果造成问题。</strong></p>
+<h3 id="指令重排–禁用"><a href="#指令重排–禁用" class="headerlink" title="指令重排–禁用"></a>指令重排–禁用</h3><p> <strong>加上volatile，能防止ready之前的代码被重排序</strong></p>
+<p><img src="/../../images/image-20221010220047414.png" alt="image-20221010220047414"></p>
+<h1 id="voliate-原理"><a href="#voliate-原理" class="headerlink" title="voliate 原理"></a>voliate 原理</h1><p><img src="/../../images/image-20221010220936378.png" alt="image-20221010220936378"></p>
+<h2 id="1-如何保证可见性"><a href="#1-如何保证可见性" class="headerlink" title="1. 如何保证可见性"></a>1. 如何保证可见性</h2><p><img src="/../../images/image-20221011205409831.png" alt="image-20221011205409831"></p>
+<p><img src="/../../images/image-20221011205557029.png" alt="image-20221011205557029"></p>
+<h2 id="2-如何保证有序性"><a href="#2-如何保证有序性" class="headerlink" title="2. 如何保证有序性"></a>2. 如何保证有序性</h2><p><img src="/../../images/image-20221011205833024.png" alt="image-20221011205833024"></p>
+<p><img src="/../../images/image-20221011205917459.png" alt="image-20221011205917459"></p>
+<p><strong>注意：仅仅是保证可见性和有序性，不能解决指令的交错。</strong></p>
+<p><img src="/../../images/image-20221011210022053.png" alt="image-20221011210022053"></p>
+<h2 id="3-double-checked-locking-问题"><a href="#3-double-checked-locking-问题" class="headerlink" title="3. double-checked locking 问题"></a>3. double-checked locking 问题</h2><p><img src="/../../images/image-20221011211108014.png" alt="image-20221011211108014"></p>
+<p><img src="/../../images/image-20221011211327802.png" alt="image-20221011211327802"></p>
+<p><strong>问题在于：因为第一个if是在同步块之外，所以在多线程下，会发生指令重排，有序性会出现问题：</strong></p>
+<p><strong>可能出现如下问题：</strong></p>
+<p><img src="/../../images/image-20221011213232651.png" alt="image-20221011213232651"></p>
+<p><img src="/../../images/image-20221011212620508.png" alt="image-20221011212620508"></p>
+<p><img src="/../../images/image-20221011212736331.png" alt="image-20221011212736331"></p>
+<h2 id="4-问题解决：加上volatitle阻止指令重排序"><a href="#4-问题解决：加上volatitle阻止指令重排序" class="headerlink" title="4. 问题解决：加上volatitle阻止指令重排序"></a>4. 问题解决：加上volatitle阻止指令重排序</h2><p><img src="/../../images/image-20221011214536338.png" alt="image-20221011214536338"></p>
+<p><strong>原理：</strong></p>
+<p><img src="/../../images/image-20221011214651043.png" alt="image-20221011214651043"></p>
+<p><img src="/../../images/image-20221011214805336.png" alt="image-20221011214805336"></p>
+<h1 id="happens-before：是可见性和有序性的一套规则总结"><a href="#happens-before：是可见性和有序性的一套规则总结" class="headerlink" title="happens-before：是可见性和有序性的一套规则总结"></a>happens-before：是可见性和有序性的一套规则总结</h1><p><img src="/../../images/image-20221011215930215.png" alt="image-20221011215930215"></p>
+<p><strong>规则1：</strong></p>
+<p><img src="/../../images/image-20221011220037798.png" alt="image-20221011220037798"></p>
+<p><strong>规则2：</strong></p>
+<p><img src="/../../images/image-20221011220226601.png" alt="image-20221011220226601"></p>
+<p><strong>规则3：</strong></p>
+<p><img src="/../../images/image-20221011220320259.png" alt="image-20221011220320259"></p>
+<p><strong>规则4：</strong></p>
+<p><img src="/../../images/image-20221011220422403.png" alt="image-20221011220422403"></p>
+<p><strong>规则5：</strong></p>
+<p><img src="/../../images/image-20221011220449685.png" alt="image-20221011220449685"></p>
+<p><strong>规则6：</strong></p>
+<p><img src="/../../images/image-20221011220704143.png" alt="image-20221011220704143"></p>
+<p><strong>规则7：</strong></p>
+<p><img src="/../../images/image-20221011220717317.png" alt="image-20221011220717317"></p>
+<h1 id="习题–balking模式"><a href="#习题–balking模式" class="headerlink" title="习题–balking模式"></a>习题–balking模式</h1><p><strong>下面例子是有问题的，volatile只能保护变量可见性和有序性，对于以下的情况还是应该用同步代码块来执行。如：synchronized</strong></p>
+<p><img src="/../../images/image-20221012222535747.png" alt="image-20221012222535747"></p>
+<h1 id="习题–线程安全单例实现"><a href="#习题–线程安全单例实现" class="headerlink" title="习题–线程安全单例实现"></a>习题–线程安全单例实现</h1><p>示例1：</p>
+<p><img src="/../../images/image-20221012211218864.png" alt="image-20221012211218864"></p>
+<p><strong>a. 加final: 防止子类重写该类的方法时，破坏其单例结构</strong></p>
+<hr>
+<p><strong>b. 实现反序列接口，做以下操作防止反序列化破坏单例：该方法会在反序列化时将该方法返回的对象当成反序列化结果。保证当反序列化时仍然说同一个对象，而不是一个新的对象</strong></p>
+<p><img src="/../../images/image-20221012211543804.png" alt="image-20221012211543804"></p>
+<hr>
+<p><strong>c. 将构造方法设置为私有，并不能防止反射创建新的实例</strong></p>
+<p><strong>d.静态成员变量的操作是在类加载阶段（即由jvm操作）完成的，可以保证线程的安全性</strong></p>
+<p>示例2：</p>
+<p><img src="/../../images/image-20221012213440866.png" alt="image-20221012213440866"></p>
+<p><strong>a. 枚举定义有几个，就是有几个对象</strong></p>
+<p><strong>b. 枚举单例创建是线程安全的，不会有并发问题</strong></p>
+<p><strong>c. 枚举单例不能用反射破坏单例</strong></p>
+<p><strong>d. 枚举默认都是可以被序列化以及反序列化的，并且可以避免反序列化时出现的问题</strong></p>
+<p>**e. 枚举是饿汉式，是类加载时的静态成员变量 **</p>
+<p><strong>g. 枚举单例也可以加构造方法和一些初始化方法，因此可以在加入一些初始化逻辑</strong></p>
+<p>示例3：懒汉式</p>
+<p><img src="/../../images/image-20221012213505574.png" alt="image-20221012213505574"></p>
+<p>缺点：锁的范围比较大，当对象都创建好了，其它对象还会去获取锁</p>
+<p>示例4：对比实验3，缩小了锁的范围，提升了性能。</p>
+<p><img src="/../../images/image-20221012213839469.png" alt="image-20221012213839469"></p>
+<p><strong>a. 加volatitle是为了防止指令重排造成错误.(double-checked locking 问题).生产Singleton对象时，构造方法的指令和赋值的指令有可能会发生重排（从先调用构造方法再赋值操作，变成先赋值操作，再调用构造方法），这样对于外面的if(INSTANCE!&#x3D;null)判断，可能拿到的就是赋值了但未调用构造方法的值，就会判断不为空。</strong></p>
+<p>示例5：</p>
+<p><img src="/../../images/image-20221012220314726.png" alt="image-20221012220314726"></p>
+<p><strong>a.静态内部类：实现懒汉式的实现</strong></p>
+<p><strong>b.问题2解答：不会有并发问题，因为该方法的类的创建是jvm进行线程安全保护。静态成员变量的操作是在类加载阶段（即由jvm操作）完成的，可以保证线程的安全性</strong></p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p><img src="/../../images/image-20221012221711336.png" alt="image-20221012221711336"></p>
 
-<p>方式二：从本地加载，本地下载好一个</p>
-<p><img src="/../../images/image-20220823203245888.png" alt="image-20220823203245888"></p>
-<p>上传到虚拟机后，使用命令加载镜像即可：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker load -i mq.tar</span><br></pre></td></tr></table></figure>
-
-
-
-<p><img src="/../../images/image-20220823203603099.png" alt="image-20220823203603099"></p>
-<h3 id="1-2安装MQ"><a href="#1-2安装MQ" class="headerlink" title="1.2安装MQ"></a>1.2安装MQ</h3><p>执行下面的命令来运行MQ容器</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run \</span><br><span class="line"> -e RABBITMQ_DEFAULT_USER=itcast \</span><br><span class="line"> -e RABBITMQ_DEFAULT_PASS=123321 \</span><br><span class="line"> --name mq \</span><br><span class="line"> --hostname mq1 \</span><br><span class="line"> -p 15672:15672 \</span><br><span class="line"> -p 5672:5672 \</span><br><span class="line"> -d \</span><br><span class="line"> rabbitmq:3-management</span><br></pre></td></tr></table></figure>
-
-<p>查看本地镜像看是否成功运行：</p>
-<p><img src="/../../images/image-20220823204429776.png" alt="image-20220823204429776"></p>
-<p>访问查看是否成功：</p>
-<p><img src="/../../images/image-20220823204354923.png" alt="image-20220823204354923"></p>
-<p>这里的账号和密码就是刚刚指定的环境账号和密码</p>
-<p><img src="/../../images/image-20220823204515530.png" alt="image-20220823204515530"></p>
-<h2 id="2-RabbitMQ的结构和其中的几个概念"><a href="#2-RabbitMQ的结构和其中的几个概念" class="headerlink" title="2.RabbitMQ的结构和其中的几个概念"></a>2.RabbitMQ的结构和其中的几个概念</h2><h3 id="2-1结构："><a href="#2-1结构：" class="headerlink" title="2.1结构："></a>2.1结构：<img src="/../../images/image-20220823205203281.png" alt="image-20220823205203281"></h3><h3 id="2-2概念："><a href="#2-2概念：" class="headerlink" title="2.2概念："></a>2.2概念：</h3><p><img src="/../../images/image-20220823205412371.png" alt="image-20220823205412371"></p>
-<h2 id="3-RabbitMQ消息模型"><a href="#3-RabbitMQ消息模型" class="headerlink" title="3.RabbitMQ消息模型"></a>3.RabbitMQ消息模型</h2><p><img src="/../../images/image-20220823205858488.png" alt="image-20220823205858488"></p>
-<p><img src="/../../images/image-20220823210019225.png" alt="image-20220823210019225"></p>
-<h2 id="4-RabbitMQ简单队列模型"><a href="#4-RabbitMQ简单队列模型" class="headerlink" title="4.RabbitMQ简单队列模型"></a>4.RabbitMQ简单队列模型</h2>
       
 
       
@@ -867,7 +965,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/08/01/springcloud%E5%AD%A6%E4%B9%A0/%E6%9C%8D%E5%8A%A1%E5%BC%82%E6%AD%A5%E9%80%9A%E8%AE%AF/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/10/10/java%E5%B9%B6%E5%8F%91/java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B--JMM/">展开全文 >></a>
         </p>
       
 
@@ -897,12 +995,29 @@
 
 
   
-    <article id="post-java后端注解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-力扣刷题总结/回溯算法+剪枝" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/07/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95+%E5%89%AA%E6%9E%9D/">回溯算法+剪枝（递归算法）</a>
+    </h1>
+  
+
+        
+        <a href="/2022/10/07/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95+%E5%89%AA%E6%9E%9D/" class="archive-article-date">
+  	<time datetime="2022-10-07T01:59:00.990Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-07</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="java后端springboot注解了解总结（待添加）"><a href="#java后端springboot注解了解总结（待添加）" class="headerlink" title="java后端springboot注解了解总结（待添加）"></a>java后端springboot注解了解总结（待添加）</h2>
+        <h1 id="重点概括："><a href="#重点概括：" class="headerlink" title="重点概括："></a>重点概括：</h1><p>​	<strong>如果解决一个问题有多个步骤，每一个步骤有多种方法，题目又要我们找出所有的方法，可以使用回溯算法；</strong><br>​	<strong>回溯算法是在一棵树上的 深度优先遍历（因为要找所有的解，所以需要遍历）；</strong><br>​	<strong>组合问题，相对于排列问题而言，不计较一个组合内元素的顺序性（即 [1, 2, 3] 与 [1, 3, 2] 认为是同一个组合），因此很多时候需要按某种顺序展开搜索，这样才能做到不重不漏。</strong></p>
+<p>作者：liweiwei1419<br>链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/combinations/solution/hui-su-suan-fa-jian-zhi-python-dai-ma-java-dai-ma-/">https://leetcode.cn/problems/combinations/solution/hui-su-suan-fa-jian-zhi-python-dai-ma-java-dai-ma-/</a><br>来源：力扣（LeetCode）<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+
       
 
       
@@ -914,7 +1029,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/27/java%E5%90%8E%E7%AB%AF%E6%B3%A8%E8%A7%A3/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/10/07/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95+%E5%89%AA%E6%9E%9D/">展开全文 >></a>
         </p>
       
 
@@ -944,12 +1059,28 @@
 
 
   
-    <article id="post-项目问题待处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-ubuntu下载链接" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/04/ubuntu%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5/">ubuntu下载链接</a>
+    </h1>
+  
+
+        
+        <a href="/2022/10/04/ubuntu%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5/" class="archive-article-date">
+  	<time datetime="2022-10-04T09:04:09.538Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-04</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="管理员界面："><a href="#管理员界面：" class="headerlink" title="管理员界面："></a>管理员界面：</h2><h3 id="1-创建账户方法还需要加一个电话号码相同不能创建"><a href="#1-创建账户方法还需要加一个电话号码相同不能创建" class="headerlink" title="1.创建账户方法还需要加一个电话号码相同不能创建"></a>1.创建账户方法还需要加一个电话号码相同不能创建</h3>
+        <h1 id="知乎链接"><a href="#知乎链接" class="headerlink" title="知乎链接"></a>知乎链接</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/159642755">Ubuntu镜像下载地址 - 知乎 (zhihu.com)</a></p>
+
       
 
       
@@ -961,7 +1092,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/24/%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98%E5%BE%85%E5%A4%84%E7%90%86/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/10/04/ubuntu%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5/">展开全文 >></a>
         </p>
       
 
@@ -993,7 +1124,7 @@
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 
