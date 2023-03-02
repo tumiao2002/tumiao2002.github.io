@@ -138,258 +138,68 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-java并发/共享模型之管程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-JVM/运行时数据区3（补充：对象实例化+直接内存）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/10/04/java%E5%B9%B6%E5%8F%91/%E5%85%B1%E4%BA%AB%E6%A8%A1%E5%9E%8B%E4%B9%8B%E7%AE%A1%E7%A8%8B/">共享模型之管程</a>
+      <a class="article-title" href="/2023/01/12/JVM/%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA3%EF%BC%88%E8%A1%A5%E5%85%85%EF%BC%9A%E5%AF%B9%E8%B1%A1%E5%AE%9E%E4%BE%8B%E5%8C%96+%E7%9B%B4%E6%8E%A5%E5%86%85%E5%AD%98%EF%BC%89/">jvm - 对象实例化+直接内存</a>
     </h1>
   
 
         
-        <a href="/2022/10/04/java%E5%B9%B6%E5%8F%91/%E5%85%B1%E4%BA%AB%E6%A8%A1%E5%9E%8B%E4%B9%8B%E7%AE%A1%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2022-10-04T06:50:07.074Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-04</time>
+        <a href="/2023/01/12/JVM/%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA3%EF%BC%88%E8%A1%A5%E5%85%85%EF%BC%9A%E5%AF%B9%E8%B1%A1%E5%AE%9E%E4%BE%8B%E5%8C%96+%E7%9B%B4%E6%8E%A5%E5%86%85%E5%AD%98%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2023-01-12T15:32:53.411Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/../../images/image-20221004145217826.png" alt="image-20221004145217826"></p>
-<h1 id="共享问题-–-多线程的线程安全问题"><a href="#共享问题-–-多线程的线程安全问题" class="headerlink" title="共享问题 – 多线程的线程安全问题"></a>共享问题 – 多线程的线程安全问题</h1><p>示例：</p>
-<p><img src="/../../images/image-20221004150133770.png" alt="image-20221004150133770"></p>
-<p><strong>该函数两个线程一个自增，一个自减，各做5000次，结果可能为正数、负数、或0：因为在线程执行时，线程1或线程2都有可能还未返回结果就执行了另一个线程。</strong></p>
-<h2 id="临界区："><a href="#临界区：" class="headerlink" title="临界区："></a>临界区：</h2><p><img src="/../../images/image-20221004150715821.png" alt="image-20221004150715821"></p>
-<h2 id="竞态条件"><a href="#竞态条件" class="headerlink" title="竞态条件"></a>竞态条件</h2><p><img src="/../../images/image-20221004150944726.png" alt="image-20221004150944726"></p>
-<h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><p><img src="/../../images/image-20221004151034056.png" alt="image-20221004151034056"></p>
-<h1 id="synchronized"><a href="#synchronized" class="headerlink" title="synchronized"></a>synchronized</h1><h2 id="1-解决多线程安全问题-–-避免临界区的静态条件发生"><a href="#1-解决多线程安全问题-–-避免临界区的静态条件发生" class="headerlink" title="1. 解决多线程安全问题 – 避免临界区的静态条件发生"></a>1. 解决多线程安全问题 – 避免临界区的静态条件发生</h2><p><img src="/../../images/image-20221004151237725.png" alt="image-20221004151237725"></p>
-<p>##3 语法</p>
-<p><img src="/../../images/image-20221004151357058.png" alt="image-20221004151357058"></p>
-<p>示例：</p>
-<p><img src="/../../images/image-20221004151626434.png" alt="image-20221004151626434"></p>
-<p><strong>锁运行过程–理解</strong></p>
-<p>过程：</p>
-<p><img src="/../../images/image-20221004152236843.png" alt="image-20221004152236843"></p>
-<p><img src="/../../images/image-20221004152321060.png" alt="image-20221004152321060"></p>
-<p>原理：</p>
-<p><img src="/../../images/image-20221004152434198.png" alt="image-20221004152434198"></p>
-<h3 id="锁对象面向对象改进"><a href="#锁对象面向对象改进" class="headerlink" title="锁对象面向对象改进"></a>锁对象面向对象改进</h3><p><strong>示例：</strong></p>
-<p><img src="/../../images/image-20221004153008471.png" alt="image-20221004153008471"></p>
-<p><img src="/../../images/image-20221004153037465.png" alt="image-20221004153037465"></p>
-<h2 id="2-方法上的synchronized（将synchronized放在方法上）"><a href="#2-方法上的synchronized（将synchronized放在方法上）" class="headerlink" title="2. 方法上的synchronized（将synchronized放在方法上）"></a>2. 方法上的synchronized（将synchronized放在方法上）</h2><p>示例1. <strong>注意synchornized只能锁对象，加在成员方法上锁的是this对象</strong></p>
-<p><img src="/../../images/image-20221004153352223.png" alt="image-20221004153352223"></p>
-<p>示例2. <strong>加在静态方法上，锁住的是类对象</strong></p>
-<p><img src="/../../images/image-20221004153412400.png" alt="image-20221004153412400"></p>
-<p><img src="/../../images/image-20221004153811468.png" alt="image-20221004153811468"></p>
-<h2 id="练习–线程八锁（就是考察锁住的是哪个对象）"><a href="#练习–线程八锁（就是考察锁住的是哪个对象）" class="headerlink" title="练习–线程八锁（就是考察锁住的是哪个对象）"></a>练习–线程八锁（就是考察锁住的是哪个对象）</h2><p><img src="/../../images/image-20221004172359702.png" alt="image-20221004172359702"></p>
-<p><img src="/../../images/image-20221004172606160.png" alt="image-20221004172606160"></p>
-<p><img src="/../../images/image-20221004225257559.png" alt="image-20221004225257559"></p>
-<p><img src="/../../images/image-20221004225537743.png" alt="image-20221004225537743"></p>
-<p>​		情况5：一个是类对象，一个是this对象（即n1）,所以互不干扰，两个线程同时进行</p>
-<p><img src="/../../images/image-20221004225708391.png" alt="image-20221004225708391"></p>
-<p>情况6：两个都是类对象，所以是同一个对象</p>
-<p><img src="/../../images/image-20221004225749701.png" alt="image-20221004225749701"></p>
-<p>​	情况7：同情况5</p>
-<p><img src="/../../images/image-20221004230007192.png" alt="image-20221004230007192"></p>
-<p>情况8：同情况6</p>
-<p><img src="/../../images/image-20221004230103073.png" alt="image-20221004230103073"></p>
-<h1 id="线程安全分析"><a href="#线程安全分析" class="headerlink" title="线程安全分析"></a>线程安全分析</h1><h3 id="1-成员变量和静态变量是否线程安全"><a href="#1-成员变量和静态变量是否线程安全" class="headerlink" title="1. 成员变量和静态变量是否线程安全"></a>1. 成员变量和静态变量是否线程安全</h3><p><img src="/../../images/image-20221004230408970.png" alt="image-20221004230408970"></p>
-<h3 id="2-局部变量是否线程安全"><a href="#2-局部变量是否线程安全" class="headerlink" title="2. 局部变量是否线程安全"></a>2. 局部变量是否线程安全</h3><p><img src="/../../images/image-20221004230419084.png" alt="image-20221004230419084"></p>
-<h4 id="局部变量线程安全分析"><a href="#局部变量线程安全分析" class="headerlink" title="局部变量线程安全分析"></a>局部变量线程安全分析</h4><h5 id="1-局部变量"><a href="#1-局部变量" class="headerlink" title="1.局部变量"></a>1.局部变量</h5><p><img src="/../../images/image-20221004231056852.png" alt="image-20221004231056852"></p>
-<p>所以它并不存在线程安全问题</p>
-<p><img src="/../../images/image-20221004231129622.png" alt="image-20221004231129622"></p>
-<h5 id="2-局部变量引用"><a href="#2-局部变量引用" class="headerlink" title="2.局部变量引用"></a>2.局部变量引用</h5><h6 id="2-1-没有暴露给外部的时候"><a href="#2-1-没有暴露给外部的时候" class="headerlink" title="2.1 没有暴露给外部的时候"></a>2.1 没有暴露给外部的时候</h6><p>示例：方法为private，此时不会有线程安全问题</p>
-<p><img src="/../../images/image-20221004232207121.png" alt="image-20221004232207121"></p>
-<p>​	<strong>是安全的</strong></p>
-<p><img src="/../../images/image-20221004232013094.png" alt="image-20221004232013094"></p>
-<h6 id="2-2-暴露给外部的时候"><a href="#2-2-暴露给外部的时候" class="headerlink" title="2.2 暴露给外部的时候"></a>2.2 暴露给外部的时候</h6><p><strong>情况1：其它线程调用时，list对象是另一个对象，所以不会有线程安全问题。</strong></p>
-<p><strong>情况2：内部类，覆盖方法，是同一个对象，会有线程安全问题。</strong></p>
-<p><img src="/../../images/image-20221004232437223.png" alt="image-20221004232437223"></p>
-<p><strong>所以方法修饰符，在一定程度上可以维护我们的线程安全。</strong></p>
-<p><img src="/../../images/image-20221004232816416.png" alt="image-20221004232816416"></p>
-<p><img src="/../../images/image-20221004232841457.png" alt="image-20221004232841457"></p>
-<h2 id="3-常见线程安全类"><a href="#3-常见线程安全类" class="headerlink" title="3. 常见线程安全类"></a>3. 常见线程安全类</h2><p><img src="/../../images/image-20221004232942594.png" alt="image-20221004232942594"></p>
-<p>示例：</p>
-<p><img src="/../../images/image-20221004233055088.png" alt="image-20221004233055088"></p>
-<h3 id="3-1-线程安全类方法的组合"><a href="#3-1-线程安全类方法的组合" class="headerlink" title="3.1 线程安全类方法的组合"></a>3.1 线程安全类方法的组合</h3><p><img src="/../../images/image-20221004233214116.png" alt="image-20221004233214116"></p>
-<h3 id="3-2-不可变线程安全性"><a href="#3-2-不可变线程安全性" class="headerlink" title="3.2 不可变线程安全性"></a>3.2 不可变线程安全性</h3><p><img src="/../../images/image-20221004233422809.png" alt="image-20221004233422809"></p>
-<p><img src="/../../images/image-20221004233640903.png" alt="image-20221004233640903"></p>
-<p>他们并不是直接改变，而是直接创建一个新的对象，因此保证了线程安全。</p>
-<h1 id="Monitor-锁"><a href="#Monitor-锁" class="headerlink" title="Monitor(锁)"></a>Monitor(锁)</h1><p>​	是synchronized的底层原理</p>
-<p><img src="/../../images/image-20221005175755673.png" alt="image-20221005175755673"></p>
-<h2 id="Monitor工作原理"><a href="#Monitor工作原理" class="headerlink" title="Monitor工作原理"></a>Monitor工作原理</h2><p><img src="/../../images/image-20221005180357321.png" alt="image-20221005180357321"></p>
-<p>一个线程指向monitor了后，另一个线程这时指向monitor,就会处于堵塞状态。</p>
-<p><img src="/../../images/image-20221005180819820.png" alt="image-20221005180819820"></p>
-<h1 id="synchronized原理进阶（优化原理）"><a href="#synchronized原理进阶（优化原理）" class="headerlink" title="synchronized原理进阶（优化原理）"></a>synchronized原理进阶（优化原理）</h1><p>有时候很多情况并不需要用到monitor这种重锁，可以根据情况用其它锁来提升开发效率。</p>
-<h2 id="1-轻量级锁"><a href="#1-轻量级锁" class="headerlink" title="1. 轻量级锁"></a>1. 轻量级锁</h2><p><img src="/../../images/image-20221005183310593.png" alt="image-20221005183310593"></p>
-<p>示例：</p>
-<p><img src="/../../images/image-20221005183342336.png" alt="image-20221005183342336"></p>
-<p><img src="/../../images/image-20221005221552746.png" alt="image-20221005221552746"></p>
-<p><img src="/../../images/image-20221005221714619.png" alt="image-20221005221714619"></p>
-<p><img src="/../../images/image-20221005221816513.png" alt="image-20221005221816513"></p>
-<p><img src="/../../images/image-20221005222026498.png" alt="image-20221005222026498"></p>
-<p><img src="/../../images/image-20221005222159327.png" alt="image-20221005222159327"></p>
-<p><img src="/../../images/image-20221005222239240.png" alt="image-20221005222239240"></p>
-<h2 id="2-锁膨胀"><a href="#2-锁膨胀" class="headerlink" title="2. 锁膨胀"></a>2. 锁膨胀</h2><p><img src="/../../images/image-20221005222532032.png" alt="image-20221005222532032"></p>
-<p>示例：</p>
-<p><img src="/../../images/image-20221005222555801.png" alt="image-20221005222555801"></p>
-<p><img src="/../../images/image-20221005222651182.png" alt="image-20221005222651182"></p>
-<p><img src="/../../images/image-20221005222756166.png" alt="image-20221005222756166"></p>
-<h2 id="3-自旋优化"><a href="#3-自旋优化" class="headerlink" title="3. 自旋优化"></a>3. 自旋优化</h2><p>​	<strong>多核cpu下的自旋才有意义，自旋是占用cpu时间的，单核自旋就是浪费</strong></p>
-<p><img src="/../../images/image-20221005222949064.png" alt="image-20221005222949064"></p>
-<p><img src="/../../images/image-20221005223608894.png" alt="image-20221005223608894"></p>
-<p><img src="/../../images/image-20221005223647979.png" alt="image-20221005223647979"></p>
-<h2 id="4-偏向锁"><a href="#4-偏向锁" class="headerlink" title="4. 偏向锁"></a>4. 偏向锁</h2><p><img src="/../../images/image-20221005223923963.png" alt="image-20221005223923963"></p>
-<p><img src="/../../images/image-20221005224101882.png" alt="image-20221005224101882"></p>
-<p><img src="/../../images/image-20221005224120490.png" alt="image-20221005224120490"></p>
-<p><img src="/../../images/image-20221005224301172.png" alt="image-20221005224301172"></p>
-<h3 id="偏向状态"><a href="#偏向状态" class="headerlink" title="偏向状态"></a>偏向状态</h3><p><img src="/../../images/image-20221005224938072.png" alt="image-20221005224938072"></p>
-<p><img src="/../../images/image-20221005224412443.png" alt="image-20221005224412443"></p>
-<p>示例：</p>
-<p><img src="/../../images/image-20221005230828646.png" alt="image-20221005230828646"></p>
-<p><img src="/../../images/image-20221005230647804.png" alt="image-20221005230647804"></p>
-<p>4）调用hashcode()会禁用偏向锁</p>
-<p><strong>优先级：偏向锁&gt;轻量级锁&gt;重量级锁</strong></p>
-<h3 id="偏向撤销"><a href="#偏向撤销" class="headerlink" title="偏向撤销"></a>偏向撤销</h3><h4 id="1-调用对象hashCode"><a href="#1-调用对象hashCode" class="headerlink" title="1.调用对象hashCode"></a>1.调用对象hashCode</h4><p><img src="/../../images/image-20221005231425653.png" alt="image-20221005231425653"></p>
-<p><img src="/../../images/image-20221005231442311.png" alt="image-20221005231442311"></p>
-<h4 id="2-其它线程使用该对象"><a href="#2-其它线程使用该对象" class="headerlink" title="2. 其它线程使用该对象"></a>2. 其它线程使用该对象</h4><p><img src="/../../images/image-20221005231515910.png" alt="image-20221005231515910"></p>
-<p><img src="/../../images/image-20221005232159807.png" alt="image-20221005232159807"></p>
-<h4 id="3-调用wait-x2F-notify"><a href="#3-调用wait-x2F-notify" class="headerlink" title="3. 调用wait&#x2F;notify"></a>3. 调用wait&#x2F;notify</h4><p><img src="/../../images/image-20221005232233250.png" alt="image-20221005232233250"></p>
-<h3 id="批量重偏向"><a href="#批量重偏向" class="headerlink" title="批量重偏向"></a>批量重偏向</h3><p><img src="/../../images/image-20221005232444420.png" alt="image-20221005232444420"></p>
-<h3 id="批量撤销"><a href="#批量撤销" class="headerlink" title="批量撤销"></a>批量撤销</h3><p><img src="/../../images/image-20221005234101019.png" alt="image-20221005234101019"></p>
-<h2 id="锁消除"><a href="#锁消除" class="headerlink" title="锁消除"></a>锁消除</h2><p>锁消除优化可以在一些循环操作时，进行锁消除的优化，提升效率。</p>
-<p><img src="/../../images/image-20221005235701348.png" alt="image-20221005235701348"></p>
-<p>示例：</p>
-<p><img src="/../../images/image-20221005235212891.png" alt="image-20221005235212891"></p>
-<h1 id="wait-notify"><a href="#wait-notify" class="headerlink" title="wait notify"></a>wait notify</h1><h2 id="1-工作原理"><a href="#1-工作原理" class="headerlink" title="1.工作原理"></a>1.工作原理</h2><p><img src="/../../images/image-20221006000209650.png" alt="image-20221006000209650"></p>
-<h2 id="2-API"><a href="#2-API" class="headerlink" title="2. API"></a>2. API</h2><p><img src="/../../images/image-20221006000236899.png" alt="image-20221006000236899"></p>
-<p><img src="/../../images/image-20221006000717668.png" alt="image-20221006000717668"></p>
-<h2 id="3-正确使用姿势"><a href="#3-正确使用姿势" class="headerlink" title="3. 正确使用姿势"></a>3. 正确使用姿势</h2><p><img src="/../../images/image-20221006001015887.png" alt="image-20221006001015887"></p>
-<p>共同点：</p>
-<p><img src="/../../images/image-20221006001425538.png" alt="image-20221006001425538"></p>
-<p>总结–正确姿势：while用于解决虚假唤醒的问题</p>
-<p><img src="/../../images/image-20221006002849290.png" alt="image-20221006002849290"></p>
-<h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><h3 id="同步模式之保护性暂停"><a href="#同步模式之保护性暂停" class="headerlink" title="同步模式之保护性暂停"></a>同步模式之保护性暂停</h3><p><strong>定义：</strong></p>
-<p><img src="/../../images/image-20221006002937643.png" alt="image-20221006002937643"></p>
-<p><strong>示例：</strong></p>
-<p>实现:</p>
-<p><img src="/../../images/image-20221006213603439.png" alt="image-20221006213603439"></p>
-<p><img src="/../../images/image-20221006213625626.png" alt="image-20221006213625626"></p>
-<h4 id="扩展–增加超时："><a href="#扩展–增加超时：" class="headerlink" title="扩展–增加超时："></a>扩展–增加超时：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">//增加超时效果</span><br><span class="line">class GuardedObject</span><br><span class="line">&#123;</span><br><span class="line">    //存储结果</span><br><span class="line">    private Object response;</span><br><span class="line">    //获取结果</span><br><span class="line">    //timeout表示要等待多久</span><br><span class="line">    public Object get(long timeout)</span><br><span class="line">    &#123;</span><br><span class="line">        synchronized (this)</span><br><span class="line">        &#123;</span><br><span class="line">            //开始时间</span><br><span class="line">            long begin = System.currentTimeMillis();</span><br><span class="line">            //经历的时间</span><br><span class="line">            long passTime = 0;</span><br><span class="line">            while (response==null)//用语防止虚假环形</span><br><span class="line">            &#123;</span><br><span class="line">                //这一轮应该等待的时间</span><br><span class="line">                long waitTime = timeout - passTime;</span><br><span class="line">                //经历的时间超过了最大等待时间时，退出循环</span><br><span class="line">                if (timeout-passTime&lt;=0)</span><br><span class="line">                &#123;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">                try &#123;</span><br><span class="line">                    this.wait(waitTime);</span><br><span class="line">                &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                //求得经历时间</span><br><span class="line">                passTime = System.currentTimeMillis()-begin;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return response;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="知识：join原理"><a href="#知识：join原理" class="headerlink" title="知识：join原理"></a>知识：join原理</h4><p><img src="/../../images/image-20221007204800603.png" alt="image-20221007204800603"></p>
-<h4 id="保护性暂停扩展-–-解耦生产和等待"><a href="#保护性暂停扩展-–-解耦生产和等待" class="headerlink" title="保护性暂停扩展 – 解耦生产和等待"></a>保护性暂停扩展 – 解耦生产和等待</h4><p><img src="/../../images/image-20221007204945271.png" alt="image-20221007204945271"></p>
-<p>实现：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br></pre></td><td class="code"><pre><span class="line">package com.tumiao.jucstudy.day4;</span><br><span class="line"></span><br><span class="line">import lombok.extern.slf4j.Slf4j;</span><br><span class="line"></span><br><span class="line">import java.util.Hashtable;</span><br><span class="line">import java.util.Map;</span><br><span class="line">import java.util.Set;</span><br><span class="line">import java.util.concurrent.TimeUnit;</span><br><span class="line"></span><br><span class="line">public class Test4 &#123;</span><br><span class="line">    public static void main(String[] args) throws InterruptedException &#123;</span><br><span class="line">        //模拟线程</span><br><span class="line">        //这里是一一对应</span><br><span class="line">        //三个收信人</span><br><span class="line">        for (int i = 0;i&lt;3;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            new People().start();</span><br><span class="line">        &#125;</span><br><span class="line">        TimeUnit.SECONDS.sleep(1);//停顿1s,保证收信人线程都开启后，才开始送信</span><br><span class="line">        //三个送信邮差</span><br><span class="line">        for (int id:MailBoxes.getIds())</span><br><span class="line">        &#123;</span><br><span class="line">            new Postman(id,&quot;内容：&quot;+id).start();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 因为每个收件人和邮差都可以表示一个线程，所以我们这里直接继承线程类</span><br><span class="line"> */</span><br><span class="line">//收件人</span><br><span class="line">@Slf4j(topic = &quot;c.People&quot;)</span><br><span class="line">class People extends Thread</span><br><span class="line">&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">         //收信</span><br><span class="line">        GuardedObject guardedObject = MailBoxes.createGuardedObject();</span><br><span class="line">        log.debug(&quot;开始收信 id:&#123;&#125;&quot;,guardedObject.getId());</span><br><span class="line">        Object mail = guardedObject.get(5000);//最多等待5s//得到信</span><br><span class="line">        log.debug(&quot;收到信 id:&#123;&#125;,内容:&#123;&#125;&quot;,guardedObject.getId(),mail);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//邮差</span><br><span class="line">@Slf4j(topic = &quot;c.People&quot;)</span><br><span class="line">class Postman extends Thread</span><br><span class="line">&#123;</span><br><span class="line">    private int id;</span><br><span class="line">    private String mail;</span><br><span class="line">    public Postman(int id,String mail)</span><br><span class="line">    &#123;</span><br><span class="line">        this.id = id;</span><br><span class="line">        this.mail = mail;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        GuardedObject guardObject = MailBoxes.getGuardObject(id);</span><br><span class="line">        //产生邮件内容</span><br><span class="line">        log.debug(&quot;开始送信 id:&#123;&#125;&quot;,guardObject.getId());</span><br><span class="line">        guardObject.complete(mail);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//邮箱类</span><br><span class="line">class MailBoxes</span><br><span class="line">&#123;</span><br><span class="line">    //因为boxes之后可能会被多个线程访问到，所以要保证它的线程安全</span><br><span class="line">    private static Map&lt;Integer,GuardedObject&gt; boxes = new Hashtable&lt;&gt;();//用hashtable()是因为hashtable是线程安全类，不需要我们自己去加锁</span><br><span class="line"></span><br><span class="line">    private static int id = 1;</span><br><span class="line">    //产生唯一id</span><br><span class="line">    public static synchronized int generateId()</span><br><span class="line">    &#123;</span><br><span class="line">        return id++;//因为会不止一个线程访问，所以要保护其线程安全</span><br><span class="line">    &#125;</span><br><span class="line">    public static GuardedObject createGuardedObject()</span><br><span class="line">    &#123;</span><br><span class="line">        GuardedObject go = new GuardedObject(generateId());</span><br><span class="line">        boxes.put(go.getId(),go);//boxes是线程安全的</span><br><span class="line">        return go;</span><br><span class="line">    &#125;</span><br><span class="line">    public static Set&lt;Integer&gt; getIds()</span><br><span class="line">    &#123;</span><br><span class="line">        return boxes.keySet();//boxes是线程安全的</span><br><span class="line">    &#125;</span><br><span class="line">    public static GuardedObject getGuardObject(int id)</span><br><span class="line">    &#123;</span><br><span class="line">        return boxes.remove(id);//模拟收信后邮箱就没信了</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//增加超时效果</span><br><span class="line">class GuardedObject</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    //标识 Guarded Object</span><br><span class="line">    private int id;</span><br><span class="line"></span><br><span class="line">    public GuardedObject(int id)</span><br><span class="line">    &#123;</span><br><span class="line">        this.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getId()</span><br><span class="line">    &#123;</span><br><span class="line">        return id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //存储结果</span><br><span class="line">    private Object response;</span><br><span class="line">    //获取结果</span><br><span class="line">    //timeout表示要等待多久</span><br><span class="line">    public Object get(long timeout)</span><br><span class="line">    &#123;</span><br><span class="line">        synchronized (this)</span><br><span class="line">        &#123;</span><br><span class="line">            //开始时间</span><br><span class="line">            long begin = System.currentTimeMillis();</span><br><span class="line">            //经历的时间</span><br><span class="line">            long passTime = 0;</span><br><span class="line">            while (response==null)//用语防止虚假环形</span><br><span class="line">            &#123;</span><br><span class="line">                //这一轮应该等待的时间</span><br><span class="line">                long waitTime = timeout - passTime;</span><br><span class="line">                //经历的时间超过了最大等待时间时，退出循环</span><br><span class="line">                if (timeout-passTime&lt;=0)</span><br><span class="line">                &#123;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">                try &#123;</span><br><span class="line">                    this.wait(waitTime);</span><br><span class="line">                &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                //求得经历时间</span><br><span class="line">                passTime = System.currentTimeMillis()-begin;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return response;</span><br><span class="line">    &#125;</span><br><span class="line">    public  void complete(String mail)</span><br><span class="line">    &#123;</span><br><span class="line">        response = mail;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="异步模式之生产者-x2F-消费者"><a href="#异步模式之生产者-x2F-消费者" class="headerlink" title="异步模式之生产者&#x2F;消费者"></a>异步模式之生产者&#x2F;消费者</h2><p><img src="/../../images/image-20221007221341164.png" alt="image-20221007221341164"></p>
-<h1 id="park和unpark方法"><a href="#park和unpark方法" class="headerlink" title="park和unpark方法"></a>park和unpark方法</h1><h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><p><strong>与wait类似。</strong></p>
-<p><img src="/../../images/image-20221008192747193.png" alt="image-20221008192747193"></p>
-<p><strong>注意：unpark既可以在park之前调用，也可以在park之后调用，都会起作用。</strong></p>
-<h2 id="与wait-amp-notify相比："><a href="#与wait-amp-notify相比：" class="headerlink" title="与wait&amp;notify相比："></a>与wait&amp;notify相比：</h2><p><img src="/../../images/image-20221008193155918.png" alt="image-20221008193155918"></p>
-<h2 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h2><p><img src="/../../images/image-20221008193412133.png" alt="image-20221008193412133"></p>
-<p><strong>先调用park:</strong></p>
-<p><img src="/../../images/image-20221008193719767.png" alt="image-20221008193719767"></p>
-<p><img src="/../../images/image-20221008193813972.png" alt="image-20221008193813972"></p>
-<p><strong>先调用unpark:</strong></p>
-<p><img src="/../../images/image-20221008193839570.png" alt="image-20221008193839570"></p>
-<h1 id="线程状态转换"><a href="#线程状态转换" class="headerlink" title="线程状态转换"></a>线程状态转换</h1><p><img src="/../../images/image-20221008194042376.png" alt="image-20221008194042376"></p>
-<p><img src="/../../images/image-20221008194303925.png" alt="image-20221008194303925"></p>
-<p><img src="/../../images/image-20221008195013945.png" alt="image-20221008195013945"></p>
-<p><img src="/../../images/image-20221008195218658.png" alt="image-20221008195218658"></p>
-<p><img src="/../../images/image-20221008195443854.png" alt="image-20221008195443854"></p>
-<p><img src="/../../images/image-20221008195503871.png" alt="image-20221008195503871"></p>
-<h1 id="多把锁"><a href="#多把锁" class="headerlink" title="多把锁"></a>多把锁</h1><p><img src="/../../images/image-20221008195629100.png" alt="image-20221008195629100"></p>
-<p><strong>示例：</strong></p>
-<p><img src="/../../images/image-20221008195855158.png" alt="image-20221008195855158"></p>
-<p>​	<strong>假设都在一个房间，即类的this的都是同一个对象，如上。这样如果一个人在睡觉的时候，房间就锁住了，只能等这个人睡完了才能解锁，让另一个人进去做事。</strong>因此要配多把锁来增强并发度。</p>
-<p><strong>改进：</strong></p>
-<p><img src="/../../images/image-20221008200313041.png" alt="image-20221008200313041"></p>
-<p><img src="/../../images/image-20221008200404764.png" alt="image-20221008200404764"></p>
-<h1 id="线程的活跃性"><a href="#线程的活跃性" class="headerlink" title="线程的活跃性"></a>线程的活跃性</h1><h2 id="1-死锁："><a href="#1-死锁：" class="headerlink" title="1.死锁："></a>1.死锁：</h2><h3 id="死锁现象"><a href="#死锁现象" class="headerlink" title="死锁现象"></a>死锁现象</h3><p><img src="/../../images/image-20221008200516453.png" alt="image-20221008200516453"></p>
-<p>示例：</p>
-<p><img src="/../../images/image-20221008200711836.png" alt="image-20221008200711836"></p>
-<h3 id="定位死锁："><a href="#定位死锁：" class="headerlink" title="定位死锁："></a>定位死锁：</h3><p><img src="/../../images/image-20221008200859649.png" alt="image-20221008200859649"></p>
-<p><strong>示例：用jps得到进程id,再用jstack定位死锁</strong></p>
-<p><img src="/../../images/image-20221008201021820.png" alt="image-20221008201021820"></p>
-<p>结果：</p>
-<p><img src="/../../images/image-20221008201236403.png" alt="image-20221008201236403"></p>
-<p><img src="/../../images/image-20221008201402274.png" alt="image-20221008201402274"></p>
-<p><strong>示例：用jscosle,直接打开控制条输入jsconsle就行了，它是和jdk绑定的工具</strong></p>
-<p><strong>连接到进程。</strong></p>
-<p><img src="/../../images/image-20221008202351578.png" alt="image-20221008202351578"></p>
-<p><strong>它列出来所有的线程信息，点击检测死锁就行了</strong></p>
-<p><img src="/../../images/image-20221008201634505.png" alt="image-20221008201634505"></p>
-<p><strong>结果：</strong></p>
-<p><img src="/../../images/image-20221008201602478.png" alt="image-20221008201602478"></p>
-<h3 id="死锁–哲学家就餐问题"><a href="#死锁–哲学家就餐问题" class="headerlink" title="死锁–哲学家就餐问题"></a>死锁–哲学家就餐问题</h3><p>问题：</p>
-<p><img src="/../../images/image-20221008201912539.png" alt="image-20221008201912539"></p>
-<p>筷子类：</p>
-<p><img src="/../../images/image-20221008202052343.png" alt="image-20221008202052343"></p>
-<p>哲学家类：</p>
-<p><img src="/../../images/image-20221008202151010.png" alt="image-20221008202151010"></p>
-<p>模拟：</p>
-<p><img src="/../../images/image-20221008202242489.png" alt="image-20221008202242489"></p>
-<p><img src="/../../images/image-20221008202609130.png" alt="image-20221008202609130"></p>
-<h2 id="2-活锁"><a href="#2-活锁" class="headerlink" title="2.活锁"></a>2.活锁</h2><p><img src="/../../images/image-20221008202647427.png" alt="image-20221008202647427"></p>
-<p>示例：（同上一张截图，只是这个看着比较熟悉和清晰，就也放上来了）</p>
-<p><img src="/../../images/image-20221008202806568.png" alt="image-20221008202806568"></p>
-<p><strong>解决方法：让它们的指令进行交错。例如增加一些随机的睡眠时间，来避免活锁的产生。</strong></p>
-<h2 id="3-饥饿"><a href="#3-饥饿" class="headerlink" title="3.饥饿"></a>3.饥饿</h2><p><img src="/../../images/image-20221008203046660.png" alt="image-20221008203046660"></p>
-<p><img src="/../../images/image-20221008203219029.png" alt="image-20221008203219029"></p>
-<p><strong>但是这种解决方法容易造成饥饿，即会有一个线程一直得不到执行。如哲学家就餐问题，改执行为顺序执行：</strong></p>
-<p><img src="/../../images/image-20221008203711590.png" alt="image-20221008203711590"></p>
-<p><strong>就会出现饥饿现象。</strong></p>
-<h1 id="ReentrantLock"><a href="#ReentrantLock" class="headerlink" title="ReentrantLock"></a>ReentrantLock</h1><h2 id="简介：它可以说是synchronized的细分"><a href="#简介：它可以说是synchronized的细分" class="headerlink" title="简介：它可以说是synchronized的细分"></a>简介：它可以说是synchronized的细分</h2><p><img src="/../../images/image-20221008214513075.png" alt="image-20221008214513075"></p>
-<p><img src="/../../images/image-20221008214744329.png" alt="image-20221008214744329"></p>
-<h2 id="1-可重入"><a href="#1-可重入" class="headerlink" title="1. 可重入"></a>1. 可重入</h2><p><img src="/../../images/image-20221008214908984.png" alt="image-20221008214908984"></p>
-<p>reentrantlock本身就是一个锁对象。</p>
-<p><strong>示例：</strong></p>
-<p><img src="/../../images/image-20221008215330900.png" alt="image-20221008215330900"></p>
-<p><img src="/../../images/image-20221008215341540.png" alt="image-20221008215341540"></p>
-<p><img src="/../../images/image-20221008215352652.png" alt="image-20221008215352652"></p>
-<h2 id="2-可打断"><a href="#2-可打断" class="headerlink" title="2. 可打断"></a>2. 可打断</h2><p><strong>用于避免线程无限制地等待下去，避免死锁。</strong></p>
-<p>示例：<strong>注意：lock是无法打断的，lockInterruptibly才可以打断。</strong></p>
-<p><img src="/../../images/image-20221008215927766.png" alt="image-20221008215927766"></p>
-<p><img src="/../../images/image-20221008215949288.png" alt="image-20221008215949288"></p>
-<h2 id="3-锁超时"><a href="#3-锁超时" class="headerlink" title="3. 锁超时"></a>3. 锁超时</h2><p><strong>用于避免死锁，避免线程无限制地等待下去。</strong></p>
-<p>示例：<strong>tryLock(),表示尝试获取锁：可以被打断；可以带参数和不带参数：带参数表示尝试获取时间，不带参数就会一直尝试获取；解锁都是unlock();</strong></p>
-<p><img src="/../../images/image-20221008221253168.png" alt="image-20221008221253168"></p>
-<p><img src="/../../images/image-20221008221323216.png" alt="image-20221008221323216"></p>
-<p>解决哲学家就餐问题：</p>
-<p>改良代码，改良点如下：</p>
-<p><em><img src="/../../images/image-20221008222705230.png" alt="image-20221008222705230"></em></p>
-<p><img src="/../../images/image-20221008222728333.png" alt="image-20221008222728333"></p>
-<h2 id="4-公平锁"><a href="#4-公平锁" class="headerlink" title="4. 公平锁"></a>4. 公平锁</h2><p><img src="/../../images/image-20221008223004843.png" alt="image-20221008223004843"></p>
-<p>synchronized也是不公平的。</p>
-<p><strong>RenntrantLock设置公平锁：使得每次释放锁后，阻塞状态的锁不是竞争得到锁，而是按照队列，按顺序获得锁。</strong></p>
-<p><img src="/../../images/image-20221008223143947.png" alt="image-20221008223143947"></p>
-<p><strong>公平锁一般没有必要，会降低并发度。</strong></p>
-<h2 id="5-条件变量"><a href="#5-条件变量" class="headerlink" title="5. 条件变量"></a>5. 条件变量</h2><p><img src="/../../images/image-20221008223433971.png" alt="image-20221008223433971"></p>
-<p><strong>使用流程：</strong></p>
-<p><img src="/../../images/image-20221008224956997.png" alt="image-20221008224956997"></p>
-<p><strong>使用示例：</strong></p>
-<p><img src="/../../images/image-20221008225742979.png" alt="image-20221008225742979"></p>
-<p><img src="/../../images/image-20221008225821872.png" alt="image-20221008225821872"></p>
-<p><img src="/../../images/image-20221008225852854.png" alt="image-20221008225852854"></p>
-<p><img src="/../../images/image-20221008230014267.png" alt="image-20221008230014267"></p>
-<h1 id="设计模式–同步模式之顺序控制"><a href="#设计模式–同步模式之顺序控制" class="headerlink" title="设计模式–同步模式之顺序控制"></a>设计模式–同步模式之顺序控制</h1><h2 id="1-固定运行顺序"><a href="#1-固定运行顺序" class="headerlink" title="1.固定运行顺序"></a>1.固定运行顺序</h2><p><img src="/../../images/image-20221008232032103.png" alt="image-20221008232032103"></p>
-<h3 id="1-1用：wait-amp-notify"><a href="#1-1用：wait-amp-notify" class="headerlink" title="1.1用：wait&amp;notify"></a>1.1用：wait&amp;notify</h3><p><img src="/../../images/image-20221008232434217.png" alt="image-20221008232434217"></p>
-<p><strong>也可以用Reentrantlock中的await和singal来运行。</strong></p>
-<h3 id="1-2-用park和unpark"><a href="#1-2-用park和unpark" class="headerlink" title="1.2 用park和unpark"></a>1.2 用park和unpark</h3><p><img src="/../../images/image-20221008232758149.png" alt="image-20221008232758149"></p>
-<h2 id="2-交替输出"><a href="#2-交替输出" class="headerlink" title="2. 交替输出"></a>2. 交替输出</h2><p><img src="/../../images/image-20221010002529456.png" alt="image-20221010002529456"></p>
-<h3 id="2-1-wait-amp-notify"><a href="#2-1-wait-amp-notify" class="headerlink" title="2.1 wait&amp;notify"></a>2.1 wait&amp;notify</h3><p>示例：</p>
-<p><img src="/../../images/image-20221010003319954.png" alt="image-20221010003319954"></p>
-<p><img src="/../../images/image-20221010003345024.png" alt="image-20221010003345024"></p>
-<h3 id="await和singal"><a href="#await和singal" class="headerlink" title="await和singal"></a>await和singal</h3><p><img src="/../../images/image-20221010004132986.png" alt="image-20221010004132986"></p>
-<p><img src="/../../images/image-20221010004540653.png" alt="image-20221010004540653"></p>
-<h3 id="park-amp-unpark"><a href="#park-amp-unpark" class="headerlink" title="park&amp;unpark"></a>park&amp;unpark</h3><p><img src="/../../images/image-20221010190639824.png" alt="image-20221010190639824"></p>
-<p><img src="/../../images/image-20221010190721720.png" alt="image-20221010190721720"></p>
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p><img src="/../../images/image-20221010190935117.png" alt="image-20221010190935117"></p>
-<p><img src="/../../images/image-20221010191330070.png" alt="image-20221010191330070"></p>
+        <h1 id="对象实例化"><a href="#对象实例化" class="headerlink" title="对象实例化"></a>对象实例化</h1><h2 id="1-对象实例化"><a href="#1-对象实例化" class="headerlink" title="1. 对象实例化"></a>1. 对象实例化</h2><h3 id="1-1-创建对象的方式"><a href="#1-1-创建对象的方式" class="headerlink" title="1.1 创建对象的方式"></a>1.1 创建对象的方式</h3><p><img src="/../../images/image-20230112233933521.png" alt="image-20230112233933521"></p>
+<h3 id="1-2-对象创建的步骤"><a href="#1-2-对象创建的步骤" class="headerlink" title="1.2 对象创建的步骤"></a>1.2 对象创建的步骤</h3><h4 id="1-2-1-从字节码角度："><a href="#1-2-1-从字节码角度：" class="headerlink" title="1.2.1 从字节码角度："></a>1.2.1 从字节码角度：</h4><p><img src="/../../images/image-20230112234831661.png" alt="image-20230112234831661"></p>
+<h4 id="1-2-2-从执行步骤和角度"><a href="#1-2-2-从执行步骤和角度" class="headerlink" title="1.2.2 从执行步骤和角度"></a>1.2.2 从执行步骤和角度</h4><h5 id="1-2-2-1-判断对象对应的类是否加载、链接、初始化"><a href="#1-2-2-1-判断对象对应的类是否加载、链接、初始化" class="headerlink" title="1.2.2.1 判断对象对应的类是否加载、链接、初始化"></a>1.2.2.1 判断对象对应的类是否加载、链接、初始化</h5><p><img src="/../../images/image-20230113143745811.png" alt="image-20230113143745811"></p>
+<h5 id="1-2-2-2-为对象分配内存"><a href="#1-2-2-2-为对象分配内存" class="headerlink" title="1.2.2.2 为对象分配内存"></a>1.2.2.2 为对象分配内存</h5><p><img src="/../../images/image-20230113143835742.png" alt="image-20230113143835742"></p>
+<p><img src="/../../images/image-20230113144459426.png" alt="image-20230113144459426"></p>
+<p><strong>如果内存是规整的：</strong></p>
+<p><img src="/../../images/image-20230113144101119.png" alt="image-20230113144101119"></p>
+<p><strong>如果内存是不规整的：</strong></p>
+<p>​	<strong>a. 虚拟机需要维护一个列表（空闲列表）</strong></p>
+<p>​		空闲列表分配：</p>
+<p>​	<img src="/../../images/image-20230113144350007.png" alt="image-20230113144350007"></p>
+<h5 id="1-2-2-3-处理并发安全问题"><a href="#1-2-2-3-处理并发安全问题" class="headerlink" title="1.2.2.3 处理并发安全问题"></a>1.2.2.3 处理并发安全问题</h5><p><img src="/../../images/image-20230113144803640.png" alt="image-20230113144803640"></p>
+<h5 id="1-2-2-4-初始化分配到的空间"><a href="#1-2-2-4-初始化分配到的空间" class="headerlink" title="1.2.2.4 初始化分配到的空间"></a>1.2.2.4 初始化分配到的空间</h5><p><img src="/../../images/image-20230113144836947.png" alt="image-20230113144836947"></p>
+<p><strong>指的就是属性的默认初始化。</strong></p>
+<h5 id="1-2-2-4-设置对象的对象头"><a href="#1-2-2-4-设置对象的对象头" class="headerlink" title="1.2.2.4 设置对象的对象头"></a>1.2.2.4 设置对象的对象头</h5><p><img src="/../../images/image-20230113145608428.png" alt="image-20230113145608428"></p>
+<h5 id="1-2-2-5-执行init方法进行初始化"><a href="#1-2-2-5-执行init方法进行初始化" class="headerlink" title="1.2.2.5 执行init方法进行初始化"></a>1.2.2.5 执行init方法进行初始化</h5><p><img src="/../../images/image-20230113145626993.png" alt="image-20230113145626993"></p>
+<h2 id="2-对象的内存布局"><a href="#2-对象的内存布局" class="headerlink" title="2. 对象的内存布局"></a>2. 对象的内存布局</h2><p><img src="/../../images/image-20230113170603429.png" alt="image-20230113170603429"></p>
+<p>小结：</p>
+<p><img src="/../../images/image-20230113170829191.png" alt="image-20230113170829191"></p>
+<h2 id="3-对象的访问定位"><a href="#3-对象的访问定位" class="headerlink" title="3. 对象的访问定位"></a>3. 对象的访问定位</h2><h3 id="3-1-对象访问图示"><a href="#3-1-对象访问图示" class="headerlink" title="3.1 对象访问图示"></a>3.1 对象访问图示</h3><p><img src="/../../images/image-20230113171224303.png" alt="image-20230113171224303"></p>
+<h3 id="3-2-对象访问方式主要又两种"><a href="#3-2-对象访问方式主要又两种" class="headerlink" title="3.2 对象访问方式主要又两种"></a>3.2 对象访问方式主要又两种</h3><h4 id="1-句柄访问"><a href="#1-句柄访问" class="headerlink" title="1. 句柄访问"></a>1. 句柄访问</h4><h5 id="图示："><a href="#图示：" class="headerlink" title="图示："></a>图示：</h5><p><img src="/../../images/image-20230113171503270.png" alt="image-20230113171503270"></p>
+<p><strong>一个对象有一个句柄。</strong></p>
+<p><strong>优点：</strong></p>
+<p><img src="/../../images/image-20230113171831448.png" alt="image-20230113171831448"></p>
+<p><strong>缺点：</strong></p>
+<p><strong>该方法需要专门开放一个句柄池的内存来存储句柄，并且每次引用需要先在句柄池找到对应句柄，然后找到实例数据的指针和对象类型数据的指针。步骤和内存比直接指针更多。</strong></p>
+<h4 id="2-直接指针（hotspot采用的方式）"><a href="#2-直接指针（hotspot采用的方式）" class="headerlink" title="2. 直接指针（hotspot采用的方式）"></a>2. 直接指针（hotspot采用的方式）</h4><h5 id="图示：-1"><a href="#图示：-1" class="headerlink" title="图示："></a>图示：</h5><p><img src="/../../images/image-20230113171631050.png" alt="image-20230113171631050"></p>
+<p><strong>优点：相比于句柄访问，该访问的内存和实现步骤更少，引用直接指向实例数据。</strong></p>
+<p><strong>缺点：相比于句柄访问，对象移动时（垃圾回收时对象移动很常见）reference不存储稳定地址。</strong></p>
+<h1 id="直接内存"><a href="#直接内存" class="headerlink" title="直接内存"></a>直接内存</h1><p><strong>在jdk8的时候，方法区的落地实现（元空间）在本地内存。</strong></p>
+<h2 id="1-概述："><a href="#1-概述：" class="headerlink" title="1. 概述："></a>1. 概述：</h2><p><img src="/../../images/image-20230113173340279.png" alt="image-20230113173340279"></p>
+<p>​	<strong>注意：直接内存不是虚拟机运行时数据区的一部分。虚拟机内存的本地方法栈，管理的是虚拟机中的本地方法，这里的本地方法指的是非Java方法（c或c++）。</strong></p>
+<h2 id="2-使用本地内存读写数据"><a href="#2-使用本地内存读写数据" class="headerlink" title="2. 使用本地内存读写数据"></a>2. 使用本地内存读写数据</h2><p><strong>结论：直接内存访问速度优于java堆。</strong></p>
+<p><img src="/../../images/image-20230113174547315.png" alt="image-20230113174547315"></p>
+<p><strong>对于非直接缓冲区：</strong></p>
+<hr>
+<p><img src="/../../images/image-20230113174045571.png" alt="image-20230113174045571"></p>
+<p><strong>对于直接缓冲区：</strong></p>
+<p><img src="/../../images/image-20230113174123235.png" alt="image-20230113174123235"></p>
+<h2 id="3-直接内存的OOM与内存大小设置"><a href="#3-直接内存的OOM与内存大小设置" class="headerlink" title="3. 直接内存的OOM与内存大小设置"></a>3. 直接内存的OOM与内存大小设置</h2><p><img src="/../../images/image-20230113174733662.png" alt="image-20230113174733662"></p>
+<p><img src="/../../images/image-20230113174933121.png" alt="image-20230113174933121"></p>
+<p><img src="/../../images/image-20230113175427910.png" alt="image-20230113175427910"></p>
 
       
 
@@ -402,7 +212,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/10/04/java%E5%B9%B6%E5%8F%91/%E5%85%B1%E4%BA%AB%E6%A8%A1%E5%9E%8B%E4%B9%8B%E7%AE%A1%E7%A8%8B/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/01/12/JVM/%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA3%EF%BC%88%E8%A1%A5%E5%85%85%EF%BC%9A%E5%AF%B9%E8%B1%A1%E5%AE%9E%E4%BE%8B%E5%8C%96+%E7%9B%B4%E6%8E%A5%E5%86%85%E5%AD%98%EF%BC%89/">展开全文 >></a>
         </p>
       
 
@@ -432,110 +242,721 @@
 
 
   
-    <article id="post-java并发/java线程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-刷题总结/八大排序算法总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/10/02/java%E5%B9%B6%E5%8F%91/java%E7%BA%BF%E7%A8%8B/">java线程</a>
+      <a class="article-title" href="/2023/01/06/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E5%85%AB%E5%A4%A7%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/">八大排序算法总结</a>
     </h1>
   
 
         
-        <a href="/2022/10/02/java%E5%B9%B6%E5%8F%91/java%E7%BA%BF%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2022-10-02T08:38:08.532Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-02</time>
+        <a href="/2023/01/06/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E5%85%AB%E5%A4%A7%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/" class="archive-article-date">
+  	<time datetime="2023-01-06T15:49:26.967Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-06</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="java线程"><a href="#java线程" class="headerlink" title="java线程"></a>java线程</h1><h2 id="1-创建和运行线程"><a href="#1-创建和运行线程" class="headerlink" title="1. 创建和运行线程"></a>1. 创建和运行线程</h2><h3 id="1-1-创建线程"><a href="#1-1-创建线程" class="headerlink" title="1.1 创建线程"></a>1.1 创建线程</h3><h4 id="1-1-1-方法1："><a href="#1-1-1-方法1：" class="headerlink" title="1.1.1 方法1："></a>1.1.1 方法1：</h4><p><img src="/../../images/image-20221002170814327.png" alt="image-20221002170814327"></p>
-<h4 id="1-1-2-方法2：使用Runnable配合Thread"><a href="#1-1-2-方法2：使用Runnable配合Thread" class="headerlink" title="1.1.2 方法2：使用Runnable配合Thread"></a>1.1.2 方法2：使用Runnable配合Thread</h4><p>把线程和任务（要执行的代码）分靠</p>
-<p><strong>Thread:代表线程</strong></p>
-<p><strong>Runnable：可运行的任务（线程要执行的代码）</strong></p>
-<p><img src="/../../images/image-20221002171015885.png" alt="image-20221002171015885"></p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/01/06/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E5%85%AB%E5%A4%A7%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-刷题总结/递归回溯算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/06/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E9%80%92%E5%BD%92%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/">递归回溯问题</a>
+    </h1>
+  
+
+        
+        <a href="/2023/01/06/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E9%80%92%E5%BD%92%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2023-01-06T03:26:15.289Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="问题总结"><a href="#问题总结" class="headerlink" title="问题总结"></a>问题总结</h1><p>​	类似组合问题。</p>
+<h1 id="时间复杂度计算"><a href="#时间复杂度计算" class="headerlink" title="时间复杂度计算"></a>时间复杂度计算</h1>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/01/06/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E9%80%92%E5%BD%92%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-刷题总结/动态规划问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/06/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%97%AE%E9%A2%98/">动态规划总结</a>
+    </h1>
+  
+
+        
+        <a href="/2023/01/06/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2023-01-06T02:19:40.700Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="动态规划解题五部曲"><a href="#动态规划解题五部曲" class="headerlink" title="动态规划解题五部曲"></a>动态规划解题五部曲</h1><p><strong>1. 确定dp数组&#x2F;&#x2F;一定要注意概念，方便在下面的步骤进行操作</strong></p>
+<p><strong>2. 确定状态转移方程</strong>：题目中获取，或者根据题目画出示例找到规律，推出状态转移方程</p>
+<p><strong>3. 确定初始值</strong></p>
+<p><strong>4. 确定遍历顺序</strong></p>
+<p><strong>5. 举例推导数据：根据举例出的推导数据，当结果出错时，首先输出dp数据，看是否与推导数据相同。如果不同，则就是状态转移方程出现问题（可能是公式，也可能是初始值设置问题），如果相同，再看自己的遍历顺序，还有其它细节问题。</strong></p>
+<h1 id="经典题型"><a href="#经典题型" class="headerlink" title="经典题型"></a>经典题型</h1><h2 id="背包问题"><a href="#背包问题" class="headerlink" title="背包问题"></a>背包问题</h2><p><strong>对于背包问题，力扣上的通常是其衍生出的应用题，并没有专门的直接的刷题。通常只需要掌握01背包问题和完全背包问题就足够了。</strong></p>
+<p><strong>对于容量（或价值）确定，求其中组合的问题，都可以想到背包问题。</strong></p>
+<h3 id="01背包问题"><a href="#01背包问题" class="headerlink" title="01背包问题"></a>01背包问题</h3><h4 id="基础的状态转移公式："><a href="#基础的状态转移公式：" class="headerlink" title="基础的状态转移公式："></a>基础的状态转移公式：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dp[i][j] = max(dp[i-1][j],dp[i][j-w[i]]+value[i])</span><br><span class="line">//dp[i][j]表示0-i个物品中，背包容量为j的最大装入物品价值</span><br><span class="line">//w[i]为第i个物品的物品重量，value[i]为第i个物品的物品价值</span><br><span class="line">//注意j-w[i]的前提是j&gt;w[i]，否则就直接dp[i][j] = dp[i-1][j]</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="优化：滚动数组，将二维数组转化为一维的数组"><a href="#优化：滚动数组，将二维数组转化为一维的数组" class="headerlink" title="优化：滚动数组，将二维数组转化为一维的数组"></a>优化：滚动数组，将二维数组转化为一维的数组</h4><p><strong>该方法在速度和内存容量上都有优化。计算速度更快，内存容量消耗更低。</strong></p>
+<p>​	对于背包问题，状态都是可压缩的。</p>
+<p><strong>状态转移公式：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dp[j] = max(dp[j], dp[j - weight[i]] + value[i]);</span><br><span class="line">//dp[j]表示容量为j的背包容量的最大值</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/../../images/image-20230112150821393.png" alt="image-20230112150821393"></p>
+<p><strong>遍历代码如下：</strong></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for(int i = 0; i &lt; weight.size(); i++) &#123; // 遍历物品</span><br><span class="line">    for(int j = bagWeight; j &gt;= weight[i]; j--) &#123; // 遍历背包容量</span><br><span class="line">        dp[j] = max(dp[j], dp[j - weight[i]] + value[i]);</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="完全背包问题"><a href="#完全背包问题" class="headerlink" title="完全背包问题"></a>完全背包问题</h3><p>有N件物品和一个最多能背重量为W的背包。第i件物品的重量是weight[i]，得到的价值是value[i] 。<strong>每件物品都有无限个（也就是可以放入背包多次）</strong>，求解将哪些物品装入背包里物品价值总和最大。</p>
+<p><strong>完全背包和01背包问题唯一不同的地方就是，每种物品有无限件</strong>。</p>
+<p>首先在回顾一下01背包的核心代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for(int i = 0; i &lt; weight.size(); i++) &#123; // 遍历物品</span><br><span class="line">    for(int j = bagWeight; j &gt;= weight[i]; j--) &#123; // 遍历背包容量</span><br><span class="line">        dp[j] = max(dp[j], dp[j - weight[i]] + value[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们知道01背包内嵌的循环是从大到小遍历，为了保证每个物品仅被添加一次。</p>
+<p>而完全背包的物品是可以添加多次的，所以要从小到大去遍历，即：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 先遍历物品，再遍历背包</span><br><span class="line">for(int i = 0; i &lt; weight.size(); i++) &#123; // 遍历物品</span><br><span class="line">    for(int j = weight[i]; j &lt;= bagWeight ; j++) &#123; // 遍历背包容量</span><br><span class="line">        dp[j] = max(dp[j], dp[j - weight[i]] + value[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>因为dp[j] 是根据 下标j之前所对应的dp[j]计算出来的。 只要保证下标j之前的dp[j]都是经过计算的就可以了。</p>
+<p>对于纯完全背包问题，其for循环的先后循环是可以颠倒的！</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//先遍历物品，再遍历背包</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">testCompletePack</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span>[] weight = &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line">    <span class="type">int</span>[] value = &#123;<span class="number">15</span>, <span class="number">20</span>, <span class="number">30</span>&#125;;</span><br><span class="line">    <span class="type">int</span> <span class="variable">bagWeight</span> <span class="operator">=</span> <span class="number">4</span>;</span><br><span class="line">    <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[bagWeight + <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; weight.length; i++)&#123; <span class="comment">// 遍历物品</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> weight[i]; j &lt;= bagWeight; j++)&#123; <span class="comment">// 遍历背包容量</span></span><br><span class="line">            dp[j] = Math.max(dp[j], dp[j - weight[i]] + value[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> maxValue : dp)&#123;</span><br><span class="line">        System.out.println(maxValue + <span class="string">&quot;   &quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//先遍历背包，再遍历物品</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">testCompletePackAnotherWay</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span>[] weight = &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line">    <span class="type">int</span>[] value = &#123;<span class="number">15</span>, <span class="number">20</span>, <span class="number">30</span>&#125;;</span><br><span class="line">    <span class="type">int</span> <span class="variable">bagWeight</span> <span class="operator">=</span> <span class="number">4</span>;</span><br><span class="line">    <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[bagWeight + <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= bagWeight; i++)&#123; <span class="comment">// 遍历背包容量</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; weight.length; j++)&#123; <span class="comment">// 遍历物品</span></span><br><span class="line">            <span class="keyword">if</span> (i - weight[j] &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">                dp[i] = Math.max(dp[i], dp[i - weight[j]] + value[j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> maxValue : dp)&#123;</span><br><span class="line">        System.out.println(maxValue + <span class="string">&quot;   &quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="求装满背包有几种方法"><a href="#求装满背包有几种方法" class="headerlink" title="求装满背包有几种方法"></a>求装满背包有几种方法</h3><p>例题：力扣494，518，377</p>
+<p><strong>求装满背包有几种方法，递归公式都是一样的，没有什么差别，但关键在于遍历顺序！</strong></p>
+<p><strong>一般的递归公式是：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[j] = dp[j-nums[i]]+dp[j];</span><br></pre></td></tr></table></figure>
+
+<p>​	<strong>求装满背包的方法，如果求组合，就是外层for遍历物品，内层for遍历背包。如果求排列，就是外层for遍历背包，内层for遍历循环物品。</strong>该结论的解释：</p>
+<p>我们先来看 外层for循环遍历物品（钱币），内层for遍历背包（金钱总额）的情况。</p>
+<p>代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; coins.<span class="built_in">size</span>(); i++) &#123; <span class="comment">// 遍历物品</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = coins[i]; j &lt;= amount; j++) &#123; <span class="comment">// 遍历背包容量</span></span><br><span class="line">        dp[j] += dp[j - coins[i]];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>假设：coins[0] &#x3D; 1，coins[1] &#x3D; 5。</p>
+<p>那么就是先把1加入计算，然后再把5加入计算，得到的方法数量只有{1, 5}这种情况。而不会出现{5, 1}的情况。</p>
+<p><strong>所以这种遍历顺序中dp[j]里计算的是组合数！</strong></p>
+<p>如果把两个for交换顺序，代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt;= amount; j++) &#123; <span class="comment">// 遍历背包容量</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; coins.<span class="built_in">size</span>(); i++) &#123; <span class="comment">// 遍历物品</span></span><br><span class="line">        <span class="keyword">if</span> (j - coins[i] &gt;= <span class="number">0</span>) dp[j] += dp[j - coins[i]];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>背包容量的每一个值，都是经过 1 和 5 的计算，包含了{1, 5} 和 {5, 1}两种情况。</p>
+<p><strong>此时dp[j]里算出来的就是排列数！</strong></p>
+<p>示例：力扣377题</p>
+<p><img src="/../../images/image-20230211204118135.png" alt="image-20230211204118135"></p>
+<p>求排列示例(完全背包)：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">combinationSum4</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[target + <span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">         <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>;j&lt;=target;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i&lt;nums.length;i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[i]&lt;=j)</span><br><span class="line">                dp[j] = dp[j-nums[i]]+dp[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[target];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>求组合示例（完全背包）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int combinationSum4(int[] nums, int target) &#123;</span><br><span class="line">        int[] dp = new int[target + 1];</span><br><span class="line">        dp[0] = 1;</span><br><span class="line">        for (int i = 0; i &lt;=nums.length; i++) &#123;</span><br><span class="line">            for (int j = nums[i]; j &lt;= target; j++) &#123;</span><br><span class="line">               dp[j] = dp[j-nums[i]]+dp[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return dp[target];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>01背包的示例略，因为仅仅是背包遍历方向不同，见上面01背包和完全背包的遍历区别。</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/01/06/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%97%AE%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-刷题总结/进制题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/05/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E8%BF%9B%E5%88%B6%E9%A2%98/">进制题</a>
+    </h1>
+  
+
+        
+        <a href="/2023/01/05/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E8%BF%9B%E5%88%B6%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2023-01-05T08:17:57.889Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="进制加法"><a href="#进制加法" class="headerlink" title="进制加法"></a>进制加法</h1><h2 id="所有进制通用解法："><a href="#所有进制通用解法：" class="headerlink" title="所有进制通用解法："></a>所有进制通用解法：</h2><p>​	<strong>将相应进制的数转化成字符串，每个字符对应的下标就是他们的真实值，然后考虑进位问题进行加法运算。</strong></p>
+<p>示例： 36进制加法运算</p>
+<p><strong>题目：实现一个36进制的加法0-9 a-z</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">public static String baseSum(String s1,String s2)</span><br><span class="line">&#123;</span><br><span class="line">    String base = &quot;0123456789abcdefghijklmnopqrsduvwxyz&quot;;</span><br><span class="line">    char[] chars1 = s1.toCharArray();</span><br><span class="line">    char[] chars2 = s2.toCharArray();</span><br><span class="line">    int i = chars1.length-1;</span><br><span class="line">    int j = chars2.length-1;</span><br><span class="line">    int temp = 0;//表示进位</span><br><span class="line">    String s = &quot;&quot;;</span><br><span class="line">    while(i&gt;=0&amp;&amp;j&gt;=0)</span><br><span class="line">    &#123;</span><br><span class="line">        int num1 = base.indexOf(chars1[i]);</span><br><span class="line">        int num2 = base.indexOf(chars2[j]);</span><br><span class="line">        int sum = num1+num2+temp;</span><br><span class="line">        if(sum&gt;=36)//已36进制为例</span><br><span class="line">        &#123;</span><br><span class="line">            temp = 1;</span><br><span class="line">            s += base.charAt(sum%36);</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            s += base.charAt(sum);</span><br><span class="line">            temp = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        i--;</span><br><span class="line">        j--;</span><br><span class="line">    &#125;</span><br><span class="line">    //如果s1还未加完</span><br><span class="line">    while(i&gt;=0)</span><br><span class="line">    &#123;</span><br><span class="line">        if(temp!=0)</span><br><span class="line">        &#123;</span><br><span class="line">            int num = base.indexOf(chars1[i])+temp;</span><br><span class="line">            s += base.charAt(num);</span><br><span class="line">            temp = 0;</span><br><span class="line">            i--;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        s += chars1[i];</span><br><span class="line">        i--;</span><br><span class="line">    &#125;</span><br><span class="line">    //如果s2还未加完</span><br><span class="line">    while(j&gt;=0)</span><br><span class="line">    &#123;</span><br><span class="line">        if(temp!=0)</span><br><span class="line">        &#123;</span><br><span class="line">            int num = base.indexOf(chars2[j])+temp;</span><br><span class="line">            s += base.charAt(num);</span><br><span class="line">            temp = 0;</span><br><span class="line">            j--;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        s += chars2[j];</span><br><span class="line">        j--;</span><br><span class="line">    &#125;</span><br><span class="line">    return new StringBuilder(s).reverse().toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/01/05/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E8%BF%9B%E5%88%B6%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-商城项目总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/12/09/%E5%95%86%E5%9F%8E%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/">商城项目总结</a>
+    </h1>
+  
+
+        
+        <a href="/2022/12/09/%E5%95%86%E5%9F%8E%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/" class="archive-article-date">
+  	<time datetime="2022-12-09T14:35:23.985Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-创建唯一订单号（商品号等唯一号类似）"><a href="#1-创建唯一订单号（商品号等唯一号类似）" class="headerlink" title="1. 创建唯一订单号（商品号等唯一号类似）"></a>1. 创建唯一订单号（商品号等唯一号类似）</h1><h2 id="1-1-用UUID生成16位唯一的订单号"><a href="#1-1-用UUID生成16位唯一的订单号" class="headerlink" title="1.1 用UUID生成16位唯一的订单号"></a>1.1 用UUID生成16位唯一的订单号</h2><p>生成 UUID 的方法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UUID uuid = UUID.randomUUID();</span><br></pre></td></tr></table></figure>
+
+<p>该方法会生成一个随机的 UUID 值。</p>
+<p>生成的 UUID 值类似于 “550e8400-e29b-41d4-a716-446655440000”，可以作为唯一的订单号。你也可以通过将生成的 UUID 值转换成不带连字符的字符串来方便使用，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String orderNumber = uuid.toString().replaceAll(&quot;-&quot;, &quot;&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>使用 UUID 生成的订单号在一定程度上可以保证唯一性，但不能保证完全不重复。如果你需要更加严格的唯一性保证，你可以使用其他方法来生成唯一订单号。例如，使用当前时间戳、数据库自增长字段等来生成唯一订单号。</p>
+<h2 id="1-2-时间使用时间戳"><a href="#1-2-时间使用时间戳" class="headerlink" title="1.2 时间使用时间戳"></a>1.2 时间使用时间戳</h2><p>​		<strong>可以根据自己的需求加入相应订单前缀。</strong></p>
+<p><img src="/../images/image-20221210160114417.png" alt="image-20221210160114417"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//创建唯一的订单号</span><br><span class="line">//高并发下，为确保用户的唯一性，可以把用户id加进去</span><br><span class="line">//用时间戳来创建唯一的订单号（但在高并发，时间极短的情况下仍有重复的可能性，可以将时间换为纳米级别，或加上用户名或数据库自增长id）</span><br><span class="line"></span><br><span class="line">        long time = System.currentTimeMillis();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>在高并发中，时间极短的情况下，依然会有重复的可能性，因此，为了减少重复性，可以加上随机生成的字符串。</p>
+<p><strong>java生成随机字符的方法如下：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 创建 Random 对象</span><br><span class="line">Random random = new Random();</span><br><span class="line"></span><br><span class="line">// 获取随机字符</span><br><span class="line">char randomChar = (char)(&#x27;A&#x27; + random.nextInt(26));</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>示例：order-只是自己自设的标识符，不用管。</p>
+<p><img src="/../images/image-20221210161322949.png" alt="image-20221210161322949"></p>
+<h1 id="2-操作数据库进行事务回滚"><a href="#2-操作数据库进行事务回滚" class="headerlink" title="2. 操作数据库进行事务回滚"></a>2. 操作数据库进行事务回滚</h1><h2 id="2-1-java操作数据库利用Connection"><a href="#2-1-java操作数据库利用Connection" class="headerlink" title="2.1 java操作数据库利用Connection"></a>2.1 java操作数据库利用Connection</h2><p>​		在 Java 中操作数据库时，可以使用事务来保证数据的一致性。事务中的一组 SQL 操作要么全部成功，要么全部失败，并且不会影响数据库中其他事务的执行。</p>
+<p>在 Java 中操作数据库时，可以使用事务来保证数据的一致性。事务中的一组 SQL 操作要么全部成功，要么全部失败，并且不会影响数据库中其他事务的执行。</p>
+<p>在 Java 中，可以通过 Connection 类的 setAutoCommit() 方法来启用或禁用事务自动提交。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//启动事务</span><br><span class="line">connection.setAutoCommit(false);</span><br><span class="line"></span><br><span class="line">// 执行一组 SQL 操作</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">// 提交事务</span><br><span class="line">connection.commit();</span><br><span class="line"></span><br><span class="line">// 禁用事务自动提交</span><br><span class="line">connection.setAutoCommit(true);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>如果在执行 SQL 操作时出现了异常，可以通过调用 rollback() 方法来回滚事务。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Copy codetry &#123;</span><br><span class="line">    // 启动事务</span><br><span class="line">    connection.setAutoCommit(false);</span><br><span class="line"></span><br><span class="line">    // 执行一组 SQL 操作</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    // 提交事务</span><br><span class="line">    connection.commit();</span><br><span class="line">&#125; catch (Exception e) &#123;</span><br><span class="line">    // 如果出现异常，回滚事务</span><br><span class="line">    connection.rollback();</span><br><span class="line">&#125; finally &#123;</span><br><span class="line">    // 禁用事务</span><br><span class="line">     connection.setAutoCommit(true);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><img src="/../images/image-20221210171725259.png" alt="image-20221210171725259"></p>
+<p>要创建 Connection 类的实例，需要先加载相应的驱动程序，然后调用 DriverManager 类的 getConnection() 方法。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 加载驱动程序</span><br><span class="line">Class.forName(&quot;com.mysql.jdbc.Driver&quot;);</span><br><span class="line"></span><br><span class="line">// 获取数据库连接</span><br><span class="line">Connection connection = DriverManager.getConnection(</span><br><span class="line">    &quot;jdbc:mysql://localhost:3306/test&quot;,</span><br><span class="line">    &quot;username&quot;,</span><br><span class="line">    &quot;password&quot;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>​		上述代码中，首先通过调用 Class.forName() 方法加载了 MySQL 的驱动程序。然后通过调用 DriverManager.getConnection() 方法获取了与本地 MySQL 数据库 test 的连接。</p>
+<h2 id="2-2-springboot利用-Transactional注解"><a href="#2-2-springboot利用-Transactional注解" class="headerlink" title="2.2 springboot利用@Transactional注解"></a>2.2 springboot利用@Transactional注解</h2><h3 id="2-2-1-可以在方法或类上使用该注解，当方法或类出现异常时，就会自动回滚事务。"><a href="#2-2-1-可以在方法或类上使用该注解，当方法或类出现异常时，就会自动回滚事务。" class="headerlink" title="2.2.1 可以在方法或类上使用该注解，当方法或类出现异常时，就会自动回滚事务。"></a>2.2.1 <strong>可以在方法或类上使用该注解，当方法或类出现异常时，就会自动回滚事务。</strong></h3><h3 id="2-2-2-手动回滚"><a href="#2-2-2-手动回滚" class="headerlink" title="2.2.2 手动回滚"></a>2.2.2 手动回滚</h3><p>​	在Spring Boot中手动回滚事务，首先需要在方法上添加@Transactional注解，然后使用TransactionAspectSupport类的currentTransactionStatus()方法获取当前事务状态，并调用setRollbackOnly()方法将事务设置为回滚状态。具体实现方式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Transactional</span><br><span class="line">public void updateUserInfo(User user) &#123;</span><br><span class="line">    // 保存用户信息</span><br><span class="line">    userMapper.updateUser(user);</span><br><span class="line"></span><br><span class="line">    // 手动回滚事务</span><br><span class="line">    TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>请注意，手动回滚事务的代码必须在@Transactional注解标注的方法中，否则无法获取到当前事务状态并设置回滚状态。</p>
+<h1 id="3-图片存储"><a href="#3-图片存储" class="headerlink" title="3. 图片存储"></a>3. 图片存储</h1><p>​		<strong>接收前端传来的文件，然后进行存储。</strong></p>
+<h2 id="3-1-将图片转为二进制存入数据库"><a href="#3-1-将图片转为二进制存入数据库" class="headerlink" title="3.1 将图片转为二进制存入数据库"></a>3.1 将图片转为二进制存入数据库</h2><h2 id="3-2-将图片存储磁盘文件中-spring"><a href="#3-2-将图片存储磁盘文件中-spring" class="headerlink" title="3.2 将图片存储磁盘文件中(spring)"></a>3.2 将图片存储磁盘文件中(spring)</h2><h3 id="3-2-1-存储文件"><a href="#3-2-1-存储文件" class="headerlink" title="3.2.1 存储文件"></a>3.2.1 存储文件</h3><p>​	<strong>方法一：文件写入</strong></p>
+<p>​		要将图像存储到磁盘中，您需要创建一个表单来接收文件上传请求，然后使用<code>MultipartFile</code>对象来接收文件内容。您可以使用<code>MultipartFile</code>对象的<code>getBytes()</code>方法来获取文件的字节数组，并将其写入磁盘。</p>
+<pre><code>@Controller
+public class ImageController &#123;
+@RequestMapping(value = &quot;/uploadImage&quot;, method = RequestMethod.POST)
+public String handleImageUpload(@RequestParam(&quot;image&quot;) MultipartFile image,
+                                RedirectAttributes redirectAttributes) &#123;
+
+    if (!image.isEmpty()) &#123;
+        try &#123;
+            byte[] bytes = image.getBytes();
+            Path path = Paths.get(UPLOADED_FOLDER + image.getOriginalFilename());
+            Files.write(path, bytes);
+            redirectAttributes.addFlashAttribute(&quot;message&quot;,
+                    &quot;You successfully uploaded &#39;&quot; + image.getOriginalFilename() + &quot;&#39;&quot;);
+        &#125; catch (IOException e) &#123;
+            redirectAttributes.addFlashAttribute(&quot;message&quot;, &quot;Error occurred while uploading &#39;&quot; + image.getOriginalFilename() + &quot;&#39;&quot;);
+        &#125;
+    &#125; else &#123;
+        redirectAttributes.addFlashAttribute(&quot;message&quot;, &quot;Error occurred while uploading &#39;&quot; + image.getOriginalFilename() + &quot;&#39;&quot;);
+    &#125;
+    return &quot;redirect:/uploadStatus&quot;;
+    &#125;
+&#125;
+</code></pre>
+<p>​		这里的<code>UPLOADED_FOLDER</code>常量是用于存储上传图像的目录的路径。请确保该目录存在，并且应用程序具有写入该目录的权限。</p>
+<p><strong>也可以直接在代码中加入文件是否存在的判断和创建文件的代码。</strong></p>
+<p><strong>方法二：使用MultipartFile类的transferTo,直接将文件内容保存到磁盘上</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MultipartFile file = // obtained from the request</span><br><span class="line">File outputFile = new File(&quot;/path/to/output/file&quot;);</span><br><span class="line">file.transferTo(outputFile);</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="1-创建文件目录（文件夹）"><a href="#1-创建文件目录（文件夹）" class="headerlink" title="1. 创建文件目录（文件夹）"></a>1. 创建文件目录（文件夹）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import java.io.File;</span><br><span class="line"></span><br><span class="line">public class CreateFolder &#123;</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    String folderName = &quot;new_folder&quot;;</span><br><span class="line">    File file = new File(folderName);</span><br><span class="line">    if (!file.exists()) &#123;</span><br><span class="line">      if (file.mkdir()) &#123;</span><br><span class="line">        System.out.println(&quot;Directory is created!&quot;);</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        System.out.println(&quot;Failed to create directory!&quot;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>需要注意的是，如果要创建嵌套文件夹，则可以在指定文件夹名称时使用文件夹分隔符（例如”&#x2F;“）来指定完整的路径，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String folderName = &quot;parent_folder/new_folder&quot;;</span><br><span class="line">File file = new File(folderName);</span><br></pre></td></tr></table></figure>
+
+<p>这将创建一个名为 “new_folder” 的文件夹，它位于 “parent_folder” 文件夹中。</p>
+<h4 id="2-创建文件"><a href="#2-创建文件" class="headerlink" title="2. 创建文件"></a>2. 创建文件</h4><p><strong>方法一：直接进行创建，文件创建会返回一个boolean类的值，代表文件是否创建成功</strong></p>
+<pre><code>import java.io.File;
+import java.io.IOException;
+
+public class CreateFileExample &#123;
+public static void main(String[] args) &#123;
+    try &#123;
+        File file = new File(&quot;/tmp/test.txt&quot;);
+
+        // Create the file if it doesn&#39;t exist
+        boolean success = file.createNewFile();
+        if (success) &#123;
+            // File created successfully
+            System.out.println(&quot;File created successfully&quot;);
+        &#125; else &#123;
+            // File already exists
+            System.out.println(&quot;File already exists&quot;);
+        &#125;
+    &#125; catch (IOException e) &#123;
+        e.printStackTrace();
+    &#125;
+&#125;
+&#125;
+</code></pre>
+<h3 id="3-2-3-读取文件"><a href="#3-2-3-读取文件" class="headerlink" title="3.2.3 读取文件"></a>3.2.3 读取文件</h3><h4 id="1-读取文件转换为字节数组"><a href="#1-读取文件转换为字节数组" class="headerlink" title="1.读取文件转换为字节数组"></a>1.读取文件转换为字节数组</h4><p>​		要读取磁盘中的图像文件，您可以使用<code>java.nio.file.Files</code>类的<code>readAllBytes()</code>方法。该方法可以接受一个文件路径作为参数，并返回文件的字节数组。</p>
+<pre><code>import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class ReadFileExample &#123;
+public static void main(String[] args) &#123;
+    try &#123;
+        // Read the file and convert it to a byte array
+        byte[] imageBytes = Files.readAllBytes(Paths.get(&quot;/tmp/image.png&quot;));
+
+        // Do something with the byte array, such as save it to a database
+    &#125; catch (IOException e) &#123;
+        e.printStackTrace();
+    &#125;
+&#125;
+&#125;
+</code></pre>
+<h4 id="2-spring将字节数组转换为MultipartFile类"><a href="#2-spring将字节数组转换为MultipartFile类" class="headerlink" title="2.  spring将字节数组转换为MultipartFile类"></a>2.  spring将字节数组转换为MultipartFile类</h4><p>将字节数组转换为<code>MultipartFile</code>需要使用Java的<code>org.springframework.web.multipart.MultipartFile</code>类。这个类提供了一个静态方法<code>org.springframework.web.multipart.MultipartFile.of</code>，您可以使用该方法将字节数组转换为<code>MultipartFile</code>对象。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">byte[] fileBytes = ...;</span><br><span class="line">String fileName = ...;</span><br><span class="line">String contentType = ...;</span><br><span class="line">MultipartFile file = MultipartFile.of(fileBytes, fileName, contentType);</span><br></pre></td></tr></table></figure>
+
+<p>请注意，这个方法需要Spring 5.2或更高版本。如果您正在使用较旧的Spring版本，则需要使用另一种方法来实现此功能。</p>
+<h1 id="4-try-catch多个异常抓取"><a href="#4-try-catch多个异常抓取" class="headerlink" title="4. try-catch多个异常抓取"></a>4. try-catch多个异常抓取</h1><p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">    throw new IOException();</span><br><span class="line">&#125;</span><br><span class="line">catch (IOException e)</span><br><span class="line">&#123;</span><br><span class="line">    System.out.println(&quot;第一个&quot;);</span><br><span class="line">&#125;</span><br><span class="line">catch (Exception e)</span><br><span class="line">&#123;</span><br><span class="line">    System.out.println(&quot;第二个&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>两个catch是if-else的执行关系.但是得注意异常级别，如果第一个的异常大于第二个的异常，就会报错。</strong></p>
+<h1 id="5-Springboot实现本地存储文件上传及提供Http访问服务"><a href="#5-Springboot实现本地存储文件上传及提供Http访问服务" class="headerlink" title="5. Springboot实现本地存储文件上传及提供Http访问服务"></a>5. Springboot实现本地存储文件上传及提供Http访问服务</h1><p><strong>1. 接收上传的文件，保存到磁盘。（这里用的是本地磁盘）</strong></p>
+<p><strong>2. 返回文件访问的Http访问路径给前端</strong></p>
+<hr>
+<h2 id="5-1-文件上传目录自定义配置"><a href="#5-1-文件上传目录自定义配置" class="headerlink" title="5.1 文件上传目录自定义配置"></a>5.1 文件上传目录自定义配置</h2><p><img src="/../images/image-20221213171307044.png" alt="image-20221213171307044"></p>
+<h2 id="5-2-进行文件上传，返回文件访问路径，http可以直接通过该路径访问到静态资源"><a href="#5-2-进行文件上传，返回文件访问路径，http可以直接通过该路径访问到静态资源" class="headerlink" title="5.2 进行文件上传，返回文件访问路径，http可以直接通过该路径访问到静态资源"></a>5.2 进行文件上传，返回文件访问路径，http可以直接通过该路径访问到静态资源</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">//绑定文件上传路径到uploadPath(在yaml文件配置的值)</span><br><span class="line">@Value(&quot;$&#123;web.upload-path&#125;&quot;)</span><br><span class="line">private String uploadPath;</span><br><span class="line">static SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy/MM/dd/&quot;);</span><br><span class="line">//进行文件上传,返回文件上传地址</span><br><span class="line">public String upload(MultipartFile uploadFile</span><br><span class="line">        , HttpServletRequest request)</span><br><span class="line">&#123;</span><br><span class="line">    //在uploadPath文件夹中通过日期对上传的文件进行归类保存,根据日期创建对应的文件夹</span><br><span class="line">    String format = sdf.format(new Date());</span><br><span class="line">    File folder = new File(uploadPath+format);</span><br><span class="line">    if(!folder.isDirectory())//如果文件不存在或者该文件不是文件夹</span><br><span class="line">    &#123;</span><br><span class="line">        folder.mkdirs();//对文件夹进行创建//注意这里是mkdirs()，不是mkdir()因为这里创建了多个文件目录</span><br><span class="line">    &#125;</span><br><span class="line">    //对上传的文件重命名</span><br><span class="line">    String oldName = uploadFile.getOriginalFilename();//得到原始文件名</span><br><span class="line">    String newName = UUID.randomUUID().toString()+</span><br><span class="line">            oldName.substring(oldName.lastIndexOf(&quot;.&quot;),oldName.length());</span><br><span class="line">    try &#123;</span><br><span class="line">        //文件保存</span><br><span class="line">        uploadFile.transferTo(new File(folder,newName));</span><br><span class="line">        //返回上传文件的访问路径</span><br><span class="line">        String filePath = request.getScheme() + &quot;://&quot; + request.getServerName()</span><br><span class="line">                + &quot;:&quot; + request.getServerPort() + &quot;/&quot; + format + newName;</span><br><span class="line">        return filePath;</span><br><span class="line">    &#125;</span><br><span class="line">    catch (IOException e)</span><br><span class="line">    &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">        throw  new RuntimeException(&quot;文件保存失败!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="6-Springboot-接收带MultipartFile类型的参数和其它参数的对象"><a href="#6-Springboot-接收带MultipartFile类型的参数和其它参数的对象" class="headerlink" title="6. Springboot 接收带MultipartFile类型的参数和其它参数的对象"></a>6. Springboot 接收带MultipartFile类型的参数和其它参数的对象</h1><p>​	<strong>加上@ModelAttribute注解，将表单属性绑定到实体中。</strong></p>
+<p><strong>@ModelAttribute:</strong><code>@ModelAttribute</code>注解是Spring MVC框架中一个常用的注解。它用于将请求参数绑定到控制器方法的参数上。</p>
+<p><strong>测试用例：</strong></p>
+<p>​	<strong>实体类：</strong></p>
+<p><img src="/../images/image-20221215202358557.png" alt="image-20221215202358557"></p>
+<p>​	<strong>实体方法：</strong></p>
+<p><img src="/../images/image-20221215202451621.png" alt="image-20221215202451621"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/12/09/%E5%95%86%E5%9F%8E%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-sql语句" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/12/09/sql%E8%AF%AD%E5%8F%A5/">springboot+mybatis使用sql语句注意点</a>
+    </h1>
+  
+
+        
+        <a href="/2022/12/09/sql%E8%AF%AD%E5%8F%A5/" class="archive-article-date">
+  	<time datetime="2022-12-09T12:56:57.729Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-mybaits支持使用模糊查询，使用like进行实现，要注意："><a href="#1-mybaits支持使用模糊查询，使用like进行实现，要注意：" class="headerlink" title="1.mybaits支持使用模糊查询，使用like进行实现，要注意："></a>1.mybaits支持使用模糊查询，使用like进行实现，要注意：</h1><p><img src="/../images/image-20221209212236433.png" alt="image-20221209212236433"></p>
+<p>对于%,会将%当成数据前的字符串，而不是查询时的%。所以要进行拼接，如下：</p>
+<p><img src="/../images/image-20221209212429529.png" alt="image-20221209212429529"></p>
+<h1 id="2-springboot显示sql日志："><a href="#2-springboot显示sql日志：" class="headerlink" title="2. springboot显示sql日志："></a>2. springboot显示sql日志：</h1><p>在application.<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=properties&spm=1001.2101.3001.7020">properties</a>或application.yml(yaml)文件中配置对应mapper所在包的日志级别。</p>
+<p><img src="/../images/image-20221209212607388.png" alt="image-20221209212607388"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/12/09/sql%E8%AF%AD%E5%8F%A5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-springboot/springboot整合es" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/12/08/springboot/springboot%E6%95%B4%E5%90%88es/">springboot整合es</a>
+    </h1>
+  
+
+        
+        <a href="/2022/12/08/springboot/springboot%E6%95%B4%E5%90%88es/" class="archive-article-date">
+  	<time datetime="2022-12-08T14:01:18.166Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-在服务器上安装es-这里用的是docker"><a href="#1-在服务器上安装es-这里用的是docker" class="headerlink" title="1. 在服务器上安装es(这里用的是docker)"></a>1. 在服务器上安装es(这里用的是docker)</h1><p><strong>注意：服务器上要先安装docker.</strong></p>
+<p><strong>详细安装操作见文章：分布式搜索-ES 的1.部分</strong></p>
+<h1 id="2-整合"><a href="#2-整合" class="headerlink" title="2. 整合"></a>2. 整合</h1><h2 id="2-1-添加依赖"><a href="#2-1-添加依赖" class="headerlink" title="2.1 添加依赖"></a>2.1 添加依赖</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-data-elasticsearch&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>出现错误时注意版本对应关系。</strong></p>
+<h2 id="2-2-常用注解"><a href="#2-2-常用注解" class="headerlink" title="2.2 常用注解"></a>2.2 常用注解</h2><p><img src="/../../images/image-20221208221729777.png" alt="image-20221208221729777"></p>
+<p><img src="/../../images/image-20221208221819798.png" alt="image-20221208221819798"></p>
+<p><img src="/../../images/image-20221208221856097.png" alt="image-20221208221856097"></p>
+<p><img src="/../../images/image-20221208221927454.png" alt="image-20221208221927454"></p>
+<h2 id="2-3-进行配置"><a href="#2-3-进行配置" class="headerlink" title="2.3 进行配置"></a>2.3 进行配置</h2><p><img src="/../../images/image-20221208222836128.png" alt="image-20221208222836128"></p>
+<p><strong>等号后面写上es的连接地址。</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/12/08/springboot/springboot%E6%95%B4%E5%90%88es/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-SSM/springMVC" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/12/03/SSM/springMVC/">springMVC</a>
+    </h1>
+  
+
+        
+        <a href="/2022/12/03/SSM/springMVC/" class="archive-article-date">
+  	<time datetime="2022-12-03T06:46:39.130Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="SpringMVC拦截器"><a href="#SpringMVC拦截器" class="headerlink" title="SpringMVC拦截器"></a>SpringMVC拦截器</h1><h2 id="作用："><a href="#作用：" class="headerlink" title="作用："></a>作用：</h2><p><img src="/../../images/image-20221203145720126.png" alt="image-20221203145720126"></p>
+<h2 id="拦截器和过滤器的区别："><a href="#拦截器和过滤器的区别：" class="headerlink" title="拦截器和过滤器的区别："></a>拦截器和过滤器的区别：</h2><p><img src="/../../images/image-20221203145856576.png" alt="image-20221203145856576"></p>
+<h2 id="入门："><a href="#入门：" class="headerlink" title="入门："></a>入门：</h2><p><img src="/../../images/image-20221203152228401.png" alt="image-20221203152228401"></p>
 <p>示例：</p>
-<p><img src="/../../images/image-20221002171446611.png" alt="image-20221002171446611"></p>
-<h4 id="1-1-3-lamada简化"><a href="#1-1-3-lamada简化" class="headerlink" title="1.1.3 lamada简化"></a>1.1.3 lamada简化</h4><p> <img src="/../../images/image-20221002171732514.png" alt="image-20221002171732514"></p>
-<p>进行比较：</p>
-<p><img src="/../../images/image-20221002172009843.png" alt="image-20221002172009843"></p>
-<h4 id="1-1-4-原理值Thread与Runnable的关系"><a href="#1-1-4-原理值Thread与Runnable的关系" class="headerlink" title="1.1.4 原理值Thread与Runnable的关系"></a>1.1.4 原理值Thread与Runnable的关系</h4><p><img src="/../../images/image-20221002172400411.png" alt="image-20221002172400411"></p>
-<h4 id="1-1-5-FutureTask配合Thread"><a href="#1-1-5-FutureTask配合Thread" class="headerlink" title="1.1.5 FutureTask配合Thread"></a>1.1.5 FutureTask配合Thread</h4><p><img src="/../../images/image-20221002172546842.png" alt="image-20221002172546842"></p>
-<p>示例：</p>
-<p><img src="/../../images/image-20221002173315455.png" alt="image-20221002173315455"></p>
-<h2 id="2-多个线程同时线程运行"><a href="#2-多个线程同时线程运行" class="headerlink" title="2. 多个线程同时线程运行"></a>2. 多个线程同时线程运行</h2><h4 id="现象："><a href="#现象：" class="headerlink" title="现象："></a>现象：</h4><p>交替运行</p>
-<h3 id="3-查看进程线程的方法"><a href="#3-查看进程线程的方法" class="headerlink" title="3. 查看进程线程的方法"></a>3. 查看进程线程的方法</h3><h3 id="3-1-windows"><a href="#3-1-windows" class="headerlink" title="3.1 windows"></a>3.1 windows</h3><p><img src="/../../images/image-20221002173955636.png" alt="image-20221002173955636"></p>
-<h3 id="3-2-linux"><a href="#3-2-linux" class="headerlink" title="3.2 linux"></a>3.2 linux</h3><p><img src="/../../images/image-20221002174004543.png" alt="image-20221002174004543"></p>
-<h3 id="3-3-java"><a href="#3-3-java" class="headerlink" title="3.3 java"></a>3.3 java</h3><p><img src="/../../images/image-20221002174213574.png" alt="image-20221002174213574"></p>
-<p><img src="/../../images/image-20221002174724947.png" alt="image-20221002174724947"></p>
-<h2 id="4-原理之线程运行"><a href="#4-原理之线程运行" class="headerlink" title="4. 原理之线程运行"></a>4. 原理之线程运行</h2><h3 id="4-1-栈与栈帧"><a href="#4-1-栈与栈帧" class="headerlink" title="4.1 栈与栈帧"></a>4.1 栈与栈帧</h3><p><img src="/../../images/image-20221002175228404.png" alt="image-20221002175228404"></p>
-<h3 id="4-2-多线程"><a href="#4-2-多线程" class="headerlink" title="4.2 多线程"></a>4.2 多线程</h3><p>​		线程是相互独立的，每个线程都有自己的一个栈和栈帧，他们互不影响</p>
-<h3 id="4-3-线程上下文切换（Thread-Context-Switch）"><a href="#4-3-线程上下文切换（Thread-Context-Switch）" class="headerlink" title="4.3 线程上下文切换（Thread Context Switch）"></a>4.3 线程上下文切换（Thread Context Switch）</h3><p><img src="/../../images/image-20221002202123486.png" alt="image-20221002202123486"></p>
-<h2 id="5-常见方法"><a href="#5-常见方法" class="headerlink" title="5. 常见方法"></a>5. 常见方法</h2><p><img src="/../../images/image-20221002202835361.png" alt="image-20221002202835361"></p>
-<h3 id="5-1-start与run"><a href="#5-1-start与run" class="headerlink" title="5.1 start与run"></a>5.1 start与run</h3><p>​		直接调用run并不是在创建的线程执行，而是主线程在执行run.所以要用start开启线程，这样主线程和新开启的线程就不是同一线程在执行，两个线程是独立的。可以同时执行。</p>
-<h3 id="5-2-sleep与yield"><a href="#5-2-sleep与yield" class="headerlink" title="5.2 sleep与yield"></a>5.2 sleep与yield</h3><p><img src="/../../images/image-20221003150250539.png" alt="image-20221003150250539"></p>
-<h4 id="sleep-状态"><a href="#sleep-状态" class="headerlink" title="sleep 状态"></a>sleep 状态</h4><p>注意sleep在哪个线程被调用，它就会让哪一方休眠。</p>
-<p>示例：</p>
-<h4 id="sleep-打断"><a href="#sleep-打断" class="headerlink" title="sleep 打断"></a>sleep 打断</h4><p>示例：</p>
-<p><img src="/../../images/image-20221003150911376.png" alt="image-20221003150911376"></p>
-<p><img src="/../../images/image-20221003150944835.png" alt="image-20221003150944835"></p>
-<h4 id="sleep可读性"><a href="#sleep可读性" class="headerlink" title="sleep可读性"></a>sleep可读性</h4><p>  睡眠结束后的线程未必立刻执行，此时cpu也许正在执行其它的代码。</p>
-<p>  建议用TimeUnit的sleep代替来提高可读性。</p>
-<p>示例：</p>
-<p><img src="/../../images/image-20221003152604246.png" alt="image-20221003152604246"></p>
-<h4 id="yield和sleep"><a href="#yield和sleep" class="headerlink" title="yield和sleep"></a>yield和sleep</h4><p><img src="/../../images/image-20221003152724718.png" alt="image-20221003152724718"></p>
-<p>​	yield没有等待时间，sleep有一个确定的等待时间。所以当调用yield处于就绪状态时，如果操作系统的任务调度器没有其它需要运行，则会继续分配到yield的线程。而sleep不会，它有一个确切的等待时间，如果时间没有结束，则不会分配到该线程。</p>
-<h4 id="线程优先级"><a href="#线程优先级" class="headerlink" title="线程优先级"></a>线程优先级</h4><p><img src="/../../images/image-20221003153954202.png" alt="image-20221003153954202"></p>
-<p>​	yield线程和线程优先级，都取决于操作系统的任务调度器。</p>
-<h4 id="sleep应用–防止cpu占用100"><a href="#sleep应用–防止cpu占用100" class="headerlink" title="sleep应用–防止cpu占用100%"></a>sleep应用–防止cpu占用100%</h4><p><img src="/../../images/image-20221003154414083.png" alt="image-20221003154414083"></p>
-<h3 id="5-3-join方法"><a href="#5-3-join方法" class="headerlink" title="5.3 join方法"></a>5.3 join方法</h3><p><strong>作用：等待线程运行结束</strong></p>
-<p>示例：</p>
-<p><img src="/../../images/image-20221003155446325.png" alt="image-20221003155446325"></p>
-<p><img src="/../../images/image-20221003155458229.png" alt="image-20221003155458229"></p>
-<h4 id="join应用–同步应用"><a href="#join应用–同步应用" class="headerlink" title="join应用–同步应用"></a>join应用–同步应用</h4><p><img src="/../../images/image-20221003155614775.png" alt="image-20221003155614775"></p>
-<p>示例：多个同步等待</p>
-<p><img src="/../../images/image-20221003155804820.png" alt="image-20221003155804820"></p>
-<p><img src="/../../images/image-20221003155853526.png" alt="image-20221003155853526"></p>
-<p>示意图：</p>
-<p><img src="/../../images/image-20221003155931839.png" alt="image-20221003155931839"></p>
-<h4 id="有时效的join-long-n"><a href="#有时效的join-long-n" class="headerlink" title="有时效的join(long n)"></a>有时效的join(long n)</h4><p>​	<strong>等待线程运行结束，最多等待n毫秒</strong></p>
-<h3 id="5-4-interrupt（打断阻塞）方法"><a href="#5-4-interrupt（打断阻塞）方法" class="headerlink" title="5.4 interrupt（打断阻塞）方法"></a>5.4 interrupt（打断阻塞）方法</h3><p>​	<strong>打断sleep,wait,join的线程</strong>，打断状态会变成false</p>
-<h4 id="打断阻塞"><a href="#打断阻塞" class="headerlink" title="打断阻塞"></a>打断阻塞</h4><p>示例：</p>
-<p><img src="/../../images/image-20221003160720050.png" alt="image-20221003160720050"></p>
-<p><strong>打断阻塞则直接进行打断，打断标记会变成false.打断正常运行的线程，线程并不会停止，但是打断标记会变为true;</strong></p>
-<h4 id="打断正常运行的线程"><a href="#打断正常运行的线程" class="headerlink" title="打断正常运行的线程"></a>打断正常运行的线程</h4><p>示例：</p>
-<p><img src="/../../images/image-20221003161613183.png" alt="image-20221003161613183"></p>
-<h4 id="设计模式–两阶段终止–interrupt"><a href="#设计模式–两阶段终止–interrupt" class="headerlink" title="设计模式–两阶段终止–interrupt"></a>设计模式–两阶段终止–interrupt</h4><p><img src="/../../images/image-20221003161834881.png" alt="image-20221003161834881"></p>
-<p><img src="/../../images/image-20221003161932332.png" alt="image-20221003161932332"></p>
-<h5 id="两阶段终止模式"><a href="#两阶段终止模式" class="headerlink" title="两阶段终止模式"></a>两阶段终止模式</h5><p><img src="/../../images/image-20221003162016831.png" alt="image-20221003162016831"></p>
-<p>示例：</p>
-<p><strong>正常线程被打断，打断状态值会为true,sleep状态被打断，打断状态会变为false,所以这里sleep抓取打断异常后要重新设置打断标记</strong></p>
-<p><img src="/../../images/image-20221003163845194.png" alt="image-20221003163845194"></p>
-<h5 id="细节注意："><a href="#细节注意：" class="headerlink" title="细节注意："></a>细节注意：</h5><p><img src="/../../images/image-20221003164530034.png" alt="image-20221003164530034"></p>
-<p><img src="/../../images/image-20221003164546496.png" alt="image-20221003164546496"></p>
-<h4 id="interrupt打断park"><a href="#interrupt打断park" class="headerlink" title="interrupt打断park"></a>interrupt打断park</h4><p><img src="/../../images/image-20221003165429653.png" alt="image-20221003165429653"></p>
-<p><strong>打断park,打算标记会变为true</strong></p>
-<p>示例1：</p>
-<p><img src="/../../images/image-20221003164820755.png" alt="image-20221003164820755"></p>
-<p><strong>连续park,但是之前有打断，打断状态变成了true：可以用interrupted清除打断状态，这时打断状态变为false,也就会进入第二个park了</strong></p>
-<p>示例2：</p>
-<p><img src="/../../images/image-20221003165126048.png" alt="image-20221003165126048"></p>
-<h3 id="5-4-不推荐使用的方法"><a href="#5-4-不推荐使用的方法" class="headerlink" title="5.4 不推荐使用的方法"></a>5.4 不推荐使用的方法</h3><p><img src="/../../images/image-20221003165544310.png" alt="image-20221003165544310"></p>
-<h3 id="5-5-主线程和守护线程"><a href="#5-5-主线程和守护线程" class="headerlink" title="5.5 主线程和守护线程"></a>5.5 主线程和守护线程</h3><p>主线程：Java虚拟机运行的Java代码，都会由主线程去运行Java代码，来开启程序的运行。</p>
-<p>守护线程：</p>
-<p><img src="/../../images/image-20221003184612403.png" alt="image-20221003184612403"></p>
-<p><img src="/../../images/image-20221003185048216.png" alt="image-20221003185048216"></p>
-<p>注意：</p>
-<p><img src="/../../images/image-20221003185153575.png" alt="image-20221003185153575"></p>
-<h2 id="6-线程状态"><a href="#6-线程状态" class="headerlink" title="6.线程状态"></a>6.线程状态</h2><h3 id="6-1-从操作系统层面–五种状态"><a href="#6-1-从操作系统层面–五种状态" class="headerlink" title="6.1 从操作系统层面–五种状态"></a>6.1 从操作系统层面–五种状态</h3><p><img src="/../../images/image-20221003185350943.png" alt="image-20221003185350943"></p>
-<p><img src="/../../images/image-20221003185623025.png" alt="image-20221003185623025"></p>
-<h3 id="6-2-从java-API-层面–六种状态"><a href="#6-2-从java-API-层面–六种状态" class="headerlink" title="6.2 从java API 层面–六种状态"></a>6.2 从java API 层面–六种状态</h3><p><img src="/../../images/image-20221003185736005.png" alt="image-20221003185736005"></p>
-<p><img src="/../../images/image-20221003190139261.png" alt="image-20221003190139261"></p>
-<p><strong>六种状态的出现情况：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV16J411h7Rd?p=46&vd_source=476b0deb78bfefe865a71ead616f43da">03.036-线程状态-六种-演示_哔哩哔哩_bilibili</a></strong></p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p><img src="/../../images/image-20221003200401096.png" alt="image-20221003200401096"></p>
+<p><img src="/../../images/image-20221203152720961.png" alt="image-20221203152720961"></p>
+<h2 id="拦截器方法说明："><a href="#拦截器方法说明：" class="headerlink" title="拦截器方法说明："></a>拦截器方法说明：</h2><p><img src="/../../images/image-20221203164630294.png" alt="image-20221203164630294"></p>
+<h1 id="springMVC异常处理"><a href="#springMVC异常处理" class="headerlink" title="springMVC异常处理"></a>springMVC异常处理</h1><h2 id="处理思路："><a href="#处理思路：" class="headerlink" title="处理思路："></a>处理思路：</h2><p><img src="/../../images/image-20221203170702463.png" alt="image-20221203170702463"></p>
+<h2 id="处理方式："><a href="#处理方式：" class="headerlink" title="处理方式："></a>处理方式：</h2><p><img src="/../../images/image-20221203170824227.png" alt="image-20221203170824227"></p>
+<h3 id="简单异常处理器：SimpleMappingExceptionResolver"><a href="#简单异常处理器：SimpleMappingExceptionResolver" class="headerlink" title="简单异常处理器：SimpleMappingExceptionResolver"></a>简单异常处理器：SimpleMappingExceptionResolver</h3><p><img src="/../../images/image-20221203170941512.png" alt="image-20221203170941512"></p>
+<h3 id="自定义异常处理器：HandlerExceptionResolver"><a href="#自定义异常处理器：HandlerExceptionResolver" class="headerlink" title="自定义异常处理器：HandlerExceptionResolver"></a>自定义异常处理器：HandlerExceptionResolver</h3><p><img src="/../../images/image-20221203171525708.png" alt="image-20221203171525708"></p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p><img src="/../../images/image-20221203173907829.png" alt="image-20221203173907829"></p>
 
       
 
@@ -548,7 +969,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/10/02/java%E5%B9%B6%E5%8F%91/java%E7%BA%BF%E7%A8%8B/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/12/03/SSM/springMVC/">展开全文 >></a>
         </p>
       
 
@@ -578,39 +999,64 @@
 
 
   
-    <article id="post-springboot不断学习/lombok-@Slf4j" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-cookie,session和token" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/10/02/springboot%E4%B8%8D%E6%96%AD%E5%AD%A6%E4%B9%A0/lombok-@Slf4j/">lombok @Slf4j</a>
+      <a class="article-title" href="/2022/12/02/cookie,session%E5%92%8Ctoken/">cookie、session和token</a>
     </h1>
   
 
         
-        <a href="/2022/10/02/springboot%E4%B8%8D%E6%96%AD%E5%AD%A6%E4%B9%A0/lombok-@Slf4j/" class="archive-article-date">
-  	<time datetime="2022-10-02T08:18:28.801Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-02</time>
+        <a href="/2022/12/02/cookie,session%E5%92%8Ctoken/" class="archive-article-date">
+  	<time datetime="2022-12-02T08:24:36.091Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="作用："><a href="#作用：" class="headerlink" title="作用："></a>作用：</h1><p>​	<strong>用作日志输出，一般在项目每个类的开头加入注解，如果不想写一下代码，但是想用log来打印日志。</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">private final Logger logger = LoggerFactory.getLogger(当前类名.class);</span><br></pre></td></tr></table></figure>
+        <p>​		<strong>首先了解http是无状态的，当用户访问它之后，再次进性访问，http并不知道是不是同一个用户在进行访问。因此需要存储用户的登录状态来保持登录，可以让浏览器或者服务器记住用户名和密码，以实现免登录的操作。可以用以下技术来进行实现。</strong></p>
+<h1 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h1><p>​		<strong>浏览器的每个请求都会自动发送cookie.</strong></p>
+<p><strong>基本流程如下：</strong></p>
+<p><img src="/../images/image-20221202164149230.png" alt="image-20221202164149230"></p>
+<p><strong>可以理解为cookie就是一种存储在浏览器的一种数据。</strong></p>
+<p><strong>我们可以知道，在浏览器中是可以直接看到cookie信息的,只要浏览器被黑，cookie中的重要信息就会被泄露，并不安全。</strong>于是就出现了新的概念，session.</p>
+<h1 id="session（会话）"><a href="#session（会话）" class="headerlink" title="session（会话）"></a>session（会话）</h1><p><strong>会话开始：浏览器访问服务器</strong></p>
+<p><strong>会话结束：服务器可以设置相应的时间</strong></p>
+<p><strong>流程：</strong></p>
+<p><img src="/../images/image-20221202165551094.png" alt="image-20221202165551094"></p>
+<p><strong>直到cookie的有效期失效之后，浏览器一般都会自行删除这个cookie.该会话就结束了。</strong></p>
+<p><strong>服务器在发送cookie之前，是会对含有SessionID的cookie进行签名。也就是说，如果黑客修改了SessionID，那么SessionID就会变成服务器识别不了的字符串。</strong></p>
+<p><strong>注意：在特定时间有大量用户访问服务器时，服务器就会面临可能需要存储大量SessionID在服务器中的问题。但如果有多台服务器，一台服务器又会面临需要将SessionID分享给其它服务器的问题，因为可能出现当前服务器超载的问题。如果用数据库存储SessionID,如果数据库崩溃了，也就拿不到SessionID了。因此就出现了JWT（json web token）.</strong></p>
+<h1 id="token-jwt-json-web-token"><a href="#token-jwt-json-web-token" class="headerlink" title="token(jwt: json web token)"></a>token(jwt: json web token)</h1><p><img src="/../images/image-20221202192307587.png" alt="image-20221202192307587"></p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念:"></a>概念:</h2><p><img src="/../images/image-20221202192556407.png" alt="image-20221202192556407"></p>
+<p>​		<strong>就是把信息进行安全的封装，以json的形式进行传递。</strong></p>
+<h2 id="作用"><a href="#作用" class="headerlink" title="作用:"></a>作用:</h2><p><img src="/../images/image-20221202193331280.png" alt="image-20221202193331280"></p>
+<h2 id="组成："><a href="#组成：" class="headerlink" title="组成："></a>组成：</h2><p><img src="/../images/image-20221202193505060.png" alt="image-20221202193505060"></p>
+<p><strong>第一部分：</strong>然后会将其用base64进行加密。</p>
+<p><img src="/../images/image-20221202193538926.png" alt="image-20221202193538926"></p>
+<p><strong>第二部分：</strong>用base64进行加密</p>
+<p><img src="/../images/image-20221202193634903.png" alt="image-20221202193634903"></p>
+<p><strong>第三部分：签名</strong></p>
+<p><img src="/../images/image-20221202193925797.png" alt="image-20221202193925797"></p>
+<h2 id="编码和解码："><a href="#编码和解码：" class="headerlink" title="编码和解码："></a>编码和解码：</h2><p><strong>1. 先引入jwt坐标：</strong>（可以直接在maven仓库搜：jsonwebtoken）</p>
+<p>​	springboot并没有引入jjwt，所以要加上版本。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;jjwt&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;0.9.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
 
-<p>   <strong>就可以用@Sf4j放在类的开头来代替，添加该注释后，就可以在代码中直接引用log.info()打印日志了。</strong>如下：（图片来源于参考文献的截图）</p>
-<p><img src="/../../images/image-20221002162242267.png" alt="image-20221002162242267"></p>
-<p>**注意:**要使用该注解，需要在pom文件中添加lombok的坐标。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;lombok&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>编码和解码工具示例：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">public class JwtUtils &#123;</span><br><span class="line"></span><br><span class="line">    private static long time = 1000*60*60*24*3;</span><br><span class="line">    private static String signature = &quot;admin&quot;;//自定义一个签名信息</span><br><span class="line">    //编码</span><br><span class="line">    public static String encode(String username,String password)</span><br><span class="line">    &#123;</span><br><span class="line">        //创建jwt对象</span><br><span class="line">        JwtBuilder jwtBuilder = Jwts.builder();//builder就是用来构建jwt的对象的</span><br><span class="line"></span><br><span class="line">        String token = jwtBuilder</span><br><span class="line">                    //设置第一部分：header，该部分用于存放类型和二次编码的算法名称</span><br><span class="line">                    .setHeaderParam(&quot;typ&quot;,&quot;JWT&quot;)//类型</span><br><span class="line">                    .setHeaderParam(&quot;alg&quot;,&quot;HS256&quot;)//算法名称</span><br><span class="line">                    //设置第二部分：payload,该部分用于存放有效信息</span><br><span class="line">                    .claim(&quot;username&quot;,username)</span><br><span class="line">                    .claim(&quot;password&quot;,password)</span><br><span class="line">                    .setExpiration(new Date(System.currentTimeMillis()+time))//设置有效时间：这里设置的是三天</span><br><span class="line">                    .setId(UUID.randomUUID().toString())//设置id</span><br><span class="line">                    //设置第三部分：signature</span><br><span class="line">                    .signWith(SignatureAlgorithm.HS256,signature)//设置编码算法和签名值</span><br><span class="line">                    .compact();//最后将这三部分进行拼接</span><br><span class="line">        return token;</span><br><span class="line">    &#125;</span><br><span class="line">    //解码</span><br><span class="line">    public static boolean parse(String token)</span><br><span class="line">    &#123;</span><br><span class="line">        JwtParser jwtParser = Jwts.parser();//创建解密对象</span><br><span class="line">        try &#123;</span><br><span class="line">            Jws&lt;Claims&gt; claimsJws = jwtParser</span><br><span class="line">                    .setSigningKey(signature) //根据签名进行解密</span><br><span class="line">                    .parseClaimsJws(token);//解析token得到存放的有效信息</span><br><span class="line">            Claims claims = claimsJws.getBody();//通过该对象，可以得到存放在第二部分的所有信息，包括有效时间，id等</span><br><span class="line">            String username = (String) claims.get(&quot;username&quot;);</span><br><span class="line">            String password = (String) claims.get(&quot;password&quot;);</span><br><span class="line">            System.out.println(username);</span><br><span class="line">            System.out.println(password);</span><br><span class="line">        &#125;catch (Exception e)</span><br><span class="line">        &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
 
 
-<p>参考文献：<a target="_blank" rel="noopener" href="https://blog.csdn.net/AlbenXie/article/details/108242318">(25条消息) lombok @Slf4j注解_AlbenXie的博客-CSDN博客_@slf4j lombok</a></p>
+<h1 id="三者区分"><a href="#三者区分" class="headerlink" title="三者区分"></a>三者区分</h1><p><strong>cookie:	cookie是一种数据载体，将session放在cookie中，可以在每次请求都得到cookie中的session.</strong></p>
+<p><strong>session:	诞生并保存于服务器的。</strong></p>
+<p><strong>jwt(token):	诞生在服务器但是保存在浏览器中，可以防止token或storage中。服务器进行token的生成和解码。</strong></p>
 
       
 
@@ -623,652 +1069,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/10/02/springboot%E4%B8%8D%E6%96%AD%E5%AD%A6%E4%B9%A0/lombok-@Slf4j/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-java并发/进程与线程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/10/02/java%E5%B9%B6%E5%8F%91/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/">进程与线程</a>
-    </h1>
-  
-
-        
-        <a href="/2022/10/02/java%E5%B9%B6%E5%8F%91/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2022-10-02T08:02:23.092Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="1-进程和线程的概念"><a href="#1-进程和线程的概念" class="headerlink" title="1.进程和线程的概念"></a>1.进程和线程的概念</h1><p><img src="/../../images/image-20221002160824469.png" alt="image-20221002160824469"></p>
-<p><img src="/../../images/image-20221002160839863.png" alt="image-20221002160839863"></p>
-<h1 id="2-并行和并发的概念"><a href="#2-并行和并发的概念" class="headerlink" title="2.并行和并发的概念"></a>2.并行和并发的概念</h1><p><strong>并发：</strong></p>
-<p><img src="/../../images/image-20221002161114724.png" alt="image-20221002161114724"></p>
-<p><strong>并发：</strong></p>
-<p><img src="/../../images/image-20221002161254263.png" alt="image-20221002161254263"></p>
-<p><img src="/../../images/image-20221002161333867.png" alt="image-20221002161333867"></p>
-<p><strong>例子：</strong></p>
-<p><img src="/../../images/image-20221002161459220.png" alt="image-20221002161459220"></p>
-<h1 id="3-线程基本应用"><a href="#3-线程基本应用" class="headerlink" title="3.线程基本应用"></a>3.线程基本应用</h1><h2 id="3-1-应用案例1：异步调用"><a href="#3-1-应用案例1：异步调用" class="headerlink" title="3.1 应用案例1：异步调用"></a>3.1 应用案例1：异步调用</h2><p><img src="/../../images/image-20221002161659678.png" alt="image-20221002161659678"></p>
-<h2 id="3-2-应用案例2：-提高效率"><a href="#3-2-应用案例2：-提高效率" class="headerlink" title="3.2 应用案例2： 提高效率"></a>3.2 应用案例2： 提高效率</h2><p><img src="/../../images/image-20221002163015232.png" alt="image-20221002163015232"></p>
-<p><img src="/../../images/image-20221002163527893.png" alt="image-20221002163527893"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/10/02/java%E5%B9%B6%E5%8F%91/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-springboot不断学习/Apache shrio" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/10/01/springboot%E4%B8%8D%E6%96%AD%E5%AD%A6%E4%B9%A0/Apache%20shrio/">Apache shrio</a>
-    </h1>
-  
-
-        
-        <a href="/2022/10/01/springboot%E4%B8%8D%E6%96%AD%E5%AD%A6%E4%B9%A0/Apache%20shrio/" class="archive-article-date">
-  	<time datetime="2022-10-01T14:57:10.349Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Apache-shrio"><a href="#Apache-shrio" class="headerlink" title="Apache shrio"></a>Apache shrio</h1>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/10/01/springboot%E4%B8%8D%E6%96%AD%E5%AD%A6%E4%B9%A0/Apache%20shrio/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数据库学习/线上课程2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/09/21/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/%E7%BA%BF%E4%B8%8A%E8%AF%BE%E7%A8%8B2/">关系数据库</a>
-    </h1>
-  
-
-        
-        <a href="/2022/09/21/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/%E7%BA%BF%E4%B8%8A%E8%AF%BE%E7%A8%8B2/" class="archive-article-date">
-  	<time datetime="2022-09-21T09:36:15.904Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="1-关系数据结构"><a href="#1-关系数据结构" class="headerlink" title="1. 关系数据结构"></a>1. 关系数据结构</h1><h2 id="1-1-关系域和笛卡尔积"><a href="#1-1-关系域和笛卡尔积" class="headerlink" title="1.1 关系域和笛卡尔积"></a>1.1 关系域和笛卡尔积</h2><h3 id="1-1-1-域"><a href="#1-1-1-域" class="headerlink" title="1.1.1 域"></a>1.1.1 域</h3><p><strong>概念：</strong></p>
-<p><img src="/../../images/image-20220921193316920.png" alt="image-20220921193316920"></p>
-<p><strong>示例：</strong></p>
-<p><img src="/../../images/image-20220921193340829.png" alt="image-20220921193340829"></p>
-<h3 id="1-1-2-笛卡尔积"><a href="#1-1-2-笛卡尔积" class="headerlink" title="1.1.2 笛卡尔积"></a>1.1.2 笛卡尔积</h3><p><img src="/../../images/image-20220921193439584.png" alt="image-20220921193439584"></p>
-<p><img src="/../../images/image-20220921193455640.png" alt="image-20220921193455640"></p>
-<p><strong>示例：</strong></p>
-<p><img src="/../../images/image-20220921193643184.png" alt="image-20220921193643184"></p>
-<p><img src="/../../images/image-20220921193658956.png" alt="image-20220921193658956"></p>
-<p><strong>笛卡尔积包含的概念：</strong></p>
-<p><img src="/../../images/image-20220921193839095.png" alt="image-20220921193839095"></p>
-<p><img src="/../../images/image-20220921193855320.png" alt="image-20220921193855320"></p>
-<p><img src="/../../images/image-20220921193923672.png" alt="image-20220921193923672"></p>
-<p><strong>笛卡尔积不满足交换律：</strong></p>
-<p><img src="/../../images/image-20220921193948472.png" alt="image-20220921193948472"></p>
-<h2 id="1-2-关系及性质"><a href="#1-2-关系及性质" class="headerlink" title="1.2 关系及性质"></a>1.2 关系及性质</h2><p><strong>概念：</strong></p>
-<p><img src="/../../images/image-20220921194047293.png" alt="image-20220921194047293"></p>
-<p><img src="/../../images/image-20220921195005963.png" alt="image-20220921195005963"></p>
-<p><img src="/../../images/image-20220921194211430.png" alt="image-20220921194211430"></p>
-<p><img src="/../../images/image-20220921194231200.png" alt="image-20220921194231200"></p>
-<p><strong>候选码：</strong></p>
-<p><img src="/../../images/image-20220921195114338.png" alt="image-20220921195114338"></p>
-<p><img src="/../../images/image-20220921195134287.png" alt="image-20220921195134287"></p>
-<p><img src="/../../images/image-20220921195213317.png" alt="image-20220921195213317"></p>
-<p><strong>性质：</strong></p>
-<p><img src="/../../images/image-20220921194433718.png" alt="image-20220921194433718"></p>
-<p><img src="/../../images/image-20220921194443024.png" alt="image-20220921194443024"></p>
-<p><img src="/../../images/image-20220921194620123.png" alt="image-20220921194620123"></p>
-<p><img src="/../../images/image-20220921194632781.png" alt="image-20220921194632781"></p>
-<p><img src="/../../images/image-20220921194657422.png" alt="image-20220921194657422"></p>
-<p><img src="/../../images/image-20220921194712094.png" alt="image-20220921194712094"></p>
-<h2 id="1-3-关系模式"><a href="#1-3-关系模式" class="headerlink" title="1.3 关系模式"></a>1.3 关系模式</h2><p><img src="/../../images/image-20220921195446967.png" alt="image-20220921195446967"></p>
-<p><img src="/../../images/image-20220921195652275.png" alt="image-20220921195652275"></p>
-<p><img src="/../../images/image-20220921195716530.png" alt="image-20220921195716530"></p>
-<p><img src="/../../images/image-20220921195744770.png" alt="image-20220921195744770"></p>
-<p><img src="/../../images/image-20220921195937060.png" alt="image-20220921195937060"></p>
-<p><img src="/../../images/image-20220921195947452.png" alt="image-20220921195947452"></p>
-<p><img src="/../../images/image-20220921200000906.png" alt="image-20220921200000906"></p>
-<p><img src="/../../images/image-20220921200010254.png" alt="image-20220921200010254"></p>
-<p><img src="/../../images/image-20220921200116901.png" alt="image-20220921200116901"></p>
-<p>​				或：</p>
-<p><img src="/../../images/image-20220921200132548.png" alt="image-20220921200132548"></p>
-<h1 id="2-关系的完整性"><a href="#2-关系的完整性" class="headerlink" title="2. 关系的完整性"></a>2. 关系的完整性</h1><h2 id="2-1-实体完整性–必须定义的完整性条件"><a href="#2-1-实体完整性–必须定义的完整性条件" class="headerlink" title="2.1 实体完整性–必须定义的完整性条件"></a>2.1 实体完整性–必须定义的完整性条件</h2><p><img src="/../../images/image-20220921200522173.png" alt="image-20220921200522173"></p>
-<p><img src="/../../images/image-20220921200632657.png" alt="image-20220921200632657"></p>
-<p><img src="/../../images/image-20220921200712176.png" alt="image-20220921200712176"></p>
-<p><img src="/../../images/image-20220921200820711.png" alt="image-20220921200820711"></p>
-<p><img src="/../../images/image-20220921200901566.png" alt="image-20220921200901566"></p>
-<p><img src="/../../images/image-20220921201107022.png" alt="image-20220921201107022"></p>
-<h2 id="2-2-参照完整性–必须定义的完整性条件"><a href="#2-2-参照完整性–必须定义的完整性条件" class="headerlink" title="2.2  参照完整性–必须定义的完整性条件"></a>2.2  参照完整性–必须定义的完整性条件</h2><p><img src="/../../images/image-20220921201406859.png" alt="image-20220921201406859"></p>
-<p><img src="/../../images/image-20220921201548028.png" alt="image-20220921201548028"></p>
-<p><img src="/../../images/image-20220921201750017.png" alt="image-20220921201750017"></p>
-<p><img src="/../../images/image-20220921201835334.png" alt="image-20220921201835334"></p>
-<h2 id="2-3-用户定义完整性–专用的完整性约束条件"><a href="#2-3-用户定义完整性–专用的完整性约束条件" class="headerlink" title="2.3 用户定义完整性–专用的完整性约束条件"></a>2.3 用户定义完整性–专用的完整性约束条件</h2><p><img src="/../../images/image-20220921203559628.png" alt="image-20220921203559628"></p>
-<p><img src="/../../images/image-20220921203245507.png" alt="image-20220921203245507"></p>
-<p><img src="/../../images/image-20220921203311553.png" alt="image-20220921203311553"></p>
-<h1 id="3-关系代数"><a href="#3-关系代数" class="headerlink" title="3. 关系代数"></a>3. 关系代数</h1><h2 id="2-1-传统的集合运算"><a href="#2-1-传统的集合运算" class="headerlink" title="2.1 传统的集合运算"></a>2.1 传统的集合运算</h2><h3 id="2-1-1-并运算"><a href="#2-1-1-并运算" class="headerlink" title="2.1.1 并运算"></a>2.1.1 并运算</h3><p><img src="/../../images/image-20220926212244899.png" alt="image-20220926212244899"></p>
-<p><img src="/../../images/image-20220926212154549.png" alt="image-20220926212154549"></p>
-<h3 id="2-1-2-交运算"><a href="#2-1-2-交运算" class="headerlink" title="2.1.2 交运算"></a>2.1.2 交运算</h3><p><img src="/../../images/image-20220926212311750.png" alt="image-20220926212311750"></p>
-<p><img src="/../../images/image-20220926212342935.png" alt="image-20220926212342935"></p>
-<h3 id="2-1-3-差运算"><a href="#2-1-3-差运算" class="headerlink" title="2.1.3 差运算"></a>2.1.3 差运算</h3><p><img src="/../../images/image-20220926212404647.png" alt="image-20220926212404647"></p>
-<p><img src="/../../images/image-20220926212434423.png" alt="image-20220926212434423"></p>
-<h3 id="2-1-4-广义笛卡尔积"><a href="#2-1-4-广义笛卡尔积" class="headerlink" title="2.1.4 广义笛卡尔积"></a>2.1.4 广义笛卡尔积</h3><p><img src="/../../images/image-20220926212514877.png" alt="image-20220926212514877"></p>
-<p><img src="/../../images/image-20220926212545392.png" alt="image-20220926212545392"></p>
-<h2 id="2-2-专门的关系运算–关系运算的几个记号"><a href="#2-2-专门的关系运算–关系运算的几个记号" class="headerlink" title="2.2 专门的关系运算–关系运算的几个记号"></a>2.2 专门的关系运算–关系运算的几个记号</h2><h3 id="2-2-1-分量"><a href="#2-2-1-分量" class="headerlink" title="2.2.1 分量"></a>2.2.1 分量</h3><p><img src="/../../images/image-20220926212750774.png" alt="image-20220926212750774"></p>
-<h3 id="2-2-2-分量的集合"><a href="#2-2-2-分量的集合" class="headerlink" title="2.2.2 分量的集合"></a>2.2.2 分量的集合</h3><p><img src="/../../images/image-20220926213922383.png" alt="image-20220926213922383"></p>
-<p><strong>示例：</strong></p>
-<p><img src="/../../images/image-20220926214203764.png" alt="image-20220926214203764"></p>
-<h3 id="2-2-3-元组的连串"><a href="#2-2-3-元组的连串" class="headerlink" title="2.2.3 元组的连串"></a>2.2.3 元组的连串</h3><p><img src="/../../images/image-20220926214403409.png" alt="image-20220926214403409"></p>
-<p><strong>示例：</strong></p>
-<p><img src="/../../images/image-20220926214436167.png" alt="image-20220926214436167"></p>
-<h3 id="2-2-4-象集"><a href="#2-2-4-象集" class="headerlink" title="2.2.4 象集"></a>2.2.4 象集</h3><p><img src="/../../images/image-20220926213901024.png" alt="image-20220926213901024"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/09/21/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/%E7%BA%BF%E4%B8%8A%E8%AF%BE%E7%A8%8B2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-腾讯云服务器配置项目-上传并运行项目" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/09/21/%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E9%A1%B9%E7%9B%AE-%E4%B8%8A%E4%BC%A0%E5%B9%B6%E8%BF%90%E8%A1%8C%E9%A1%B9%E7%9B%AE/">腾讯云服务器配置项目2-上传本地后端项目，并在服务器上长期运行</a>
-    </h1>
-  
-
-        
-        <a href="/2022/09/21/%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E9%A1%B9%E7%9B%AE-%E4%B8%8A%E4%BC%A0%E5%B9%B6%E8%BF%90%E8%A1%8C%E9%A1%B9%E7%9B%AE/" class="archive-article-date">
-  	<time datetime="2022-09-20T16:04:30.876Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="1-xtfp连接上服务器"><a href="#1-xtfp连接上服务器" class="headerlink" title="1.xtfp连接上服务器"></a>1.xtfp连接上服务器</h1><p><img src="/../images/image-20220921000720646.png" alt="image-20220921000720646"></p>
-<h1 id="2-在-x2F-user-x2F-local下创建一个空文件，我这里命名的是chuanyi-jar"><a href="#2-在-x2F-user-x2F-local下创建一个空文件，我这里命名的是chuanyi-jar" class="headerlink" title="2. 在&#x2F;user&#x2F;local下创建一个空文件，我这里命名的是chuanyi_jar"></a>2. 在&#x2F;user&#x2F;local下创建一个空文件，我这里命名的是chuanyi_jar</h1><p><img src="/../images/image-20220921000809624.png" alt="image-20220921000809624"></p>
-<h1 id="3-idea中打包web项目"><a href="#3-idea中打包web项目" class="headerlink" title="3.idea中打包web项目"></a>3.idea中打包web项目</h1><p><strong>点击package后会出现jar包</strong></p>
-<p><img src="/../images/image-20220921000847010.png" alt="image-20220921000847010"></p>
-<h1 id="4-找到jar包的位置，将其拖入前面创建的文件中"><a href="#4-找到jar包的位置，将其拖入前面创建的文件中" class="headerlink" title="4. 找到jar包的位置，将其拖入前面创建的文件中"></a>4. 找到jar包的位置，将其拖入前面创建的文件中</h1><p><img src="/../images/image-20220921000946066.png" alt="image-20220921000946066"></p>
-<h1 id="5-在linux中执行命令，进入创建的文件中"><a href="#5-在linux中执行命令，进入创建的文件中" class="headerlink" title="5.在linux中执行命令，进入创建的文件中"></a>5.在linux中执行命令，进入创建的文件中</h1><p><img src="/../images/image-20220921001149326.png" alt="image-20220921001149326"></p>
-<h1 id="6-执行长期启动部署命令"><a href="#6-执行长期启动部署命令" class="headerlink" title="6.执行长期启动部署命令"></a>6.执行长期启动部署命令</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup java -jar springboot_09_briefSsmp-0.0.1-SNAPSHOT.jar &amp;</span><br></pre></td></tr></table></figure>
-
-<p><strong>可以执行 <code>ps -ef</code>查看是否部署成功，出现自己的jar包就代表不俗成功</strong></p>
-<p><img src="/../images/image-20220921003600353.png" alt="image-20220921003600353"></p>
-<h1 id="7-注意要在服务器防火墙开启对应端口（取决于项目的yml配置文件的端口）"><a href="#7-注意要在服务器防火墙开启对应端口（取决于项目的yml配置文件的端口）" class="headerlink" title="7.注意要在服务器防火墙开启对应端口（取决于项目的yml配置文件的端口）"></a>7.注意要在服务器防火墙开启对应端口（取决于项目的yml配置文件的端口）</h1><p><img src="/../images/image-20220921003655978.png" alt="image-20220921003655978"></p>
-<p><strong>点击添加规则，添加对应端口就好啦</strong></p>
-<p><img src="/../images/image-20220921003711468.png" alt="image-20220921003711468"></p>
-<h1 id="8-杀死进程"><a href="#8-杀死进程" class="headerlink" title="8. 杀死进程"></a>8. 杀死进程</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -9 进程id</span><br></pre></td></tr></table></figure>
-
-<h1 id="9-查看当前进程"><a href="#9-查看当前进程" class="headerlink" title="9. 查看当前进程"></a>9. 查看当前进程</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/09/21/%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E9%A1%B9%E7%9B%AE-%E4%B8%8A%E4%BC%A0%E5%B9%B6%E8%BF%90%E8%A1%8C%E9%A1%B9%E7%9B%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-腾讯云服务器配置项目-远程连接数据库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/09/20/%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E9%A1%B9%E7%9B%AE-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/">腾讯云服务器配置项目1-远程连接数据库(8.0.x版本)</a>
-    </h1>
-  
-
-        
-        <a href="/2022/09/20/%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E9%A1%B9%E7%9B%AE-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/" class="archive-article-date">
-  	<time datetime="2022-09-20T09:25:08.316Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="1-linux安装jdk（如果本地没有jdk的话）"><a href="#1-linux安装jdk（如果本地没有jdk的话）" class="headerlink" title="1.linux安装jdk（如果本地没有jdk的话）"></a>1.linux安装jdk（如果本地没有jdk的话）</h1><p>输入命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y java-1.8.0-openjdk-devel.x86_64 </span><br></pre></td></tr></table></figure>
-
-
-
-<p><img src="/../images/image-20220920172737237.png" alt="image-20220920172737237"></p>
-<p>完成！</p>
-<p><img src="/../images/image-20220920172810170.png" alt="image-20220920172810170"></p>
-<p>输入命令检测，出现相应信息，安装成功.</p>
-<h1 id="2-查看是否有安装的数据库"><a href="#2-查看是否有安装的数据库" class="headerlink" title="2.查看是否有安装的数据库"></a>2.查看是否有安装的数据库</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa|grep -i mysql</span><br></pre></td></tr></table></figure>
-
-<p><strong>如果没有输出，则代表没有</strong></p>
-<p><img src="/../images/image-20220920231754315.png" alt="image-20220920231754315"></p>
-<h1 id="3-下载8-0版本的数据库"><a href="#3-下载8-0版本的数据库" class="headerlink" title="3. 下载8.0版本的数据库"></a>3. 下载8.0版本的数据库</h1><p> <strong>选择使用wget进行下载</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://repo.mysql.com//mysql80-community-release-el7-1.noarch.rpm</span><br></pre></td></tr></table></figure>
-
-
-
-<p><img src="/../images/image-20220920231828851.png" alt="image-20220920231828851"></p>
-<h1 id="4-安装"><a href="#4-安装" class="headerlink" title="4. 安装"></a>4. 安装</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh mysql80-community-release-el7-1.noarch.rpm</span><br><span class="line">yum install mysql-server</span><br></pre></td></tr></table></figure>
-
-<p>​	安装完成会在末尾显示complete!</p>
-<p>​	<strong>期间碰见选择直接y</strong></p>
-<p> <strong>可能出现的问题：在执行yum install mysql-server出现</strong></p>
-<p><img src="/../images/image-20220920232048425.png" alt="image-20220920232048425"></p>
-<p><strong>使用以下命令即可：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022</span><br></pre></td></tr></table></figure>
-
-<p><strong>再执行：yum install mysql-server</strong></p>
-<p><strong>完成!</strong></p>
-<p><img src="/../images/image-20220920232358011.png" alt="image-20220920232358011"></p>
-<h1 id="注意：在启动前，如果有要改数据库是否忽略大小写的请求，必须在初始化之前修改！！！！linux安装数据库默认不忽略"><a href="#注意：在启动前，如果有要改数据库是否忽略大小写的请求，必须在初始化之前修改！！！！linux安装数据库默认不忽略" class="headerlink" title="注意：在启动前，如果有要改数据库是否忽略大小写的请求，必须在初始化之前修改！！！！linux安装数据库默认不忽略"></a>注意：在启动前，如果有要改数据库是否忽略大小写的请求，必须在初始化之前修改！！！！linux安装数据库默认不忽略</h1><h2 id="修改步骤如下："><a href="#修改步骤如下：" class="headerlink" title="修改步骤如下："></a>修改步骤如下：</h2><ol>
-<li>开mysql配置文件<br><code>vim /etc/my.cnf</code></li>
-<li>在尾部追加一行<br><code>lower_case_table_names=1</code><br>并保存，然后再初始化数据库。</li>
-</ol>
-<p><strong>修改完成：</strong></p>
-<p><img src="/../images/image-20220920234059425.png" alt="image-20220920234059425"></p>
-<h1 id="5-设置开机启动mysql"><a href="#5-设置开机启动mysql" class="headerlink" title="5. 设置开机启动mysql"></a>5. 设置开机启动mysql</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable mysqld.service</span><br></pre></td></tr></table></figure>
-
-<h1 id="6-检测是否完成了开机启动"><a href="#6-检测是否完成了开机启动" class="headerlink" title="6.检测是否完成了开机启动"></a>6.检测是否完成了开机启动</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl list-unit-files | grep mysqld</span><br></pre></td></tr></table></figure>
-
-<p><strong>如下显示就代表成功：</strong></p>
-<p><img src="/../images/image-20220920214448122.png" alt="image-20220920214448122"></p>
-<h1 id="7-开启服务"><a href="#7-开启服务" class="headerlink" title="7.开启服务"></a>7.开启服务</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mysqld.service</span><br></pre></td></tr></table></figure>
-
-<h1 id="8-查看数据库初始密码"><a href="#8-查看数据库初始密码" class="headerlink" title="8.查看数据库初始密码"></a>8.查看数据库初始密码</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep &#x27;temporary password&#x27; /var/log/mysqld.log</span><br></pre></td></tr></table></figure>
-
-<p><img src="/../images/image-20220920232858527.png" alt="image-20220920232858527"></p>
-<h1 id="9-登录数据库"><a href="#9-登录数据库" class="headerlink" title="9.登录数据库"></a>9.登录数据库</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br></pre></td></tr></table></figure>
-
-<p>​	<strong>输入密码为刚才查询到的数据库初始密码</strong></p>
-<h1 id="11-设置自己的密码（与8-0以下的版本不同）"><a href="#11-设置自己的密码（与8-0以下的版本不同）" class="headerlink" title="11. 设置自己的密码（与8.0以下的版本不同）"></a>11. 设置自己的密码（与8.0以下的版本不同）</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter user &#x27;root&#x27;@&#x27;localhost&#x27; identified by &#x27;你自己的密码&#x27;;</span><br></pre></td></tr></table></figure>
-
-<h1 id="12-开启远程登录（与8-0以下的版本不同）"><a href="#12-开启远程登录（与8-0以下的版本不同）" class="headerlink" title="12. 开启远程登录（与8.0以下的版本不同）"></a>12. 开启远程登录（与8.0以下的版本不同）</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create user root@&#x27;%&#x27; identified by &#x27;你自己的密码&#x27;;</span><br><span class="line"></span><br><span class="line">grant all privileges on *.* to root@&#x27;%&#x27; with grant option;</span><br></pre></td></tr></table></figure>
-
-<h1 id="13-命令立即生效"><a href="#13-命令立即生效" class="headerlink" title="13.命令立即生效"></a>13.命令立即生效</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
-
-<h1 id="14-更改加密规则（注意8-0版本的加密规则改变，所以远程连接时可能会出现以下错误）"><a href="#14-更改加密规则（注意8-0版本的加密规则改变，所以远程连接时可能会出现以下错误）" class="headerlink" title="14. 更改加密规则（注意8.0版本的加密规则改变，所以远程连接时可能会出现以下错误）"></a>14. 更改加密规则（注意8.0版本的加密规则改变，所以远程连接时可能会出现以下错误）</h1><p><img src="/../images/aHR0cHM6Ly9pbWFnZXMyMDE4LmNuYmxvZ3MuY29tL2Jsb2cvMTM2NTcyNC8yMDE4MDYvMTM2NTcyNC0yMDE4MDYxMzE0MzUyMTY4MC0xMjAzNDkyNDkxLnBuZw.png" alt="img"></p>
-<p><strong>解决方法-更改加密规则：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -ppassword #登录</span><br><span class="line"></span><br><span class="line">use mysql; #选择数据库</span><br><span class="line"></span><br><span class="line"># 远程连接请将&#x27;localhost&#x27;换成&#x27;%&#x27;</span><br><span class="line"></span><br><span class="line">ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;password&#x27; PASSWORD EXPIRE NEVER; #更改加密方式</span><br><span class="line"></span><br><span class="line">ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED WITH mysql_native_password BY &#x27;password&#x27;; #更新用户密码</span><br><span class="line"></span><br><span class="line">FLUSH PRIVILEGES; #刷新权限</span><br></pre></td></tr></table></figure>
-
-<h1 id="15-卸载数据库"><a href="#15-卸载数据库" class="headerlink" title="15.卸载数据库"></a>15.卸载数据库</h1><p>1.查看数据库</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa|grep -i mysql</span><br></pre></td></tr></table></figure>
-
-<p>2.卸载包（查出来的）<br>方法一，（不行的话试试第二种）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -e –nodeps 包名</span><br></pre></td></tr></table></figure>
-
-<p>方法二</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ev 包名 --nodeps</span><br></pre></td></tr></table></figure>
-
-<p>3.查找安装数据库的目录</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -name mysql</span><br></pre></td></tr></table></figure>
-
-<p>4.删除这些目录</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf 目录</span><br></pre></td></tr></table></figure>
-
-<p>5.删除这个配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /etc/my.cnf</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<p><strong>参考文章1：<a target="_blank" rel="noopener" href="https://blog.csdn.net/wysmh520/article/details/109735789">https://blog.csdn.net/wysmh520/article/details/109735789</a></strong></p>
-<p>**参考文章2：<a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_41721615/article/details/99417075">(23条消息) MySQL8.0允许远程连接_江冷易水寒的博客-CSDN博客_mysql8.0配置允许远程连接**</a></p>
-<p><strong>参考文章3:<a target="_blank" rel="noopener" href="https://blog.csdn.net/chenshida_/article/details/117728509">(23条消息) mysql远程连接权限grant all privileges on <em>.</em> to ‘root‘@‘%‘ identified by ‘123456‘ with grant option语句报错_chenshida_的博客-CSDN博客</a></strong></p>
-<p><strong>参考文章4：<a target="_blank" rel="noopener" href="https://blog.csdn.net/searlas/article/details/123393829">(23条消息) centos yum安装mysql出现Public key for mysql-community-server-5.7.37-1.el7.x86_64.rpm is not installed_searlas的博客-CSDN博客</a></strong></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/09/20/%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E9%A1%B9%E7%9B%AE-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-web应用开发-基础/serlvet" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/09/19/web%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91-%E5%9F%BA%E7%A1%80/serlvet/">Servlet</a>
-    </h1>
-  
-
-        
-        <a href="/2022/09/19/web%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91-%E5%9F%BA%E7%A1%80/serlvet/" class="archive-article-date">
-  	<time datetime="2022-09-19T12:10:12.114Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p><img src="/../../images/image-20220919201714297.png" alt="image-20220919201714297"></p>
-<h1 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h1><p><img src="/../../images/image-20220919201812652.png" alt="image-20220919201812652"></p>
-<p><img src="/../../images/image-20220923214753916.png" alt="image-20220923214753916"></p>
-<h1 id="执行原理"><a href="#执行原理" class="headerlink" title="执行原理"></a>执行原理</h1><p><img src="/../../images/image-20220919220241561.png" alt="image-20220919220241561"> </p>
-<h1 id="Servlet执行流程"><a href="#Servlet执行流程" class="headerlink" title="Servlet执行流程"></a>Servlet执行流程</h1><p><img src="/../../images/image-20220923215208447.png" alt="image-20220923215208447"></p>
-<h1 id="Servlet生命周期"><a href="#Servlet生命周期" class="headerlink" title="Servlet生命周期"></a>Servlet生命周期</h1><h2 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h2><p><img src="/../../images/image-20220923215257633.png" alt="image-20220923215257633"></p>
-<p><img src="/../../images/image-20220923215505793.png"></p>
-<h2 id="生命周期："><a href="#生命周期：" class="headerlink" title="生命周期："></a>生命周期：</h2><p><img src="/../../images/image-20220923220617721.png" alt="image-20220923220617721"></p>
-<h3 id="1-加载和实例化"><a href="#1-加载和实例化" class="headerlink" title="1.加载和实例化"></a>1.加载和实例化</h3><h3 id="2-init-x2F-x2F-初始化方法"><a href="#2-init-x2F-x2F-初始化方法" class="headerlink" title="2.init()&#x2F;&#x2F;初始化方法"></a>2.init()&#x2F;&#x2F;初始化方法</h3><p><img src="/../../images/image-20220923215908957.png" alt="image-20220923215908957"></p>
-<h3 id="3-service"><a href="#3-service" class="headerlink" title="3.service"></a>3.service</h3><p><img src="/../../images/image-20220923220256150.png" alt="image-20220923220256150"></p>
-<p><strong>每一次被访问的时候都会调用service接口</strong></p>
-<h3 id="4-destory"><a href="#4-destory" class="headerlink" title="4.destory"></a>4.destory</h3><p><img src="/../../images/image-20220923220416841.png" alt="image-20220923220416841"></p>
-<h1 id="Servlet方法介绍"><a href="#Servlet方法介绍" class="headerlink" title="Servlet方法介绍"></a>Servlet方法介绍</h1><p><img src="/../../images/image-20220923220731356.png" alt="image-20220923220731356"></p>
-<h1 id="体系结构"><a href="#体系结构" class="headerlink" title="体系结构"></a>体系结构</h1><p><img src="/../../images/image-20220923221850582.png" alt="image-20220923221850582"></p>
-<p><img src="/../../images/image-20220923223949343.png" alt="image-20220923223949343"></p>
-<h1 id="urlpartten配置"><a href="#urlpartten配置" class="headerlink" title="urlpartten配置"></a>urlpartten配置</h1><p><img src="/../../images/image-20220923224315072.png" alt="image-20220923224315072"></p>
-<p><img src="/../../images/image-20220923224439198.png" alt="image-20220923224439198"></p>
-<p><img src="/../../images/image-20220923224507744.png" alt="image-20220923224507744"></p>
-<p><img src="/../../images/image-20220923224607385.png" alt="image-20220923224607385"></p>
-<h2 id="配置方法1："><a href="#配置方法1：" class="headerlink" title="配置方法1："></a>配置方法1：</h2><p><img src="/../../images/image-20220923224415905.png" alt="image-20220923224415905"></p>
-<h1 id="XML配置Servlet"><a href="#XML配置Servlet" class="headerlink" title="XML配置Servlet"></a>XML配置Servlet</h1><p><img src="/../../images/image-20220923225212684.png" alt="image-20220923225212684"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/09/19/web%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91-%E5%9F%BA%E7%A1%80/serlvet/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-力扣刷题总结/刷题过程中学习熟悉的知识/队列-Queue" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/09/19/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E5%88%B7%E9%A2%98%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%AD%A6%E4%B9%A0%E7%86%9F%E6%82%89%E7%9A%84%E7%9F%A5%E8%AF%86/%E9%98%9F%E5%88%97-Queue/">队列-Queue</a>
-    </h1>
-  
-
-        
-        <a href="/2022/09/19/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E5%88%B7%E9%A2%98%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%AD%A6%E4%B9%A0%E7%86%9F%E6%82%89%E7%9A%84%E7%9F%A5%E8%AF%86/%E9%98%9F%E5%88%97-Queue/" class="archive-article-date">
-  	<time datetime="2022-09-19T03:35:03.053Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="java中队列方法-Queue"><a href="#java中队列方法-Queue" class="headerlink" title="java中队列方法-Queue"></a>java中队列方法-Queue</h1><p><img src="/../../../images/image-20220919113603733.png" alt="image-20220919113603733"></p>
-<p><strong>示例：</strong></p>
-<p><img src="/../../../images/image-20220919113633133.png" alt="image-20220919113633133"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/09/19/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E5%88%B7%E9%A2%98%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%AD%A6%E4%B9%A0%E7%86%9F%E6%82%89%E7%9A%84%E7%9F%A5%E8%AF%86/%E9%98%9F%E5%88%97-Queue/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/12/02/cookie,session%E5%92%8Ctoken/">展开全文 >></a>
         </p>
       
 
@@ -1300,7 +1101,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1312,7 +1113,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 tumiao
+    		&copy; 2023 tumiao
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

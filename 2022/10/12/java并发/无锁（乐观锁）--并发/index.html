@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>无锁（乐观锁）--并发 | 兔喵博客</title>
+  <title>juc - 无锁（乐观锁）--并发 | 兔喵博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="共享模型之无锁 1. 问题提出： 无锁实现保护共享资源，实现线程安全示例：  注意： 1.AtomicInteger是原子包装类，是线程安全的 2. 真正修改是因为之前创建的pre,next都是的执行块中，并没有在主存当中。所以会有个真正修改，来赋值给主存中的balance 2. 原理2.1 cas工作方式从原理：    2.2 cas–volatile 2.3 cas 效率分析–为什么无锁效率高">
 <meta property="og:type" content="article">
-<meta property="og:title" content="无锁（乐观锁）--并发">
+<meta property="og:title" content="juc - 无锁（乐观锁）--并发">
 <meta property="og:url" content="http://example.com/2022/10/12/java%E5%B9%B6%E5%8F%91/%E6%97%A0%E9%94%81%EF%BC%88%E4%B9%90%E8%A7%82%E9%94%81%EF%BC%89--%E5%B9%B6%E5%8F%91/index.html">
 <meta property="og:site_name" content="兔喵博客">
 <meta property="og:description" content="共享模型之无锁 1. 问题提出： 无锁实现保护共享资源，实现线程安全示例：  注意： 1.AtomicInteger是原子包装类，是线程安全的 2. 真正修改是因为之前创建的pre,next都是的执行块中，并没有在主存当中。所以会有个真正修改，来赋值给主存中的balance 2. 原理2.1 cas工作方式从原理：    2.2 cas–volatile 2.3 cas 效率分析–为什么无锁效率高">
@@ -66,7 +66,7 @@
 <meta property="og:image" content="http://example.com/images/image-20221014120200171.png">
 <meta property="og:image" content="http://example.com/images/image-20221014120309345.png">
 <meta property="article:published_time" content="2022-10-12T14:27:27.454Z">
-<meta property="article:modified_time" content="2022-10-14T04:03:10.755Z">
+<meta property="article:modified_time" content="2023-03-02T03:22:36.250Z">
 <meta property="article:author" content="tumiao">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/image-20221012222845641.png">
@@ -196,7 +196,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      无锁（乐观锁）--并发
+      juc - 无锁（乐观锁）--并发
     </h1>
   
 
@@ -407,7 +407,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 tumiao
+    		&copy; 2023 tumiao
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

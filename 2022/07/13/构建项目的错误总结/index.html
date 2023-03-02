@@ -6,18 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>兔喵博客</title>
+  <title>项目错误 | 兔喵博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#构建项目错误总结 1.用maven完成springboot,创建Application出现错误 这里爆红 原因：是因为自己@SpringBootApplication注解创建启动类，该类必须放在一个默认包下 解决方法：将启动类放在一个默认包下，最好在所需要启动的类的上一级">
+  <meta name="description" content="用maven完成springboot,创建Application出现错误 这里爆红 原因：是因为自己@SpringBootApplication注解创建启动类，该类必须放在一个默认包下 解决方法：将启动类放在一个默认包下，最好在所需要启动的类的上一级 springboot使用mybatis框架时，出现错误：java.lang.IllegalStateException: Failed to loa">
 <meta property="og:type" content="article">
-<meta property="og:title" content="兔喵博客">
+<meta property="og:title" content="项目错误">
 <meta property="og:url" content="http://example.com/2022/07/13/%E6%9E%84%E5%BB%BA%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%94%99%E8%AF%AF%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="兔喵博客">
-<meta property="og:description" content="#构建项目错误总结 1.用maven完成springboot,创建Application出现错误 这里爆红 原因：是因为自己@SpringBootApplication注解创建启动类，该类必须放在一个默认包下 解决方法：将启动类放在一个默认包下，最好在所需要启动的类的上一级">
+<meta property="og:description" content="用maven完成springboot,创建Application出现错误 这里爆红 原因：是因为自己@SpringBootApplication注解创建启动类，该类必须放在一个默认包下 解决方法：将启动类放在一个默认包下，最好在所需要启动的类的上一级 springboot使用mybatis框架时，出现错误：java.lang.IllegalStateException: Failed to loa">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/images/image-20220713142333992.png">
+<meta property="og:image" content="http://example.com/images/image-20221203212644622.png">
+<meta property="og:image" content="http://example.com/images/image-20221203212744240.png">
+<meta property="og:image" content="http://example.com/images/image-20221203212846163.png">
+<meta property="og:image" content="http://example.com/images/image-20221203213139142.png">
 <meta property="article:published_time" content="2022-07-13T06:21:51.746Z">
-<meta property="article:modified_time" content="2022-07-13T06:26:01.714Z">
+<meta property="article:modified_time" content="2022-12-03T13:31:40.526Z">
 <meta property="article:author" content="tumiao">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/image-20220713142333992.png">
@@ -143,13 +147,39 @@
             <article id="post-构建项目的错误总结" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      项目错误
+    </h1>
+  
+
+        
+        <a href="/2022/07/13/%E6%9E%84%E5%BB%BA%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%94%99%E8%AF%AF%E6%80%BB%E7%BB%93/" class="archive-article-date">
+  	<time datetime="2022-07-13T06:21:51.746Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-13</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#构建项目错误总结</p>
-<h2 id="1-用maven完成springboot-创建Application出现错误"><a href="#1-用maven完成springboot-创建Application出现错误" class="headerlink" title="1.用maven完成springboot,创建Application出现错误"></a>1.用maven完成springboot,创建Application出现错误</h2><p><img src="/../images/image-20220713142333992.png" alt="image-20220713142333992"></p>
+        <h1 id="用maven完成springboot-创建Application出现错误"><a href="#用maven完成springboot-创建Application出现错误" class="headerlink" title="用maven完成springboot,创建Application出现错误"></a>用maven完成springboot,创建Application出现错误</h1><p><img src="/../images/image-20220713142333992.png" alt="image-20220713142333992"></p>
 <p><strong>这里爆红</strong></p>
 <p><strong>原因：是因为自己@SpringBootApplication注解创建启动类，该类必须放在一个默认包下</strong></p>
 <p><strong>解决方法：将启动类放在一个默认包下，最好在所需要启动的类的上一级</strong></p>
+<h1 id="springboot使用mybatis框架时，出现错误：java-lang-IllegalStateException-Failed-to-load-ApplicationContext"><a href="#springboot使用mybatis框架时，出现错误：java-lang-IllegalStateException-Failed-to-load-ApplicationContext" class="headerlink" title="springboot使用mybatis框架时，出现错误：java.lang.IllegalStateException: Failed to load ApplicationContext"></a>springboot使用mybatis框架时，出现错误：java.lang.IllegalStateException: Failed to load ApplicationContext</h1><p><img src="/../images/image-20221203212644622.png" alt="image-20221203212644622"></p>
+<p><strong>它说dao层的数据没有注入到spring中。但是经过检查发现每步操作都没有问题。</strong></p>
+<p><img src="/../images/image-20221203212744240.png" alt="image-20221203212744240"></p>
+<p><strong>最后发现的坐标引入错误，如下：</strong></p>
+<p><img src="/../images/image-20221203212846163.png" alt="image-20221203212846163"></p>
+<p><strong>但是springboot的mybatis坐标是有spring-boot标识的，所以应该引入的坐标为：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--        导入dao层的框架：mybatis(一个基于java的持久层框架)--&gt;</span><br><span class="line">&lt;!--        注意：springboot引入mybatis框架是有springboot的starter标识的，mybatis-plus也一样--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.0.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>这样就解决啦。</strong></p>
+<p><img src="/../images/image-20221203213139142.png" alt="image-20221203213139142"></p>
 
       
 
@@ -276,7 +306,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 tumiao
+    		&copy; 2023 tumiao
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

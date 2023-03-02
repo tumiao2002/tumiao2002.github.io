@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>java内存模型--JMM | 兔喵博客</title>
+  <title>juc - java内存模型--JMM | 兔喵博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="java内存模型  可见性示例：  运行以上代码后，java程序并不会像我们预想那样停下来。 原理：    解决： 方法1：变量上加上volatitle,保证可见性&#x2F;&#x2F;加上后变脸就不能从缓存中读取，只能从主存中读取，相应的速度也会减慢&#x2F;&#x2F;保证了共享变量在多个线程的可见性  方法2：锁对象  可见性和原子性    设计模式同步模式之两阶段终止示例：用vola">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java内存模型--JMM">
+<meta property="og:title" content="juc - java内存模型--JMM">
 <meta property="og:url" content="http://example.com/2022/10/10/java%E5%B9%B6%E5%8F%91/java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B--JMM/index.html">
 <meta property="og:site_name" content="兔喵博客">
 <meta property="og:description" content="java内存模型  可见性示例：  运行以上代码后，java程序并不会像我们预想那样停下来。 原理：    解决： 方法1：变量上加上volatitle,保证可见性&#x2F;&#x2F;加上后变脸就不能从缓存中读取，只能从主存中读取，相应的速度也会减慢&#x2F;&#x2F;保证了共享变量在多个线程的可见性  方法2：锁对象  可见性和原子性    设计模式同步模式之两阶段终止示例：用vola">
@@ -56,12 +56,17 @@
 <meta property="og:image" content="http://example.com/images/image-20221011210022053.png">
 <meta property="og:image" content="http://example.com/images/image-20221011211108014.png">
 <meta property="og:image" content="http://example.com/images/image-20221011211327802.png">
-<meta property="og:image" content="http://example.com/images/image-20221011213232651.png">
+<meta property="og:image" content="http://example.com/images/image-20221118171711775.png">
+<meta property="og:image" content="http://example.com/images/image-20221118172006458.png">
+<meta property="og:image" content="http://example.com/images/image-20221118172039334.png">
+<meta property="og:image" content="http://example.com/images/image-20221118172126554.png">
 <meta property="og:image" content="http://example.com/images/image-20221011212620508.png">
+<meta property="og:image" content="http://example.com/images/image-20221118172414155.png">
 <meta property="og:image" content="http://example.com/images/image-20221011212736331.png">
 <meta property="og:image" content="http://example.com/images/image-20221011214536338.png">
 <meta property="og:image" content="http://example.com/images/image-20221011214651043.png">
 <meta property="og:image" content="http://example.com/images/image-20221011214805336.png">
+<meta property="og:image" content="http://example.com/images/image-20221118173511360.png">
 <meta property="og:image" content="http://example.com/images/image-20221011215930215.png">
 <meta property="og:image" content="http://example.com/images/image-20221011220037798.png">
 <meta property="og:image" content="http://example.com/images/image-20221011220226601.png">
@@ -79,7 +84,7 @@
 <meta property="og:image" content="http://example.com/images/image-20221012220314726.png">
 <meta property="og:image" content="http://example.com/images/image-20221012221711336.png">
 <meta property="article:published_time" content="2022-10-10T11:32:50.543Z">
-<meta property="article:modified_time" content="2022-10-12T14:26:53.192Z">
+<meta property="article:modified_time" content="2023-03-02T03:22:40.920Z">
 <meta property="article:author" content="tumiao">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/image-20221010193404924.png">
@@ -209,7 +214,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      java内存模型--JMM
+      juc - java内存模型--JMM
     </h1>
   
 
@@ -280,20 +285,27 @@
 <h2 id="1-如何保证可见性"><a href="#1-如何保证可见性" class="headerlink" title="1. 如何保证可见性"></a>1. 如何保证可见性</h2><p><img src="/../../images/image-20221011205409831.png" alt="image-20221011205409831"></p>
 <p><img src="/../../images/image-20221011205557029.png" alt="image-20221011205557029"></p>
 <h2 id="2-如何保证有序性"><a href="#2-如何保证有序性" class="headerlink" title="2. 如何保证有序性"></a>2. 如何保证有序性</h2><p><img src="/../../images/image-20221011205833024.png" alt="image-20221011205833024"></p>
+<p>​					如上shi’li</p>
 <p><img src="/../../images/image-20221011205917459.png" alt="image-20221011205917459"></p>
 <p><strong>注意：仅仅是保证可见性和有序性，不能解决指令的交错。</strong></p>
 <p><img src="/../../images/image-20221011210022053.png" alt="image-20221011210022053"></p>
-<h2 id="3-double-checked-locking-问题"><a href="#3-double-checked-locking-问题" class="headerlink" title="3. double-checked locking 问题"></a>3. double-checked locking 问题</h2><p><img src="/../../images/image-20221011211108014.png" alt="image-20221011211108014"></p>
+<h2 id="3-double-checked-locking（双重检查锁）-问题"><a href="#3-double-checked-locking（双重检查锁）-问题" class="headerlink" title="3. double-checked locking（双重检查锁） 问题"></a>3. double-checked locking（双重检查锁） 问题</h2><p><img src="/../../images/image-20221011211108014.png" alt="image-20221011211108014"></p>
 <p><img src="/../../images/image-20221011211327802.png" alt="image-20221011211327802"></p>
 <p><strong>问题在于：因为第一个if是在同步块之外，所以在多线程下，会发生指令重排，有序性会出现问题：</strong></p>
 <p><strong>可能出现如下问题：</strong></p>
-<p><img src="/../../images/image-20221011213232651.png" alt="image-20221011213232651"></p>
+<p><img src="/../../images/image-20221118171711775.png" alt="image-20221118171711775"></p>
+<p><img src="/../../images/image-20221118172006458.png" alt="image-20221118172006458"></p>
+<p>​					<img src="/../../images/image-20221118172039334.png" alt="image-20221118172039334"></p>
+<p><img src="/../../images/image-20221118172126554.png" alt="image-20221118172126554"></p>
 <p><img src="/../../images/image-20221011212620508.png" alt="image-20221011212620508"></p>
+<p><img src="/../../images/image-20221118172414155.png" alt="image-20221118172414155"></p>
 <p><img src="/../../images/image-20221011212736331.png" alt="image-20221011212736331"></p>
 <h2 id="4-问题解决：加上volatitle阻止指令重排序"><a href="#4-问题解决：加上volatitle阻止指令重排序" class="headerlink" title="4. 问题解决：加上volatitle阻止指令重排序"></a>4. 问题解决：加上volatitle阻止指令重排序</h2><p><img src="/../../images/image-20221011214536338.png" alt="image-20221011214536338"></p>
 <p><strong>原理：</strong></p>
 <p><img src="/../../images/image-20221011214651043.png" alt="image-20221011214651043"></p>
 <p><img src="/../../images/image-20221011214805336.png" alt="image-20221011214805336"></p>
+<p>如果t2线程的读取操作发生在put之前，则读到的是空：</p>
+<p><img src="/../../images/image-20221118173511360.png" alt="image-20221118173511360"></p>
 <h1 id="happens-before：是可见性和有序性的一套规则总结"><a href="#happens-before：是可见性和有序性的一套规则总结" class="headerlink" title="happens-before：是可见性和有序性的一套规则总结"></a>happens-before：是可见性和有序性的一套规则总结</h1><p><img src="/../../images/image-20221011215930215.png" alt="image-20221011215930215"></p>
 <p><strong>规则1：</strong></p>
 <p><img src="/../../images/image-20221011220037798.png" alt="image-20221011220037798"></p>
@@ -465,7 +477,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 tumiao
+    		&copy; 2023 tumiao
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

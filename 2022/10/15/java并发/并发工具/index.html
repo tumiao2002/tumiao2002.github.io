@@ -6,14 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>并发工具 | 兔喵博客</title>
+  <title>juc - 并发工具 | 兔喵博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="线程池​     享元模式的思想。创建一体线程，让这些线程能够得到重复的利用。这样既可以减少内存的占用，也可以减少线程的数量，避免他们进行频繁地上下文切换。 自定义线程池  这里用的Reentrantlock，分了房间，因此同一个emptyWaitSet会有多个线程去竞争，所以会出现虚假唤醒，需要进行保护。 jdk为我们提供的线程池的实现–ThreadPollExecutor​	 Executor">
+  <meta name="description" content="1.线程池​     享元模式的思想。创建一体线程，让这些线程能够得到重复的利用。这样既可以减少内存的占用，也可以减少线程的数量，避免他们进行频繁地上下文切换。 自定义线程池  这里用的Reentrantlock，分了房间，因此同一个emptyWaitSet会有多个线程去竞争，所以会出现虚假唤醒，需要进行保护。 jdk为我们提供的线程池的实现–ThreadPollExecutor​	 Execut">
 <meta property="og:type" content="article">
-<meta property="og:title" content="并发工具">
+<meta property="og:title" content="juc - 并发工具">
 <meta property="og:url" content="http://example.com/2022/10/15/java%E5%B9%B6%E5%8F%91/%E5%B9%B6%E5%8F%91%E5%B7%A5%E5%85%B7/index.html">
 <meta property="og:site_name" content="兔喵博客">
-<meta property="og:description" content="线程池​     享元模式的思想。创建一体线程，让这些线程能够得到重复的利用。这样既可以减少内存的占用，也可以减少线程的数量，避免他们进行频繁地上下文切换。 自定义线程池  这里用的Reentrantlock，分了房间，因此同一个emptyWaitSet会有多个线程去竞争，所以会出现虚假唤醒，需要进行保护。 jdk为我们提供的线程池的实现–ThreadPollExecutor​	 Executor">
+<meta property="og:description" content="1.线程池​     享元模式的思想。创建一体线程，让这些线程能够得到重复的利用。这样既可以减少内存的占用，也可以减少线程的数量，避免他们进行频繁地上下文切换。 自定义线程池  这里用的Reentrantlock，分了房间，因此同一个emptyWaitSet会有多个线程去竞争，所以会出现虚假唤醒，需要进行保护。 jdk为我们提供的线程池的实现–ThreadPollExecutor​	 Execut">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/images/image-20221015215952167.png">
 <meta property="og:image" content="http://example.com/images/image-20221015222746221.png">
@@ -70,6 +70,11 @@
 <meta property="og:image" content="http://example.com/images/image-20221017212812668.png">
 <meta property="og:image" content="http://example.com/images/image-20221017213011104.png">
 <meta property="og:image" content="http://example.com/images/image-20221017213720109.png">
+<meta property="og:image" content="http://example.com/images/image-20221017220652785.png">
+<meta property="og:image" content="http://example.com/images/image-20221017221417372.png">
+<meta property="og:image" content="http://example.com/images/image-20221017222137564.png">
+<meta property="og:image" content="http://example.com/images/image-20221017222613102.png">
+<meta property="og:image" content="http://example.com/images/image-20221017222639696.png">
 <meta property="og:image" content="http://example.com/images/image-20221017192913161.png">
 <meta property="og:image" content="http://example.com/images/image-20221017193422007.png">
 <meta property="og:image" content="http://example.com/images/image-20221017194504798.png">
@@ -77,8 +82,166 @@
 <meta property="og:image" content="http://example.com/images/image-20221017200204711.png">
 <meta property="og:image" content="http://example.com/images/image-20221017200317963.png">
 <meta property="og:image" content="http://example.com/images/image-20221017200400712.png">
+<meta property="og:image" content="http://example.com/images/image-20221017224333232.png">
+<meta property="og:image" content="http://example.com/images/image-20221017224405621.png">
+<meta property="og:image" content="http://example.com/images/image-20221017224416787.png">
+<meta property="og:image" content="http://example.com/images/image-20221017224826826.png">
+<meta property="og:image" content="http://example.com/images/image-20221018212158520.png">
+<meta property="og:image" content="http://example.com/images/image-20221018212242456.png">
+<meta property="og:image" content="http://example.com/images/image-20221018212304401.png">
+<meta property="og:image" content="http://example.com/images/image-20221018212903066.png">
+<meta property="og:image" content="http://example.com/images/image-20221018224419496.png">
+<meta property="og:image" content="http://example.com/images/image-20221018213249145.png">
+<meta property="og:image" content="http://example.com/images/image-20221018213713446.png">
+<meta property="og:image" content="http://example.com/images/image-20221018213726641.png">
+<meta property="og:image" content="http://example.com/images/image-20221018214339326.png">
+<meta property="og:image" content="http://example.com/images/image-20221018221306064.png">
+<meta property="og:image" content="http://example.com/images/image-20221018221441507.png">
+<meta property="og:image" content="http://example.com/images/image-20221018221542584.png">
+<meta property="og:image" content="http://example.com/images/image-20221018221736209.png">
+<meta property="og:image" content="http://example.com/images/image-20221018221827230.png">
+<meta property="og:image" content="http://example.com/images/image-20221018222138900.png">
+<meta property="og:image" content="http://example.com/images/image-20221018222342938.png">
+<meta property="og:image" content="http://example.com/images/image-20221018222919834.png">
+<meta property="og:image" content="http://example.com/images/image-20221018222954980.png">
+<meta property="og:image" content="http://example.com/images/image-20221018223120695.png">
+<meta property="og:image" content="http://example.com/images/image-20221018223213316.png">
+<meta property="og:image" content="http://example.com/images/image-20221018223811257.png">
+<meta property="og:image" content="http://example.com/images/image-20221018223859973.png">
+<meta property="og:image" content="http://example.com/images/image-20221018224128179.png">
+<meta property="og:image" content="http://example.com/images/image-20221018224303349.png">
+<meta property="og:image" content="http://example.com/images/image-20221018224535149.png">
+<meta property="og:image" content="http://example.com/images/image-20221018224606511.png">
+<meta property="og:image" content="http://example.com/images/image-20221018224651562.png">
+<meta property="og:image" content="http://example.com/images/image-20221018224816549.png">
+<meta property="og:image" content="http://example.com/images/image-20221018224946599.png">
+<meta property="og:image" content="http://example.com/images/image-20221018232740068.png">
+<meta property="og:image" content="http://example.com/images/image-20221018233033244.png">
+<meta property="og:image" content="http://example.com/images/image-20221018233204604.png">
+<meta property="og:image" content="http://example.com/images/image-20221019000016594.png">
+<meta property="og:image" content="http://example.com/images/image-20221019221819618.png">
+<meta property="og:image" content="http://example.com/images/image-20221019222738759-16661896590191.png">
+<meta property="og:image" content="http://example.com/images/image-20221019222954904.png">
+<meta property="og:image" content="http://example.com/images/image-20221019224426633.png">
+<meta property="og:image" content="http://example.com/image-20221019224514720.png">
+<meta property="og:image" content="http://example.com/images/image-20221019224536022.png">
+<meta property="og:image" content="http://example.com/images/image-20221019225617117.png">
+<meta property="og:image" content="http://example.com/images/image-20221019225752343.png">
+<meta property="og:image" content="http://example.com/images/image-20221020224402110.png">
+<meta property="og:image" content="http://example.com/images/image-20221020224452574.png">
+<meta property="og:image" content="http://example.com/images/image-20221020224648233.png">
+<meta property="og:image" content="http://example.com/images/image-20221020230752629.png">
+<meta property="og:image" content="http://example.com/images/image-20221020230811164.png">
+<meta property="og:image" content="http://example.com/images/image-20221020231734141.png">
+<meta property="og:image" content="http://example.com/images/image-20221020232009756.png">
+<meta property="og:image" content="http://example.com/images/image-20221020232018172.png">
+<meta property="og:image" content="http://example.com/images/image-20221020232634449.png">
+<meta property="og:image" content="http://example.com/images/image-20221020232849616.png">
+<meta property="og:image" content="http://example.com/images/image-20221020233027175.png">
+<meta property="og:image" content="http://example.com/images/image-20221020233413704.png">
+<meta property="og:image" content="http://example.com/images/image-20221020233747260.png">
+<meta property="og:image" content="http://example.com/images/image-20221020234624038.png">
+<meta property="og:image" content="http://example.com/images/image-20221020234811033.png">
+<meta property="og:image" content="http://example.com/images/image-20221020235033141.png">
+<meta property="og:image" content="http://example.com/images/image-20221020235118413.png">
+<meta property="og:image" content="http://example.com/images/image-20221020235149367.png">
+<meta property="og:image" content="http://example.com/images/image-20221020235428175.png">
+<meta property="og:image" content="http://example.com/images/image-20221021000152258.png">
+<meta property="og:image" content="http://example.com/images/image-20221021000312306.png">
+<meta property="og:image" content="http://example.com/images/image-20221021000618460.png">
+<meta property="og:image" content="http://example.com/images/image-20221021000723985.png">
+<meta property="og:image" content="http://example.com/images/image-20221021194610879.png">
+<meta property="og:image" content="http://example.com/images/image-20221021195056910.png">
+<meta property="og:image" content="http://example.com/images/image-20221021195212795.png">
+<meta property="og:image" content="http://example.com/images/image-20221021195741507.png">
+<meta property="og:image" content="http://example.com/images/image-20221021202716191.png">
+<meta property="og:image" content="http://example.com/images/image-20221021203253400.png">
+<meta property="og:image" content="http://example.com/images/image-20221021203319132.png">
+<meta property="og:image" content="http://example.com/images/image-20221021203710355.png">
+<meta property="og:image" content="http://example.com/images/image-20221021203833712.png">
+<meta property="og:image" content="http://example.com/images/image-20221021203919150.png">
+<meta property="og:image" content="http://example.com/images/image-20221021204315425.png">
+<meta property="og:image" content="http://example.com/images/image-20221021204402684.png">
+<meta property="og:image" content="http://example.com/images/image-20221021205100211.png">
+<meta property="og:image" content="http://example.com/images/image-20221021205112309-16663566726141.png">
+<meta property="og:image" content="http://example.com/images/image-20221021210108198.png">
+<meta property="og:image" content="http://example.com/images/image-20221021210207706.png">
+<meta property="og:image" content="http://example.com/images/image-20221021210601930.png">
+<meta property="og:image" content="http://example.com/images/image-20221021210713677.png">
+<meta property="og:image" content="http://example.com/images/image-20221021221507507-16663617078053.png">
+<meta property="og:image" content="http://example.com/images/image-20221021222224816.png">
+<meta property="og:image" content="http://example.com/images/image-20221021222755399.png">
+<meta property="og:image" content="http://example.com/images/image-20221021224207360.png">
+<meta property="og:image" content="http://example.com/images/image-20221021224443221.png">
+<meta property="og:image" content="http://example.com/images/image-20221021224909927.png">
+<meta property="og:image" content="http://example.com/images/image-20221021225000075.png">
+<meta property="og:image" content="http://example.com/images/image-20221021231208270.png">
+<meta property="og:image" content="http://example.com/images/image-20221021231500512.png">
+<meta property="og:image" content="http://example.com/images/image-20221021231516700.png">
+<meta property="og:image" content="http://example.com/images/image-20221021231736003.png">
+<meta property="og:image" content="http://example.com/images/image-20221021232509823.png">
+<meta property="og:image" content="http://example.com/images/image-20221021233511236.png">
+<meta property="og:image" content="http://example.com/images/image-20221021233529552.png">
+<meta property="og:image" content="http://example.com/images/image-20221021235013391.png">
+<meta property="og:image" content="http://example.com/images/image-20221021235420604.png">
+<meta property="og:image" content="http://example.com/images/image-20221021235524408.png">
+<meta property="og:image" content="http://example.com/images/image-20221021235631641.png">
+<meta property="og:image" content="http://example.com/images/image-20221021235847393.png">
+<meta property="og:image" content="http://example.com/images/image-20221021235920755.png">
+<meta property="og:image" content="http://example.com/images/image-20221022000802958.png">
+<meta property="og:image" content="http://example.com/images/image-20221022002522815.png">
+<meta property="og:image" content="http://example.com/images/image-20221022144201156.png">
+<meta property="og:image" content="http://example.com/images/image-20221022144526815.png">
+<meta property="og:image" content="http://example.com/images/image-20221022145146627.png">
+<meta property="og:image" content="http://example.com/images/image-20221022150451791.png">
+<meta property="og:image" content="http://example.com/images/image-20221022151802841.png">
+<meta property="og:image" content="http://example.com/images/image-20221022151720882.png">
+<meta property="og:image" content="http://example.com/images/image-20221022152205648.png">
+<meta property="og:image" content="http://example.com/images/image-20221022152346993.png">
+<meta property="og:image" content="http://example.com/images/image-20221022152433982.png">
+<meta property="og:image" content="http://example.com/images/image-20221022152545895.png">
+<meta property="og:image" content="http://example.com/images/image-20221022152855722.png">
+<meta property="og:image" content="http://example.com/images/image-20221022153006773.png">
+<meta property="og:image" content="http://example.com/images/image-20221022193545590.png">
+<meta property="og:image" content="http://example.com/images/image-20221022193604490.png">
+<meta property="og:image" content="http://example.com/images/image-20221022193749725.png">
+<meta property="og:image" content="http://example.com/images/image-20221022193813150.png">
+<meta property="og:image" content="http://example.com/images/image-20221022194011772.png">
+<meta property="og:image" content="http://example.com/images/image-20221022194449712.png">
+<meta property="og:image" content="http://example.com/images/image-20221022195115272.png">
+<meta property="og:image" content="http://example.com/images/image-20221022195324746.png">
+<meta property="og:image" content="http://example.com/images/image-20221022195412765.png">
+<meta property="og:image" content="http://example.com/images/image-20221022195625164.png">
+<meta property="og:image" content="http://example.com/images/image-20221022195857886.png">
+<meta property="og:image" content="http://example.com/images/image-20221022200229713.png">
+<meta property="og:image" content="http://example.com/images/image-20221022200318130.png">
+<meta property="og:image" content="http://example.com/images/image-20221022200421088.png">
+<meta property="og:image" content="http://example.com/images/image-20221022201736684.png">
+<meta property="og:image" content="http://example.com/images/image-20221022201831614.png">
+<meta property="og:image" content="http://example.com/images/image-20221022202103638.png">
+<meta property="og:image" content="http://example.com/images/image-20221022202242611.png">
+<meta property="og:image" content="http://example.com/images/image-20221022202808632.png">
+<meta property="og:image" content="http://example.com/images/image-20221022202924133.png">
+<meta property="og:image" content="http://example.com/images/image-20221022202953688.png">
+<meta property="og:image" content="http://example.com/images/image-20221022203054548.png">
+<meta property="og:image" content="http://example.com/images/image-20221022203309239.png">
+<meta property="og:image" content="http://example.com/images/image-20221022203319353.png">
+<meta property="og:image" content="http://example.com/images/image-20221022203341901.png">
+<meta property="og:image" content="http://example.com/images/image-20221022203431739.png">
+<meta property="og:image" content="http://example.com/images/image-20221022203609050.png">
+<meta property="og:image" content="http://example.com/images/image-20221022203835189.png">
+<meta property="og:image" content="http://example.com/images/image-20221022204000755.png">
+<meta property="og:image" content="http://example.com/images/image-20221022204139574.png">
+<meta property="og:image" content="http://example.com/images/image-20221022204425591.png">
+<meta property="og:image" content="http://example.com/images/image-20221022204547159.png">
+<meta property="og:image" content="http://example.com/images/image-20221022204750385.png">
+<meta property="og:image" content="http://example.com/images/image-20221022210453310.png">
+<meta property="og:image" content="http://example.com/images/image-20221022210506094.png">
+<meta property="og:image" content="http://example.com/images/image-20221022210923774.png">
+<meta property="og:image" content="http://example.com/images/image-20221022211630737.png">
+<meta property="og:image" content="http://example.com/images/image-20221022211826554.png">
 <meta property="article:published_time" content="2022-10-15T13:37:38.528Z">
-<meta property="article:modified_time" content="2022-10-17T13:42:57.981Z">
+<meta property="article:modified_time" content="2023-03-02T03:22:21.752Z">
 <meta property="article:author" content="tumiao">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/image-20221015215952167.png">
@@ -208,7 +371,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      并发工具
+      juc - 并发工具
     </h1>
   
 
@@ -221,7 +384,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h1><p>​     <strong>享元模式的思想。创建一体线程，让这些线程能够得到重复的利用。这样既可以减少内存的占用，也可以减少线程的数量，避免他们进行频繁地上下文切换。</strong></p>
+        <h1 id="1-线程池"><a href="#1-线程池" class="headerlink" title="1.线程池"></a>1.线程池</h1><p>​     <strong>享元模式的思想。创建一体线程，让这些线程能够得到重复的利用。这样既可以减少内存的占用，也可以减少线程的数量，避免他们进行频繁地上下文切换。</strong></p>
 <h2 id="自定义线程池"><a href="#自定义线程池" class="headerlink" title="自定义线程池"></a>自定义线程池</h2><p><img src="/../../images/image-20221015215952167.png" alt="image-20221015215952167"></p>
 <p><img src="/../../images/image-20221015222746221.png" alt="image-20221015222746221"></p>
 <p><strong>这里用的Reentrantlock，分了房间，因此同一个emptyWaitSet会有多个线程去竞争，所以会出现虚假唤醒，需要进行保护。</strong></p>
@@ -341,9 +504,16 @@
 <p>excutor：当它设置时，相当于覆盖了之前的Connector配置，用excutor中的。</p>
 <p>tomcat工作：当最大线程还不够时是先创建救急线程，而不是先加入队列，因此尽管默认队列长度无界，仍旧有救急线程。</p>
 <p><img src="/../../images/image-20221017213720109.png" alt="image-20221017213720109"></p>
-<h1 id="设计模式-–-工作线程模式（异步模式之工作线程）"><a href="#设计模式-–-工作线程模式（异步模式之工作线程）" class="headerlink" title="设计模式 – 工作线程模式（异步模式之工作线程）"></a>设计模式 – 工作线程模式（异步模式之工作线程）</h1><h2 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h2><p><img src="/../../images/image-20221017192913161.png" alt="image-20221017192913161"></p>
+<h2 id="Fork-x2F-Join-–-类似于递归"><a href="#Fork-x2F-Join-–-类似于递归" class="headerlink" title="Fork&#x2F;Join – 类似于递归"></a>Fork&#x2F;Join – 类似于递归</h2><h3 id="1-概念："><a href="#1-概念：" class="headerlink" title="1. 概念："></a>1. 概念：</h3><p><img src="/../../images/image-20221017220652785.png" alt="image-20221017220652785"></p>
+<h3 id="2-使用"><a href="#2-使用" class="headerlink" title="2. 使用"></a>2. 使用</h3><p><img src="/../../images/image-20221017221417372.png" alt="image-20221017221417372"></p>
+<p><strong>Recursiveask<Interger> 表示有返回值的递归</strong></p>
+<p><img src="/../../images/image-20221017222137564.png" alt="image-20221017222137564"></p>
+<p><strong>任务拆分优化：</strong></p>
+<p><img src="/../../images/image-20221017222613102.png" alt="image-20221017222613102"></p>
+<p><img src="/../../images/image-20221017222639696.png" alt="image-20221017222639696"></p>
+<h2 id="设计模式-–-工作线程模式（异步模式之工作线程）"><a href="#设计模式-–-工作线程模式（异步模式之工作线程）" class="headerlink" title="设计模式 – 工作线程模式（异步模式之工作线程）"></a>设计模式 – 工作线程模式（异步模式之工作线程）</h2><h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><p><img src="/../../images/image-20221017192913161.png" alt="image-20221017192913161"></p>
 <p><strong>同一个类型可以用一个线程池，如果有多个类型，可以有多个线程池。</strong></p>
-<h2 id="饥饿："><a href="#饥饿：" class="headerlink" title="饥饿："></a>饥饿：</h2><p><img src="/../../images/image-20221017193422007.png" alt="image-20221017193422007"></p>
+<h3 id="饥饿："><a href="#饥饿：" class="headerlink" title="饥饿："></a>饥饿：</h3><p><img src="/../../images/image-20221017193422007.png" alt="image-20221017193422007"></p>
 <p>上面示例是：<strong>线程池中的线程不足导致的饥饿现象。</strong>固定大小的线程池和单线程池都会出现饥饿现象。</p>
 <p><img src="/../../images/image-20221017194504798.png" alt="image-20221017194504798"></p>
 <p>​	<strong>由于线程池中的线程不足导致的程序无法往下进行。</strong></p>
@@ -355,9 +525,224 @@
 </li>
 </ol>
 <p><img src="/../../images/image-20221017200121794.png" alt="image-20221017200121794"></p>
-<h2 id="创建多少线程池合适"><a href="#创建多少线程池合适" class="headerlink" title="创建多少线程池合适"></a>创建多少线程池合适</h2><p><img src="/../../images/image-20221017200204711.png" alt="image-20221017200204711"></p>
-<h3 id="1-CPU密集型运算"><a href="#1-CPU密集型运算" class="headerlink" title="1. CPU密集型运算"></a>1. CPU密集型运算</h3><p><img src="/../../images/image-20221017200317963.png" alt="image-20221017200317963"></p>
-<h3 id="2-I-x2F-O密集型运算"><a href="#2-I-x2F-O密集型运算" class="headerlink" title="2. I&#x2F;O密集型运算"></a>2. I&#x2F;O密集型运算</h3><p><img src="/../../images/image-20221017200400712.png" alt="image-20221017200400712"></p>
+<h3 id="创建多少线程池合适"><a href="#创建多少线程池合适" class="headerlink" title="创建多少线程池合适"></a>创建多少线程池合适</h3><p><img src="/../../images/image-20221017200204711.png" alt="image-20221017200204711"></p>
+<h4 id="1-CPU密集型运算"><a href="#1-CPU密集型运算" class="headerlink" title="1. CPU密集型运算"></a>1. CPU密集型运算</h4><p><img src="/../../images/image-20221017200317963.png" alt="image-20221017200317963"></p>
+<h4 id="2-I-x2F-O密集型运算"><a href="#2-I-x2F-O密集型运算" class="headerlink" title="2. I&#x2F;O密集型运算"></a>2. I&#x2F;O密集型运算</h4><p><img src="/../../images/image-20221017200400712.png" alt="image-20221017200400712"></p>
+<h1 id="2-J-U-C（java并发工具包）"><a href="#2-J-U-C（java并发工具包）" class="headerlink" title="2. J.U.C（java并发工具包）"></a>2. J.U.C（java并发工具包）</h1><p><img src="/../../images/image-20221017224333232.png" alt="image-20221017224333232"></p>
+<h2 id="AQS"><a href="#AQS" class="headerlink" title="AQS"></a>AQS</h2><h3 id="1-概述："><a href="#1-概述：" class="headerlink" title="1. 概述："></a>1. 概述：</h3><p><img src="/../../images/image-20221017224405621.png" alt="image-20221017224405621"></p>
+<p><img src="/../../images/image-20221017224416787.png" alt="image-20221017224416787"></p>
+<p><img src="/../../images/image-20221017224826826.png" alt="image-20221017224826826"></p>
+<h3 id="2-自定义锁"><a href="#2-自定义锁" class="headerlink" title="2. 自定义锁"></a>2. 自定义锁</h3><p> 独占锁：不可重入锁</p>
+<p><img src="/../../images/image-20221018212158520.png" alt="image-20221018212158520"></p>
+<p><img src="/../../images/image-20221018212242456.png" alt="image-20221018212242456"></p>
+<p><img src="/../../images/image-20221018212304401.png" alt="image-20221018212304401"></p>
+<h2 id="Reentrantlock"><a href="#Reentrantlock" class="headerlink" title="Reentrantlock"></a>Reentrantlock</h2><p><img src="/../../images/image-20221018212903066.png" alt="image-20221018212903066"></p>
+<h3 id="1-非公平锁实现原理"><a href="#1-非公平锁实现原理" class="headerlink" title="1. 非公平锁实现原理"></a>1. 非公平锁实现原理</h3><p><img src="/../../images/image-20221018224419496.png" alt="image-20221018224419496"></p>
+<h4 id="加锁成功流程-：没有竞争时"><a href="#加锁成功流程-：没有竞争时" class="headerlink" title="加锁成功流程 ：没有竞争时"></a>加锁成功流程 ：没有竞争时</h4><p><img src="/../../images/image-20221018213249145.png" alt="image-20221018213249145"></p>
+<h4 id="加锁失败流程：出现竞争时"><a href="#加锁失败流程：出现竞争时" class="headerlink" title="加锁失败流程：出现竞争时"></a>加锁失败流程：出现竞争时</h4><p><img src="/../../images/image-20221018213713446.png" alt="image-20221018213713446"></p>
+<p><img src="/../../images/image-20221018213726641.png" alt="image-20221018213726641"></p>
+<p><img src="/../../images/image-20221018214339326.png" alt="image-20221018214339326"></p>
+<p><img src="/../../images/image-20221018221306064.png" alt="image-20221018221306064"></p>
+<p><img src="/../../images/image-20221018221441507.png" alt="image-20221018221441507"></p>
+<p><img src="/../../images/image-20221018221542584.png" alt="image-20221018221542584"></p>
+<p><img src="/../../images/image-20221018221736209.png" alt="image-20221018221736209"></p>
+<h3 id="2-可重入原理"><a href="#2-可重入原理" class="headerlink" title="2. 可重入原理"></a>2. 可重入原理</h3><p>​		<strong>加锁时重入，状态自增，解锁时，状态自减。</strong></p>
+<p><img src="/../../images/image-20221018221827230.png" alt="image-20221018221827230"></p>
+<p><img src="/../../images/image-20221018222138900.png" alt="image-20221018222138900"></p>
+<h3 id="3-可打断原理"><a href="#3-可打断原理" class="headerlink" title="3. 可打断原理"></a>3. 可打断原理</h3><h4 id="3-1-不可打断模式：ReentrantLock默认情况下是不可打断的"><a href="#3-1-不可打断模式：ReentrantLock默认情况下是不可打断的" class="headerlink" title="3.1 不可打断模式：ReentrantLock默认情况下是不可打断的"></a>3.1 不可打断模式：ReentrantLock默认情况下是不可打断的</h4><p><img src="/../../images/image-20221018222342938.png" alt="image-20221018222342938"></p>
+<p><img src="/../../images/image-20221018222919834.png" alt="image-20221018222919834"></p>
+<p><img src="/../../images/image-20221018222954980.png" alt="image-20221018222954980"></p>
+<p><img src="/../../images/image-20221018223120695.png" alt="image-20221018223120695"></p>
+<p><img src="/../../images/image-20221018223213316.png" alt="image-20221018223213316"></p>
+<h4 id="3-2-可打断模式"><a href="#3-2-可打断模式" class="headerlink" title="3.2 可打断模式"></a>3.2 可打断模式</h4><p><img src="/../../images/image-20221018223811257.png" alt="image-20221018223811257"></p>
+<p><img src="/../../images/image-20221018223859973.png" alt="image-20221018223859973"></p>
+<h3 id="4-公平锁原理"><a href="#4-公平锁原理" class="headerlink" title="4.公平锁原理"></a>4.公平锁原理</h3><p><img src="/../../images/image-20221018224128179.png" alt="image-20221018224128179"></p>
+<p><img src="/../../images/image-20221018224303349.png" alt="image-20221018224303349"></p>
+<h3 id="5-条件变量实现原理"><a href="#5-条件变量实现原理" class="headerlink" title="5. 条件变量实现原理"></a>5. 条件变量实现原理</h3><p><img src="/../../images/image-20221018224535149.png" alt="image-20221018224535149"></p>
+<h4 id="await流程"><a href="#await流程" class="headerlink" title="await流程"></a>await流程</h4><p><img src="/../../images/image-20221018224606511.png" alt="image-20221018224606511"></p>
+<p><img src="/../../images/image-20221018224651562.png" alt="image-20221018224651562"></p>
+<p><img src="/../../images/image-20221018224816549.png" alt="image-20221018224816549"></p>
+<p><img src="/../../images/image-20221018224946599.png" alt="image-20221018224946599"></p>
+<h4 id="singnal流程"><a href="#singnal流程" class="headerlink" title="singnal流程"></a>singnal流程</h4><p><img src="/../../images/image-20221018232740068.png" alt="image-20221018232740068"></p>
+<p><img src="/../../images/image-20221018233033244.png" alt="image-20221018233033244"></p>
+<p><img src="/../../images/image-20221018233204604.png" alt="image-20221018233204604"></p>
+<p><strong>当等待队列中的进程超时或者被打断，就会去调用下一个，也就是放弃了这个进程</strong></p>
+<p><img src="/../../images/image-20221019000016594.png" alt="image-20221019000016594"></p>
+<h1 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h1><p><strong>-2：表示条件变量的一个等待状态</strong></p>
+<p><strong>-1：表示有责任去唤醒下一个进程</strong></p>
+<p><strong>0：锁的竞争队列的最后一个结点，进程总是0；0为默认正常状态</strong></p>
+<p><strong>有-1和0是为了判断，当是waitStatus &#x3D; -1时，表示该进程后还有进程，该进程可以唤醒下一个进程。当waitStatus &#x3D; 0时，表示是竞争队列中的最后一个进程。</strong></p>
+<p><strong>state &#x3D; 0 :无锁</strong></p>
+<p><strong>state !&#x3D; 0:有锁，可重入锁，state++</strong></p>
+<h1 id="3-读写锁"><a href="#3-读写锁" class="headerlink" title="3.读写锁"></a>3.读写锁</h1><h2 id="3-1-ReentrantReadWriteLock"><a href="#3-1-ReentrantReadWriteLock" class="headerlink" title="3.1 ReentrantReadWriteLock"></a>3.1 ReentrantReadWriteLock</h2><p><img src="/../../images/image-20221019221819618.png" alt="image-20221019221819618"></p>
+<p><strong>总结：读可以并发，读写或者写写是互斥的</strong></p>
+<p><strong>示例：</strong></p>
+<p><img src="/../../images/image-20221019222738759-16661896590191.png" alt="image-20221019222738759"></p>
+<p><img src="/../../images/image-20221019222954904.png" alt="image-20221019222954904"></p>
+<p><strong>注意事项</strong></p>
+<p><img src="/../../images/image-20221019224426633.png" alt="image-20221019224426633"></p>
+<p><img src="/../image-20221019224514720.png" alt="image-20221019224514720"></p>
+<p><strong>写锁可以降级为毒读锁</strong></p>
+<p>示例：</p>
+<p><img src="/../../images/image-20221019224536022.png" alt="image-20221019224536022"></p>
+<h2 id="读写锁的应用之缓存–保证缓存与数据库的一致性"><a href="#读写锁的应用之缓存–保证缓存与数据库的一致性" class="headerlink" title="读写锁的应用之缓存–保证缓存与数据库的一致性"></a>读写锁的应用之缓存–保证缓存与数据库的一致性</h2><p><img src="/../../images/image-20221019225617117.png" alt="image-20221019225617117"></p>
+<p><img src="/../../images/image-20221019225752343.png" alt="image-20221019225752343"></p>
+<p><strong>以上代码存在的问题分析：</strong></p>
+<p><strong>1. Map集合：线程不安全，当多个线程进行添加等操作时，会线程不安全。</strong></p>
+<p><strong>2. 缓存查询部分：当多个线程同时查询时，如果数据还没缓存到数据库，则多个线程全都会去查询数据库</strong></p>
+<p><strong>3.  缓存更新策略:详情如下：</strong></p>
+<p><strong>缓存的更新策略：</strong></p>
+<p><img src="/../../images/image-20221020224402110.png" alt="image-20221020224402110"></p>
+<p><strong>这种几率很大，因为更新操作比查询操作要慢，有可能在更新的过程中，查询操作已经做了好几次了</strong></p>
+<p><img src="/../../images/image-20221020224452574.png" alt="image-20221020224452574"></p>
+<p><img src="/../../images/image-20221020224648233.png" alt="image-20221020224648233"></p>
+<p><strong>先更新数据库，虽然也有可能产生缓存不一致，但是能够纠正过来，后续查询到的就是最新值。</strong></p>
+<p><strong>解决方法：–用读写锁解决</strong></p>
+<p><img src="/../../images/image-20221020230752629.png" alt="image-20221020230752629"></p>
+<p><img src="/../../images/image-20221020230811164.png" alt="image-20221020230811164"></p>
+<p><strong>注意：读写锁不支持读锁到写锁的升级，只支持写锁到读锁的降级，因此先要把读锁释放掉，才能使用写锁。</strong></p>
+<p><strong>补充：</strong></p>
+<p><img src="/../../images/image-20221020231734141.png" alt="image-20221020231734141"></p>
+<h2 id="3-2-读写锁原理"><a href="#3-2-读写锁原理" class="headerlink" title="3.2 读写锁原理"></a>3.2 读写锁原理</h2><p><img src="/../../images/image-20221020232009756.png" alt="image-20221020232009756"></p>
+<p><img src="/../../images/image-20221020232018172.png" alt="image-20221020232018172"></p>
+<p>用t1线程加写锁，t2线程加读锁的场景来解释</p>
+<p><img src="/../../images/image-20221020232634449.png" alt="image-20221020232634449"></p>
+<p><img src="/../../images/image-20221020232849616.png" alt="image-20221020232849616"></p>
+<p><img src="/../../images/image-20221020233027175.png" alt="image-20221020233027175"></p>
+<p><img src="/../../images/image-20221020233413704.png" alt="image-20221020233413704"></p>
+<p>如果：t3,t4又来了</p>
+<p><img src="/../../images/image-20221020233747260.png" alt="image-20221020233747260"></p>
+<p><img src="/../../images/image-20221020234624038.png" alt="image-20221020234624038"></p>
+<p>唤醒流程：</p>
+<p><img src="/../../images/image-20221020234811033.png" alt="image-20221020234811033"></p>
+<p><img src="/../../images/image-20221020235033141.png" alt="image-20221020235033141"></p>
+<p><img src="/../../images/image-20221020235118413.png" alt="image-20221020235118413"></p>
+<p><img src="/../../images/image-20221020235149367.png" alt="image-20221020235149367"></p>
+<p><strong>将-1改为0是为了防止其它线程带来的后继干扰。</strong></p>
+<p><img src="/../../images/image-20221020235428175.png" alt="image-20221020235428175"></p>
+<p><img src="/../../images/image-20221021000152258.png" alt="image-20221021000152258"></p>
+<p><img src="/../../images/image-20221021000312306.png" alt="image-20221021000312306"></p>
+<p><img src="/../../images/image-20221021000618460.png" alt="image-20221021000618460"></p>
+<p><img src="/../../images/image-20221021000723985.png" alt="image-20221021000723985"></p>
+<h2 id="3-3-特殊的读写锁–StampedLock"><a href="#3-3-特殊的读写锁–StampedLock" class="headerlink" title="3.3 特殊的读写锁–StampedLock"></a>3.3 特殊的读写锁–StampedLock</h2><p><img src="/../../images/image-20221021194610879.png" alt="image-20221021194610879"></p>
+<p><strong>示例：</strong> 读性能更高，因为刚开始并没有加入锁，直到发现数据改变了，才进行锁升级，升级成读锁。</p>
+<p><img src="/../../images/image-20221021195056910.png" alt="image-20221021195056910"></p>
+<p><img src="/../../images/image-20221021195212795.png" alt="image-20221021195212795"></p>
+<p><strong>不支持条件变量</strong></p>
+<p><img src="/../../images/image-20221021195741507.png" alt="image-20221021195741507"></p>
+<h1 id="4-Semaphore"><a href="#4-Semaphore" class="headerlink" title="4. Semaphore"></a>4. Semaphore</h1><p><img src="/../../images/image-20221021202716191.png" alt="image-20221021202716191"></p>
+<h2 id="4-1-示例："><a href="#4-1-示例：" class="headerlink" title="4.1 示例："></a>4.1 示例：</h2><p><img src="/../../images/image-20221021203253400.png" alt="image-20221021203253400"></p>
+<h2 id="4-2-应用："><a href="#4-2-应用：" class="headerlink" title="4.2 应用："></a>4.2 <strong>应用：</strong></h2><p><img src="/../../images/image-20221021203319132.png" alt="image-20221021203319132"></p>
+<p>改进数据库连接池：</p>
+<p><img src="/../../images/image-20221021203710355.png" alt="image-20221021203710355"></p>
+<p><img src="/../../images/image-20221021203833712.png" alt="image-20221021203833712"></p>
+<p><img src="/../../images/image-20221021203919150.png" alt="image-20221021203919150"></p>
+<h2 id="4-3-原理："><a href="#4-3-原理：" class="headerlink" title="4.3 原理："></a>4.3 原理：</h2><h3 id="4-3-1-加锁解锁流程"><a href="#4-3-1-加锁解锁流程" class="headerlink" title="4.3.1 加锁解锁流程"></a>4.3.1 加锁解锁流程</h3><p><img src="/../../images/image-20221021204315425.png" alt="image-20221021204315425"></p>
+<p><img src="/../../images/image-20221021204402684.png" alt="image-20221021204402684"></p>
+<p><img src="/../../images/image-20221021205100211.png" alt="image-20221021205100211"></p>
+<p><img src="/../../images/image-20221021205112309-16663566726141.png" alt="image-20221021205112309"></p>
+<h1 id="5-CountDownLatch"><a href="#5-CountDownLatch" class="headerlink" title="5. CountDownLatch"></a>5. CountDownLatch</h1><p><img src="/../../images/image-20221021210108198.png" alt="image-20221021210108198"></p>
+<p>​      countDown（）的操作可以是多个线程并行的。</p>
+<h2 id="5-1-源码："><a href="#5-1-源码：" class="headerlink" title="5.1 源码："></a>5.1 源码：</h2><p><img src="/../../images/image-20221021210207706.png" alt="image-20221021210207706"></p>
+<h2 id="5-2-使用："><a href="#5-2-使用：" class="headerlink" title="5.2 使用："></a>5.2 使用：</h2><p><img src="/../../images/image-20221021210601930.png" alt="image-20221021210601930"></p>
+<p><img src="/../../images/image-20221021210713677.png" alt="image-20221021210713677"></p>
+<p><strong>countDown()令计数减一，await()令线程进入等待，当计数减为时，线程等待结束。</strong></p>
+<p><strong>join虽然也能实现类似的功能，但是我们今后多线程的运行，大多用到线程池，而线程池中的线程并不能轻易的去结束，也就不能使用join去等待每一个结束。</strong></p>
+<h2 id="5-3-应用："><a href="#5-3-应用：" class="headerlink" title="5.3 应用："></a>5.3 应用：</h2><h3 id="等待所有都加载完成"><a href="#等待所有都加载完成" class="headerlink" title="等待所有都加载完成"></a>等待所有都加载完成</h3><p><img src="/../../images/image-20221021221507507-16663617078053.png" alt="image-20221021221507507"></p>
+<h3 id="应用同步之等待多线程准备完毕"><a href="#应用同步之等待多线程准备完毕" class="headerlink" title="应用同步之等待多线程准备完毕"></a>应用同步之等待多线程准备完毕</h3><p><img src="/../../images/image-20221021222224816.png" alt="image-20221021222224816"></p>
+<h3 id="future应用：线程之间传递结果、返回结果"><a href="#future应用：线程之间传递结果、返回结果" class="headerlink" title="future应用：线程之间传递结果、返回结果"></a>future应用：线程之间传递结果、返回结果</h3><p><strong>future去获取有返回的线程值</strong></p>
+<p><img src="/../../images/image-20221021222755399.png" alt="image-20221021222755399"></p>
+<h2 id="5-4-cyclicbarrier"><a href="#5-4-cyclicbarrier" class="headerlink" title="5.4 cyclicbarrier"></a>5.4 cyclicbarrier</h2><p><img src="/../../images/image-20221021224207360.png" alt="image-20221021224207360"></p>
+<h3 id="5-4-1-问题："><a href="#5-4-1-问题：" class="headerlink" title="5.4.1 问题："></a>5.4.1 问题：</h3><p><strong>CountDownLatch不能重新设置值，在要达成重用需求时，只能重新申请对象，不能重新设置线程数量值</strong></p>
+<p>示例：</p>
+<p><img src="/../../images/image-20221021224443221.png" alt="image-20221021224443221"></p>
+<h3 id="5-4-2-使用：能够达到重用需求"><a href="#5-4-2-使用：能够达到重用需求" class="headerlink" title="5.4.2 使用：能够达到重用需求"></a>5.4.2 使用：能够达到重用需求</h3><p><img src="/../../images/image-20221021224909927.png" alt="image-20221021224909927"></p>
+<h3 id="5-4-3-注意："><a href="#5-4-3-注意：" class="headerlink" title="5.4.3 注意："></a>5.4.3 注意：</h3><p><strong>线程池的线程数要与我们的计数要一致</strong></p>
+<p><img src="/../../images/image-20221021225000075.png" alt="image-20221021225000075"></p>
+<p><strong>例如线程数改为3，而task1的时间短，那么任务执行就是线程1的task1和线程2的task1来使得await()为0，而不是task1和task2，没有按照task1和task2完成来确定。</strong></p>
+<p><img src="/../../images/image-20221021231208270.png" alt="image-20221021231208270"></p>
+<h1 id="6-线程安全集合"><a href="#6-线程安全集合" class="headerlink" title="6. 线程安全集合"></a>6. 线程安全集合</h1><h2 id="6-1-概述："><a href="#6-1-概述：" class="headerlink" title="6.1 概述："></a>6.1 概述：</h2><p><img src="/../../images/image-20221021231500512.png" alt="image-20221021231500512"></p>
+<p><img src="/../../images/image-20221021231516700.png" alt="image-20221021231516700"></p>
+<p><img src="/../../images/image-20221021231736003.png" alt="image-20221021231736003"></p>
+<h2 id="6-2-线程安全集合–ConcurrentHashMap"><a href="#6-2-线程安全集合–ConcurrentHashMap" class="headerlink" title="6.2 线程安全集合–ConcurrentHashMap"></a>6.2 线程安全集合–ConcurrentHashMap</h2><h3 id="练习：单词计数"><a href="#练习：单词计数" class="headerlink" title="练习：单词计数"></a>练习：单词计数</h3><p><img src="/../../images/image-20221021232509823.png" alt="image-20221021232509823"></p>
+<p><strong>错误用法：会出现线程安全问题</strong></p>
+<p><img src="/../../images/image-20221021233511236.png" alt="image-20221021233511236"></p>
+<p><img src="/../../images/image-20221021233529552.png" alt="image-20221021233529552"></p>
+<h3 id="computeIfAbsent"><a href="#computeIfAbsent" class="headerlink" title="computeIfAbsent"></a>computeIfAbsent</h3><p><img src="/../../images/image-20221021235013391.png" alt="image-20221021235013391"></p>
+<h3 id="ConcurrentHashMap原理"><a href="#ConcurrentHashMap原理" class="headerlink" title="ConcurrentHashMap原理"></a>ConcurrentHashMap原理</h3><h4 id="a-HashMap原理"><a href="#a-HashMap原理" class="headerlink" title="a. HashMap原理"></a>a. HashMap原理</h4><p><img src="/../../images/image-20221021235420604.png" alt="image-20221021235420604"></p>
+<p>后加入的放入链表头，当发生扩容时，地址位置会发生变化。</p>
+<h4 id="b-JDK-7-HashMap-并发死链"><a href="#b-JDK-7-HashMap-并发死链" class="headerlink" title="b. JDK 7 HashMap 并发死链"></a>b. JDK 7 HashMap 并发死链</h4><p><strong>当元素个数超过容量的3&#x2F;4时，hashMap会进行扩容。hashMap的初始容量是16，所以当放入第13个元素使，会进行扩容，在多线程下，会发生死链。</strong></p>
+<p><img src="/../../images/image-20221021235524408.png" alt="image-20221021235524408"></p>
+<p><img src="/../../images/image-20221021235631641.png" alt="image-20221021235631641"></p>
+<p><img src="/../../images/image-20221021235847393.png" alt="image-20221021235847393"></p>
+<p><img src="/../../images/image-20221021235920755.png" alt="image-20221021235920755"></p>
+<p><strong>死链的产生：</strong>扩容时产生</p>
+<p><img src="/../../images/image-20221022000802958.png" alt="image-20221022000802958"></p>
+<p><strong>e:当前要转移的结点</strong></p>
+<p><strong>next:下一个结点：e.next</strong></p>
+<p><strong>总结：</strong></p>
+<p><img src="/../../images/image-20221022002522815.png" alt="image-20221022002522815"></p>
+<p><strong>就是两个线程运行，一个线程先把链表给翻转了，但是另一个线程还没更新，就把链表尾连接到了链表头上，造成死链，一直循环。</strong></p>
+<h4 id="c-JDK-8-ConcurrentHashMap"><a href="#c-JDK-8-ConcurrentHashMap" class="headerlink" title="c. JDK 8 ConcurrentHashMap"></a>c. JDK 8 ConcurrentHashMap</h4><h5 id="重要属性和内部类"><a href="#重要属性和内部类" class="headerlink" title="重要属性和内部类"></a>重要属性和内部类</h5><p><img src="/../../images/image-20221022144201156.png" alt="image-20221022144201156"></p>
+<p><img src="/../../images/image-20221022144526815.png" alt="image-20221022144526815"></p>
+<p><strong>sizeCtl: 用于扩展，是懒惰的，第一次使用时触发table数组（hash表），触发后sizeCtl设为-1</strong></p>
+<p><strong>Node&lt;K,V&gt;: 静态内部类</strong></p>
+<p><strong>table: Node数组构成的hash表</strong></p>
+<p>**ForwardingNode:  作为旧头节点已处理过的标志，当其它线程访问旧头节点时，访问到ForwardingNode时，会 **</p>
+<p><strong>TreeBin:   红黑树中的头节点.</strong>&#x2F;&#x2F;当链表长度过大时，如果不扩容，将转换成红黑树。用红黑树的数据结构来替换一维的链表结构，来提高查找效率。红黑树是jdk8对hash表的一个优化。</p>
+<p><strong>TreeNode:   红黑树中的每一个结点</strong></p>
+<h5 id="重要方法"><a href="#重要方法" class="headerlink" title="重要方法"></a>重要方法</h5><p><img src="/../../images/image-20221022145146627.png" alt="image-20221022145146627"></p>
+<p><strong>tbAt: 获取hash表中第i个node,只是获得链表头中的那个</strong></p>
+<h5 id="构造器分析"><a href="#构造器分析" class="headerlink" title="构造器分析"></a>构造器分析</h5><p><img src="/../../images/image-20221022150451791.png" alt="image-20221022150451791"></p>
+<h5 id="get流程：无锁，十分高效"><a href="#get流程：无锁，十分高效" class="headerlink" title="get流程：无锁，十分高效"></a>get流程：无锁，十分高效</h5><p><img src="/../../images/image-20221022151802841.png" alt="image-20221022151802841"></p>
+<h5 id="put流程"><a href="#put流程" class="headerlink" title="put流程"></a>put流程</h5><p><img src="/../../images/image-20221022151720882.png" alt="image-20221022151720882"></p>
+<p><img src="/../../images/image-20221022152205648.png" alt="image-20221022152205648"></p>
+<p><img src="/../../images/image-20221022152346993.png" alt="image-20221022152346993"></p>
+<p><img src="/../../images/image-20221022152433982.png" alt="image-20221022152433982"></p>
+<p><img src="/../../images/image-20221022152545895.png" alt="image-20221022152545895"></p>
+<p>​        <img src="/../../images/image-20221022152855722.png" alt="image-20221022152855722"></p>
+<p><img src="/../../images/image-20221022153006773.png" alt="image-20221022153006773"></p>
+<p><img src="/../../images/image-20221022193545590.png" alt="image-20221022193545590"></p>
+<p><img src="/../../images/image-20221022193604490.png" alt="image-20221022193604490"></p>
+<h5 id="size计算流程"><a href="#size计算流程" class="headerlink" title="size计算流程"></a>size计算流程</h5><p><img src="/../../images/image-20221022193749725.png" alt="image-20221022193749725"></p>
+<p><img src="/../../images/image-20221022193813150.png" alt="image-20221022193813150"></p>
+<p><strong>计数是有一定误差的，得到的是大概值，而不是精确值。</strong></p>
+<h5 id="transfer原理（扩容原理）"><a href="#transfer原理（扩容原理）" class="headerlink" title="transfer原理（扩容原理）"></a>transfer原理（扩容原理）</h5><p><img src="/../../images/image-20221022194011772.png" alt="image-20221022194011772"></p>
+<h3 id="JDK-7-CocurrentHashMap"><a href="#JDK-7-CocurrentHashMap" class="headerlink" title="JDK 7 CocurrentHashMap"></a>JDK 7 CocurrentHashMap</h3><p><img src="/../../images/image-20221022194449712.png" alt="image-20221022194449712"></p>
+<h5 id=""><a href="#" class="headerlink" title=""></a></h5><h5 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h5><p>  许多属性与jdk8中的类似。</p>
+<p><img src="/../../images/image-20221022195115272.png" alt="image-20221022195115272"></p>
+<p>用为运算决定hash移动到哪个位置上。</p>
+<h5 id="put-流程"><a href="#put-流程" class="headerlink" title="put 流程"></a>put 流程</h5><p><img src="/../../images/image-20221022195324746.png" alt="image-20221022195324746"></p>
+<p><img src="/../../images/image-20221022195412765.png" alt="image-20221022195412765"></p>
+<p><img src="/../../images/image-20221022195625164.png" alt="image-20221022195625164"></p>
+<h5 id="rehash-流程（扩容流程）"><a href="#rehash-流程（扩容流程）" class="headerlink" title="rehash 流程（扩容流程）"></a>rehash 流程（扩容流程）</h5><p><img src="/../../images/image-20221022195857886.png" alt="image-20221022195857886"></p>
+<p><img src="/../../images/image-20221022200229713.png" alt="image-20221022200229713"></p>
+<p><img src="/../../images/image-20221022200318130.png" alt="image-20221022200318130"></p>
+<h5 id="get流程"><a href="#get流程" class="headerlink" title="get流程"></a>get流程</h5><p><img src="/../../images/image-20221022200421088.png" alt="image-20221022200421088"></p>
+<h5 id="size-计算流程"><a href="#size-计算流程" class="headerlink" title="size 计算流程"></a>size 计算流程</h5><p><img src="/../../images/image-20221022201736684.png" alt="image-20221022201736684"></p>
+<p><img src="/../../images/image-20221022201831614.png" alt="image-20221022201831614"></p>
+<p><img src="/../../images/image-20221022202103638.png" alt="image-20221022202103638"></p>
+<h1 id="7-LinkedBlockingQueue原理"><a href="#7-LinkedBlockingQueue原理" class="headerlink" title="7.LinkedBlockingQueue原理"></a>7.LinkedBlockingQueue原理</h1><h2 id="1-基本的出队入队"><a href="#1-基本的出队入队" class="headerlink" title="1. 基本的出队入队"></a>1. 基本的出队入队</h2><h3 id="1-1-入队"><a href="#1-1-入队" class="headerlink" title="1.1 入队"></a>1.1 入队</h3><p><img src="/../../images/image-20221022202242611.png" alt="image-20221022202242611"></p>
+<p><img src="/../../images/image-20221022202808632.png" alt="image-20221022202808632"></p>
+<p><img src="/../../images/image-20221022202924133.png" alt="image-20221022202924133"></p>
+<p><img src="/../../images/image-20221022202953688.png" alt="image-20221022202953688">、</p>
+<h3 id="1-2-出队"><a href="#1-2-出队" class="headerlink" title="1.2 出队"></a>1.2 出队</h3><p><img src="/../../images/image-20221022203054548.png" alt="image-20221022203054548"></p>
+<p><img src="/../../images/image-20221022203309239.png" alt="image-20221022203309239"></p>
+<p><img src="/../../images/image-20221022203319353.png" alt="image-20221022203319353"></p>
+<p><img src="/../../images/image-20221022203341901.png" alt="image-20221022203341901"></p>
+<p><img src="/../../images/image-20221022203431739.png" alt="image-20221022203431739"></p>
+<h2 id="2-加锁分析"><a href="#2-加锁分析" class="headerlink" title="2. 加锁分析"></a>2. 加锁分析</h2><p><img src="/../../images/image-20221022203609050.png" alt="image-20221022203609050"></p>
+<p><img src="/../../images/image-20221022203835189.png" alt="image-20221022203835189"></p>
+<h2 id="3-put操作"><a href="#3-put操作" class="headerlink" title="3. put操作"></a>3. put操作</h2><p><img src="/../../images/image-20221022204000755.png" alt="image-20221022204000755"></p>
+<p><img src="/../../images/image-20221022204139574.png" alt="image-20221022204139574"></p>
+<h2 id="4-take-操作"><a href="#4-take-操作" class="headerlink" title="4. take 操作"></a>4. take 操作</h2><p><img src="/../../images/image-20221022204425591.png" alt="image-20221022204425591"></p>
+<h2 id="5-性能比较"><a href="#5-性能比较" class="headerlink" title="5. 性能比较"></a>5. 性能比较</h2><p><img src="/../../images/image-20221022204547159.png" alt="image-20221022204547159"></p>
+<h1 id="8-ConcurrentLinkedQueue"><a href="#8-ConcurrentLinkedQueue" class="headerlink" title="8. ConcurrentLinkedQueue"></a>8. ConcurrentLinkedQueue</h1><p><img src="/../../images/image-20221022204750385.png" alt="image-20221022204750385"></p>
+<h1 id="CopyOnWriteArrayList"><a href="#CopyOnWriteArrayList" class="headerlink" title="CopyOnWriteArrayList"></a>CopyOnWriteArrayList</h1><p><img src="/../../images/image-20221022210453310.png" alt="image-20221022210453310"></p>
+<p><img src="/../../images/image-20221022210506094.png" alt="image-20221022210506094"></p>
+<p><img src="/../../images/image-20221022210923774.png" alt="image-20221022210923774"></p>
+<p><img src="/../../images/image-20221022211630737.png" alt="image-20221022211630737"></p>
+<p><img src="/../../images/image-20221022211826554.png" alt="image-20221022211826554"></p>
 
       
 
@@ -430,6 +815,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2022/10/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%B9%B6%E6%9F%A5%E9%9B%86/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
   
     <a href="/2022/10/14/final%E5%85%B3%E9%94%AE%E5%AD%97%E7%94%A8%E6%B3%95%E6%80%BB%E7%BB%93/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">final关键字用法总结</div>
@@ -475,7 +869,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 tumiao
+    		&copy; 2023 tumiao
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
